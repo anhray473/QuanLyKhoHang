@@ -48,15 +48,16 @@ namespace DataLayer
             this.database = database;        
         }
 
-        public void ConnectData()
+        public void SaveFile()
         {
-            if (File.Exists("connecdb.dba"))
-                File.Delete("connecdb.dba");
-            FileStream fs = File.Open("connecdb.dba", FileMode.OpenOrCreate, FileAccess.Write);
+            if (File.Exists("connectdb.dba"))
+                File.Delete("connectdb.dba");
+            FileStream fs = File.Open("connectdb.dba", FileMode.OpenOrCreate, FileAccess.Write);
             BinaryFormatter bf = new BinaryFormatter();
             bf.Serialize(fs, this);
             fs.Close();
 
         }
+
     }
 }
