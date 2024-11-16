@@ -29,13 +29,17 @@ namespace COTS
             {
                 string conStr = "";
                 BinaryFormatter bf = new BinaryFormatter();
-                FileStream fs = File.Open("connectdb.dba", FileMode.Open, FileAccess.Read); 
+                FileStream fs = File.Open("connectdb.dba", FileMode.Open, FileAccess.Read);
+                
                 connect cp = (connect)bf.Deserialize(fs);
-                string servername = Encryptor.Encrypt(cp.servername, "qwertyuiop", true);
-                string username = Encryptor.Encrypt(cp.username, "qwertyuiop", true);
-                string password = Encryptor.Encrypt(cp.password, "qwertyuiop", true);
-                string database = Encryptor.Encrypt(cp.database, "qwertyuiop", true);
+                string servername = Encryptor.Decrypt(cp.servername, "qwertyuiop", true);
+                string username = Encryptor.Decrypt(cp.username, "qwertyuiop", true);
+                string password = Encryptor.Decrypt(cp.password, "qwertyuiop", true);
+                string database = Encryptor.Decrypt(cp.database, "qwertyuiop", true);
                 conStr = "Data Source = " + servername + "; Initial Catalog = " + database + "; User ID = " + username + "; Password = " + password + "; ";
+
+                
+               
                 
                 
                 connoi = conStr;
