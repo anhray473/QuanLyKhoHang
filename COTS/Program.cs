@@ -52,16 +52,17 @@ namespace COTS
                 try
                 {
                     con.Open();
-                    Application.Run(new MainForm());
+                    
                 }
                 catch
                 {
                     MessageBox.Show("Không thể kết nối CSDL.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     fs.Close();
+                    Application.Run(new frmConnect());
                 }
                 con.Close();
                 fs.Close();
-
+                Application.Run(new MainForm());
 
             }
             else
