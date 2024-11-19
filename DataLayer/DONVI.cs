@@ -17,11 +17,12 @@ namespace DataLayer
         public string MaDVi { get; set; }
         public string TenDVi { get; set; }
         public string SDT { get; set; }
-        public string Email { get; set; }
         public string Fax { get; set; }
+        public string Email { get; set; }
         public string DiaChi { get; set; }
         public string MaCTy { get; set; }
-    
-        public virtual CONGTY CONGTY { get; set; }
+        public Nullable<bool> Disabled { get; set; }
+        public Nullable<bool> Kho { get; set; }
+        public string KyHieu { get; set; }
     }
 }

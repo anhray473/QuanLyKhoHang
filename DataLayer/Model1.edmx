@@ -4,11 +4,12 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="KHOHANG.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'QLKH.dbo.CHUNGTU' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+    <Schema Namespace="KHOHANG.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CHUNGTU">
-          <Property Name="ID" Type="uniqueidentifier" />
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="SCT" Type="varchar" MaxLength="50" />
           <Property Name="Ngay" Type="datetime" />
           <Property Name="SCT2" Type="varchar" MaxLength="50" />
@@ -26,18 +27,19 @@ warning 6013: The table/view 'QLKH.dbo.CHUNGTU' does not have a primary key defi
           <Property Name="NguoiSua" Type="int" />
           <Property Name="NgayXoa" Type="datetime" />
           <Property Name="NguoiXoa" Type="int" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'QLKH.dbo.CHUNGTU_CT' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        </EntityType>
         <EntityType Name="CHUNGTU_CT">
-          <Property Name="IDCT" Type="uniqueidentifier" />
+          <Key>
+            <PropertyRef Name="IDCT" />
+          </Key>
+          <Property Name="IDCT" Type="uniqueidentifier" Nullable="false" />
           <Property Name="ID" Type="uniqueidentifier" />
           <Property Name="CODE" Type="varchar" MaxLength="13" />
           <Property Name="SoLuong" Type="int" />
           <Property Name="DonGia" Type="float" />
           <Property Name="ThanhTien" Type="float" />
           <Property Name="Ngay" Type="datetime" />
-        </EntityType>-->
+        </EntityType>
         <EntityType Name="CONGTY">
           <Key>
             <PropertyRef Name="MaCTy" />
@@ -54,13 +56,16 @@ warning 6013: The table/view 'QLKH.dbo.CHUNGTU_CT' does not have a primary key d
           <Key>
             <PropertyRef Name="MaDVi" />
           </Key>
-          <Property Name="MaDVi" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="TenDVi" Type="nvarchar" MaxLength="100" />
+          <Property Name="MaDVi" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="TenDVi" Type="nvarchar" MaxLength="50" />
           <Property Name="SDT" Type="varchar" MaxLength="15" />
-          <Property Name="Email" Type="varchar" MaxLength="50" />
           <Property Name="Fax" Type="varchar" MaxLength="20" />
-          <Property Name="DiaChi" Type="nvarchar" MaxLength="100" />
-          <Property Name="MaCTy" Type="varchar" MaxLength="10" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="50" />
+          <Property Name="MaCTy" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Disabled" Type="bit" />
+          <Property Name="Kho" Type="bit" />
+          <Property Name="KyHieu" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="DVT">
           <Key>
@@ -182,19 +187,9 @@ warning 6013: The table/view 'QLKH.dbo.CHUNGTU_CT' does not have a primary key d
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Ten" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <Association Name="FK__DONVI__MaCTy__4BAC3F29">
-          <End Role="CONGTY" Type="Self.CONGTY" Multiplicity="0..1" />
-          <End Role="DONVI" Type="Self.DONVI" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CONGTY">
-              <PropertyRef Name="MaCTy" />
-            </Principal>
-            <Dependent Role="DONVI">
-              <PropertyRef Name="MaCTy" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="KHOHANGStoreContainer">
+          <EntitySet Name="CHUNGTU" EntityType="Self.CHUNGTU" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CHUNGTU_CT" EntityType="Self.CHUNGTU_CT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CONGTY" EntityType="Self.CONGTY" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DONVI" EntityType="Self.DONVI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DVT" EntityType="Self.DVT" Schema="dbo" store:Type="Tables" />
@@ -208,41 +203,54 @@ warning 6013: The table/view 'QLKH.dbo.CHUNGTU_CT' does not have a primary key d
           <EntitySet Name="SYS_USER" EntityType="Self.SYS_USER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TONKHO" EntityType="Self.TONKHO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="XUATXU" EntityType="Self.XUATXU" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__DONVI__MaCTy__4BAC3F29" Association="Self.FK__DONVI__MaCTy__4BAC3F29">
-            <End Role="CONGTY" EntitySet="CONGTY" />
-            <End Role="DONVI" EntitySet="DONVI" />
-          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="KHOHANG" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CONGTies" EntityType="KHOHANG.CONGTY" />
+          <EntitySet Name="DONVIs" EntityType="KHOHANG.DONVI" />
+          <EntitySet Name="DVTs" EntityType="KHOHANG.DVT" />
+          <EntitySet Name="HANGHOAs" EntityType="KHOHANG.HANGHOA" />
+          <EntitySet Name="NHACUNGCAPs" EntityType="KHOHANG.NHACUNGCAP" />
+          <EntitySet Name="SYS_FUNC" EntityType="KHOHANG.SYS_FUNC" />
+          <EntitySet Name="SYS_GROUP" EntityType="KHOHANG.SYS_GROUP" />
+          <EntitySet Name="SYS_REPORT" EntityType="KHOHANG.SYS_REPORT" />
+          <EntitySet Name="SYS_RIGHT" EntityType="KHOHANG.SYS_RIGHT" />
+          <EntitySet Name="SYS_RIGHT_REP" EntityType="KHOHANG.SYS_RIGHT_REP" />
+          <EntitySet Name="SYS_USER" EntityType="KHOHANG.SYS_USER" />
+          <EntitySet Name="TONKHOes" EntityType="KHOHANG.TONKHO" />
+          <EntitySet Name="XUATXUs" EntityType="KHOHANG.XUATXU" />
+          <EntitySet Name="CHUNGTUs" EntityType="KHOHANG.CHUNGTU" />
+          <EntitySet Name="CHUNGTU_CT" EntityType="KHOHANG.CHUNGTU_CT" />
+        </EntityContainer>
         <EntityType Name="CONGTY">
           <Key>
             <PropertyRef Name="MaCTy" />
           </Key>
-          <Property Name="MaCTy" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MaCTy" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="TenCTy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="SDT" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Fax" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Disabled" Type="Boolean" />
-          <NavigationProperty Name="DONVIs" Relationship="Self.FK__DONVI__MaCTy__4BAC3F29" FromRole="CONGTY" ToRole="DONVI" />
         </EntityType>
         <EntityType Name="DONVI">
           <Key>
             <PropertyRef Name="MaDVi" />
           </Key>
-          <Property Name="MaDVi" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TenDVi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MaDVi" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TenDVi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SDT" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Fax" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="MaCTy" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="CONGTY" Relationship="Self.FK__DONVI__MaCTy__4BAC3F29" FromRole="DONVI" ToRole="CONGTY" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DiaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaCTy" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Disabled" Type="Boolean" />
+          <Property Name="Kho" Type="Boolean" />
+          <Property Name="KyHieu" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="DVT">
           <Key>
@@ -255,7 +263,7 @@ warning 6013: The table/view 'QLKH.dbo.CHUNGTU_CT' does not have a primary key d
           <Key>
             <PropertyRef Name="Code" />
           </Key>
-          <Property Name="Code" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="false" />
           <Property Name="TenHang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="TenTat" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="DVT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -281,7 +289,7 @@ warning 6013: The table/view 'QLKH.dbo.CHUNGTU_CT' does not have a primary key d
             <PropertyRef Name="FUNC_Code" />
             <PropertyRef Name="SORT" />
           </Key>
-          <Property Name="FUNC_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FUNC_Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="SORT" Type="Int32" Nullable="false" />
           <Property Name="MoTa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Isgroup" Type="Boolean" />
@@ -315,7 +323,7 @@ warning 6013: The table/view 'QLKH.dbo.CHUNGTU_CT' does not have a primary key d
             <PropertyRef Name="FUNC_Code" />
             <PropertyRef Name="IDUser" />
           </Key>
-          <Property Name="FUNC_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FUNC_Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IDUser" Type="Int32" Nullable="false" />
           <Property Name="User_RIGHT" Type="Int32" />
         </EntityType>
@@ -364,37 +372,41 @@ warning 6013: The table/view 'QLKH.dbo.CHUNGTU_CT' does not have a primary key d
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <Association Name="FK__DONVI__MaCTy__4BAC3F29">
-          <End Role="CONGTY" Type="Self.CONGTY" Multiplicity="0..1" />
-          <End Role="DONVI" Type="Self.DONVI" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CONGTY">
-              <PropertyRef Name="MaCTy" />
-            </Principal>
-            <Dependent Role="DONVI">
-              <PropertyRef Name="MaCTy" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="CONGTies" EntityType="Self.CONGTY" />
-          <EntitySet Name="DONVIs" EntityType="Self.DONVI" />
-          <EntitySet Name="DVTs" EntityType="Self.DVT" />
-          <EntitySet Name="HANGHOAs" EntityType="Self.HANGHOA" />
-          <EntitySet Name="NHACUNGCAPs" EntityType="Self.NHACUNGCAP" />
-          <EntitySet Name="SYS_FUNC" EntityType="Self.SYS_FUNC" />
-          <EntitySet Name="SYS_GROUP" EntityType="Self.SYS_GROUP" />
-          <EntitySet Name="SYS_REPORT" EntityType="Self.SYS_REPORT" />
-          <EntitySet Name="SYS_RIGHT" EntityType="Self.SYS_RIGHT" />
-          <EntitySet Name="SYS_RIGHT_REP" EntityType="Self.SYS_RIGHT_REP" />
-          <EntitySet Name="SYS_USER" EntityType="Self.SYS_USER" />
-          <EntitySet Name="TONKHOes" EntityType="Self.TONKHO" />
-          <EntitySet Name="XUATXUs" EntityType="Self.XUATXU" />
-          <AssociationSet Name="FK__DONVI__MaCTy__4BAC3F29" Association="Self.FK__DONVI__MaCTy__4BAC3F29">
-            <End Role="CONGTY" EntitySet="CONGTies" />
-            <End Role="DONVI" EntitySet="DONVIs" />
-          </AssociationSet>
-        </EntityContainer>
+        <EntityType Name="CHUNGTU">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="SCT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ngay" Type="DateTime" Precision="3" />
+          <Property Name="SCT2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ngay2" Type="DateTime" Precision="3" />
+          <Property Name="SoLuong" Type="Int32" />
+          <Property Name="TongTien" Type="Double" />
+          <Property Name="GhiChu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MaCTy" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MaDVi" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MaDVi2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TrangThai" Type="Boolean" />
+          <Property Name="NgayTao" Type="DateTime" Precision="3" />
+          <Property Name="NguoiTao" Type="Int32" />
+          <Property Name="NgaySua" Type="DateTime" Precision="3" />
+          <Property Name="NguoiSua" Type="Int32" />
+          <Property Name="NgayXoa" Type="DateTime" Precision="3" />
+          <Property Name="NguoiXoa" Type="Int32" />
+        </EntityType>
+        <EntityType Name="CHUNGTU_CT">
+          <Key>
+            <PropertyRef Name="IDCT" />
+          </Key>
+          <Property Name="IDCT" Type="Guid" Nullable="false" />
+          <Property Name="ID" Type="Guid" />
+          <Property Name="CODE" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="SoLuong" Type="Int32" />
+          <Property Name="DonGia" Type="Double" />
+          <Property Name="ThanhTien" Type="Double" />
+          <Property Name="Ngay" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -404,153 +416,193 @@ warning 6013: The table/view 'QLKH.dbo.CHUNGTU_CT' does not have a primary key d
           <EntitySetMapping Name="CONGTies">
             <EntityTypeMapping TypeName="KHOHANG.CONGTY">
               <MappingFragment StoreEntitySet="CONGTY">
-                <ScalarProperty Name="MaCTy" ColumnName="MaCTy" />
-                <ScalarProperty Name="TenCTy" ColumnName="TenCTy" />
-                <ScalarProperty Name="SDT" ColumnName="SDT" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Fax" ColumnName="Fax" />
-                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
                 <ScalarProperty Name="Disabled" ColumnName="Disabled" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="TenCTy" ColumnName="TenCTy" />
+                <ScalarProperty Name="MaCTy" ColumnName="MaCTy" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DONVIs">
             <EntityTypeMapping TypeName="KHOHANG.DONVI">
               <MappingFragment StoreEntitySet="DONVI">
-                <ScalarProperty Name="MaDVi" ColumnName="MaDVi" />
-                <ScalarProperty Name="TenDVi" ColumnName="TenDVi" />
-                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="KyHieu" ColumnName="KyHieu" />
+                <ScalarProperty Name="Kho" ColumnName="Kho" />
+                <ScalarProperty Name="Disabled" ColumnName="Disabled" />
+                <ScalarProperty Name="MaCTy" ColumnName="MaCTy" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Fax" ColumnName="Fax" />
-                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
-                <ScalarProperty Name="MaCTy" ColumnName="MaCTy" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="TenDVi" ColumnName="TenDVi" />
+                <ScalarProperty Name="MaDVi" ColumnName="MaDVi" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DVTs">
             <EntityTypeMapping TypeName="KHOHANG.DVT">
               <MappingFragment StoreEntitySet="DVT">
-                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Ten" ColumnName="Ten" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="HANGHOAs">
             <EntityTypeMapping TypeName="KHOHANG.HANGHOA">
               <MappingFragment StoreEntitySet="HANGHOA">
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="TenHang" ColumnName="TenHang" />
-                <ScalarProperty Name="TenTat" ColumnName="TenTat" />
-                <ScalarProperty Name="DVT" ColumnName="DVT" />
-                <ScalarProperty Name="DonGia" ColumnName="DonGia" />
-                <ScalarProperty Name="XuatXu" ColumnName="XuatXu" />
-                <ScalarProperty Name="MaNCC" ColumnName="MaNCC" />
                 <ScalarProperty Name="Disabled" ColumnName="Disabled" />
+                <ScalarProperty Name="MaNCC" ColumnName="MaNCC" />
+                <ScalarProperty Name="XuatXu" ColumnName="XuatXu" />
+                <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+                <ScalarProperty Name="DVT" ColumnName="DVT" />
+                <ScalarProperty Name="TenTat" ColumnName="TenTat" />
+                <ScalarProperty Name="TenHang" ColumnName="TenHang" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NHACUNGCAPs">
             <EntityTypeMapping TypeName="KHOHANG.NHACUNGCAP">
               <MappingFragment StoreEntitySet="NHACUNGCAP">
-                <ScalarProperty Name="MaNCC" ColumnName="MaNCC" />
-                <ScalarProperty Name="TenNCC" ColumnName="TenNCC" />
-                <ScalarProperty Name="SDT" ColumnName="SDT" />
-                <ScalarProperty Name="Fax" ColumnName="Fax" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
                 <ScalarProperty Name="Disabled" ColumnName="Disabled" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="TenNCC" ColumnName="TenNCC" />
+                <ScalarProperty Name="MaNCC" ColumnName="MaNCC" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SYS_FUNC">
             <EntityTypeMapping TypeName="KHOHANG.SYS_FUNC">
               <MappingFragment StoreEntitySet="SYS_FUNC">
-                <ScalarProperty Name="FUNC_Code" ColumnName="FUNC_Code" />
-                <ScalarProperty Name="SORT" ColumnName="SORT" />
-                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
-                <ScalarProperty Name="Isgroup" ColumnName="Isgroup" />
-                <ScalarProperty Name="Parent" ColumnName="Parent" />
-                <ScalarProperty Name="Menu" ColumnName="Menu" />
                 <ScalarProperty Name="Tips" ColumnName="Tips" />
+                <ScalarProperty Name="Menu" ColumnName="Menu" />
+                <ScalarProperty Name="Parent" ColumnName="Parent" />
+                <ScalarProperty Name="Isgroup" ColumnName="Isgroup" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="SORT" ColumnName="SORT" />
+                <ScalarProperty Name="FUNC_Code" ColumnName="FUNC_Code" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SYS_GROUP">
             <EntityTypeMapping TypeName="KHOHANG.SYS_GROUP">
               <MappingFragment StoreEntitySet="SYS_GROUP">
-                <ScalarProperty Name="Group" ColumnName="Group" />
                 <ScalarProperty Name="ThanhVien" ColumnName="ThanhVien" />
+                <ScalarProperty Name="Group" ColumnName="Group" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SYS_REPORT">
             <EntityTypeMapping TypeName="KHOHANG.SYS_REPORT">
               <MappingFragment StoreEntitySet="SYS_REPORT">
-                <ScalarProperty Name="RepCode" ColumnName="RepCode" />
-                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
-                <ScalarProperty Name="TenRep" ColumnName="TenRep" />
-                <ScalarProperty Name="Visibled" ColumnName="Visibled" />
-                <ScalarProperty Name="TuNgay" ColumnName="TuNgay" />
-                <ScalarProperty Name="ThangNam" ColumnName="ThangNam" />
-                <ScalarProperty Name="MaCTy" ColumnName="MaCTy" />
                 <ScalarProperty Name="MaDVi" ColumnName="MaDVi" />
+                <ScalarProperty Name="MaCTy" ColumnName="MaCTy" />
+                <ScalarProperty Name="ThangNam" ColumnName="ThangNam" />
+                <ScalarProperty Name="TuNgay" ColumnName="TuNgay" />
+                <ScalarProperty Name="Visibled" ColumnName="Visibled" />
+                <ScalarProperty Name="TenRep" ColumnName="TenRep" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="RepCode" ColumnName="RepCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SYS_RIGHT">
             <EntityTypeMapping TypeName="KHOHANG.SYS_RIGHT">
               <MappingFragment StoreEntitySet="SYS_RIGHT">
-                <ScalarProperty Name="FUNC_Code" ColumnName="FUNC_Code" />
-                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
                 <ScalarProperty Name="User_RIGHT" ColumnName="User_RIGHT" />
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+                <ScalarProperty Name="FUNC_Code" ColumnName="FUNC_Code" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SYS_RIGHT_REP">
             <EntityTypeMapping TypeName="KHOHANG.SYS_RIGHT_REP">
               <MappingFragment StoreEntitySet="SYS_RIGHT_REP">
-                <ScalarProperty Name="RepCode" ColumnName="RepCode" />
-                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
                 <ScalarProperty Name="User_RIGHT" ColumnName="User_RIGHT" />
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+                <ScalarProperty Name="RepCode" ColumnName="RepCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SYS_USER">
             <EntityTypeMapping TypeName="KHOHANG.SYS_USER">
               <MappingFragment StoreEntitySet="SYS_USER">
-                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="HoVaTen" ColumnName="HoVaTen" />
-                <ScalarProperty Name="MaCTy" ColumnName="MaCTy" />
-                <ScalarProperty Name="MaDVi" ColumnName="MaDVi" />
-                <ScalarProperty Name="Disabled" ColumnName="Disabled" />
                 <ScalarProperty Name="Isgroup" ColumnName="Isgroup" />
+                <ScalarProperty Name="Disabled" ColumnName="Disabled" />
+                <ScalarProperty Name="MaDVi" ColumnName="MaDVi" />
+                <ScalarProperty Name="MaCTy" ColumnName="MaCTy" />
+                <ScalarProperty Name="HoVaTen" ColumnName="HoVaTen" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TONKHOes">
             <EntityTypeMapping TypeName="KHOHANG.TONKHO">
               <MappingFragment StoreEntitySet="TONKHO">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="NamKy" ColumnName="NamKy" />
-                <ScalarProperty Name="Nam" ColumnName="Nam" />
-                <ScalarProperty Name="Ky" ColumnName="Ky" />
-                <ScalarProperty Name="MaDVi" ColumnName="MaDVi" />
-                <ScalarProperty Name="SLDau" ColumnName="SLDau" />
-                <ScalarProperty Name="SLNhap" ColumnName="SLNhap" />
-                <ScalarProperty Name="SLXuat" ColumnName="SLXuat" />
-                <ScalarProperty Name="SLCuoi" ColumnName="SLCuoi" />
-                <ScalarProperty Name="ThanhTien" ColumnName="ThanhTien" />
                 <ScalarProperty Name="Ngay" ColumnName="Ngay" />
+                <ScalarProperty Name="ThanhTien" ColumnName="ThanhTien" />
+                <ScalarProperty Name="SLCuoi" ColumnName="SLCuoi" />
+                <ScalarProperty Name="SLXuat" ColumnName="SLXuat" />
+                <ScalarProperty Name="SLNhap" ColumnName="SLNhap" />
+                <ScalarProperty Name="SLDau" ColumnName="SLDau" />
+                <ScalarProperty Name="MaDVi" ColumnName="MaDVi" />
+                <ScalarProperty Name="Ky" ColumnName="Ky" />
+                <ScalarProperty Name="Nam" ColumnName="Nam" />
+                <ScalarProperty Name="NamKy" ColumnName="NamKy" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="XUATXUs">
             <EntityTypeMapping TypeName="KHOHANG.XUATXU">
               <MappingFragment StoreEntitySet="XUATXU">
-                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Ten" ColumnName="Ten" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CHUNGTUs">
+            <EntityTypeMapping TypeName="KHOHANG.CHUNGTU">
+              <MappingFragment StoreEntitySet="CHUNGTU">
+                <ScalarProperty Name="NguoiXoa" ColumnName="NguoiXoa" />
+                <ScalarProperty Name="NgayXoa" ColumnName="NgayXoa" />
+                <ScalarProperty Name="NguoiSua" ColumnName="NguoiSua" />
+                <ScalarProperty Name="NgaySua" ColumnName="NgaySua" />
+                <ScalarProperty Name="NguoiTao" ColumnName="NguoiTao" />
+                <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="MaDVi2" ColumnName="MaDVi2" />
+                <ScalarProperty Name="MaDVi" ColumnName="MaDVi" />
+                <ScalarProperty Name="MaCTy" ColumnName="MaCTy" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="Ngay2" ColumnName="Ngay2" />
+                <ScalarProperty Name="SCT2" ColumnName="SCT2" />
+                <ScalarProperty Name="Ngay" ColumnName="Ngay" />
+                <ScalarProperty Name="SCT" ColumnName="SCT" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CHUNGTU_CT">
+            <EntityTypeMapping TypeName="KHOHANG.CHUNGTU_CT">
+              <MappingFragment StoreEntitySet="CHUNGTU_CT">
+                <ScalarProperty Name="Ngay" ColumnName="Ngay" />
+                <ScalarProperty Name="ThanhTien" ColumnName="ThanhTien" />
+                <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDCT" ColumnName="IDCT" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -38,5 +38,7 @@ namespace DataLayer
         public virtual DbSet<SYS_USER> SYS_USER { get; set; }
         public virtual DbSet<TONKHO> TONKHOes { get; set; }
         public virtual DbSet<XUATXU> XUATXUs { get; set; }
+        public virtual DbSet<CHUNGTU> CHUNGTUs { get; set; }
+        public virtual DbSet<CHUNGTU_CT> CHUNGTU_CT { get; set; }
     }
 }

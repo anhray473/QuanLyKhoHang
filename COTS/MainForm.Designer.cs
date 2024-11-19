@@ -38,9 +38,11 @@
             this.btnThoat = new System.Windows.Forms.ToolStripButton();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.navMain = new DevExpress.XtraNavBar.NavBarControl();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.largeImg = new System.Windows.Forms.ImageList(this.components);
             this.smallImg = new System.Windows.Forms.ImageList(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
@@ -49,6 +51,7 @@
             this.splitContainerControl1.Panel2.SuspendLayout();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navMain)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -139,15 +142,7 @@
             this.navMain.SmallImages = this.smallImg;
             this.navMain.TabIndex = 0;
             this.navMain.Text = "navBarControl1";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1668, 921);
-            this.panel1.TabIndex = 0;
+            this.navMain.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navMain_LinkClicked);
             // 
             // largeImg
             // 
@@ -161,6 +156,36 @@
             this.smallImg.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
             this.smallImg.ImageSize = new System.Drawing.Size(16, 16);
             this.smallImg.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Font = new System.Drawing.Font("Tahoma", 30F, System.Drawing.FontStyle.Bold);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1668, 921);
+            this.panel1.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(562, 116);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(537, 60);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "QUẢN LÝ BÁN HÀNG";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(426, 43);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(837, 60);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "PHẦN MỀM QUẢN LÝ KHO HÀNG";
             // 
             // MainForm
             // 
@@ -183,6 +208,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.navMain)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,6 +228,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ImageList largeImg;
         private System.Windows.Forms.ImageList smallImg;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 
