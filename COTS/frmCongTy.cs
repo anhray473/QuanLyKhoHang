@@ -151,16 +151,5 @@ namespace COTS
                 chkDisabled.Checked = bool.Parse(gvDanhSach.GetFocusedRowCellValue("Disabled").ToString());
             }
         }
-
-        private void gvDanhSach_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
-        {
-            //if (e.Column.Name == "Disabled" && bool.Parse(e.CellValue.ToString()) == true)
-            //{
-            //    Image img = Properties.Resources.cancel16x16;
-            //    e.Graphics.DrawImage(img, e.Bounds.X, e.Bounds.Y);
-            //    e.Handled = true;
-            //}
-
-        }
     }
 }

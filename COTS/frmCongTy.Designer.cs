@@ -208,7 +208,6 @@
             this.DiaChi});
             this.gvDanhSach.GridControl = this.gcDanhSach;
             this.gvDanhSach.Name = "gvDanhSach";
-            this.gvDanhSach.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.gvDanhSach_CustomDrawCell);
             this.gvDanhSach.Click += new System.EventHandler(this.gvDanhSach_Click);
             // 
             // Disabled
@@ -424,8 +423,10 @@
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.gcDanhSach);
             this.Controls.Add(this.toolStrip1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmCongTy";
-            this.Text = "frmCongTy";
+            this.Text = "Danh mục công ty";
             this.Load += new System.EventHandler(this.frmCongTy_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
