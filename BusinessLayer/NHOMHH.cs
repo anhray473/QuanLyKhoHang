@@ -7,34 +7,45 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer
 {
-    public class DVT
+    public class NHOMHH
     {
         Entities db;
-        public DVT()
+
+        public NHOMHH()
+
         {
             db = Entities.CreateEntities();
-
         }
 
-        public DataLayer.DVT getItem(int iddv)
+        public DataLayer.NHOMHH getItem(int maNhom)
         {
-            return db.DVTs.FirstOrDefault(x => x.ID == iddv);
+            return db.NHOMHHs.FirstOrDefault(x => x.IDNhom == maNhom);
         }
 
-        public List<DataLayer.DVT> getAll()
+        public List<DataLayer.NHOMHH> getAll()
         {
-            return db.DVTs.ToList();
+            return db.NHOMHHs.ToList();
         }
-
-        public List<DataLayer.DVT> getAll(int iddv)
-        {
-            return db.DVTs.Where(x => x.ID == iddv).ToList();
-        }
-        public void add(DataLayer.DVT dvt)
+        public void add(DataLayer.NHOMHH nhom)
         {
             try
             {
-                db.DVTs.Add(dvt);
+                db.NHOMHHs.Add(nhom);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Có lỗi xảy ra trong quá trình xử lý dữ liệu" + ex.Message);
+            }
+
+        }
+        public void update(DataLayer.NHOMHH nhh)
+        {
+            DataLayer.NHOMHH _nhh = db.NHOMHHs.FirstOrDefault(x => x.IDNhom == nhh.IDNhom);
+            _nhh.TenNhom = nhh.TenNhom;
+            
+            try
+            {
                 db.SaveChanges();
             }
             catch (Exception ex)
@@ -42,28 +53,12 @@ namespace BusinessLayer
                 throw new Exception("Có lỗi xảy ra trong quá trình xử lý dữ liệu" + ex.Message);
             }
         }
-
-        public void update(DataLayer.DVT dvt)
+        public void delete(int idn)
         {
-            DataLayer.DVT _dvt = db.DVTs.FirstOrDefault(x => x.ID == dvt.ID);
-            _dvt.ID = dvt.ID;
-            _dvt.Ten = dvt.Ten;
+            DataLayer.NHOMHH _nhh = db.NHOMHHs.FirstOrDefault(x => x.IDNhom == idn);
             try
             {
-               
-                db.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Có lỗi xảy ra trong quá trình xử lý dữ liệu" + ex.Message);
-            }
-        }
-        public void delete(int iddv)
-        {
-            DataLayer.DVT _dvt = db.DVTs.FirstOrDefault(x => x.ID == iddv);
-            try
-            {
-                db.DVTs.Remove(_dvt);
+                db.NHOMHHs.Remove(_nhh);
                 db.SaveChanges();
             }
             catch (Exception ex)

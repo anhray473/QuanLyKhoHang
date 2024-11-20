@@ -8,7 +8,6 @@
         <EntityTypeShape EntityType="KHOHANG.CONGTY" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="KHOHANG.DONVI" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="KHOHANG.DVT" Width="1.5" PointX="4.75" PointY="0.75" />
-        <EntityTypeShape EntityType="KHOHANG.HANGHOA" Width="1.5" PointX="0.75" PointY="4.75" />
         <EntityTypeShape EntityType="KHOHANG.NHACUNGCAP" Width="1.5" PointX="2.75" PointY="4.75" />
         <EntityTypeShape EntityType="KHOHANG.SYS_FUNC" Width="1.5" PointX="4.75" PointY="3.75" />
         <EntityTypeShape EntityType="KHOHANG.SYS_GROUP" Width="1.5" PointX="6.75" PointY="0.75" />
@@ -20,6 +19,8 @@
         <EntityTypeShape EntityType="KHOHANG.XUATXU" Width="1.5" PointX="8.75" PointY="4.75" />
         <EntityTypeShape EntityType="KHOHANG.CHUNGTU" Width="1.5" PointX="9.375" PointY="7.75" />
         <EntityTypeShape EntityType="KHOHANG.CHUNGTU_CT" Width="1.5" PointX="3.375" PointY="10.75" />
+        <EntityTypeShape EntityType="KHOHANG.HANGHOA" Width="1.5" PointX="5.375" PointY="10.75" />
+        <EntityTypeShape EntityType="KHOHANG.NHOMHH" Width="1.5" PointX="11.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -7,34 +7,45 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer
 {
-    public class DVT
+    public class NHACUNGCAP
     {
         Entities db;
-        public DVT()
+        public NHACUNGCAP()
         {
-            db = Entities.CreateEntities();
-
+            db =Entities.CreateEntities();
         }
-
-        public DataLayer.DVT getItem(int iddv)
+        public DataLayer.NHACUNGCAP getItem(int maNCC)
         {
-            return db.DVTs.FirstOrDefault(x => x.ID == iddv);
+            return db.NHACUNGCAPs.FirstOrDefault(x => x.MaNCC == maNCC);
         }
-
-        public List<DataLayer.DVT> getAll()
+        public List<DataLayer.NHACUNGCAP> getAll() 
         {
-            return db.DVTs.ToList();
+            return db.NHACUNGCAPs.ToList();
         }
-
-        public List<DataLayer.DVT> getAll(int iddv)
-        {
-            return db.DVTs.Where(x => x.ID == iddv).ToList();
-        }
-        public void add(DataLayer.DVT dvt)
+        public void add(DataLayer.NHACUNGCAP ncc)
         {
             try
             {
-                db.DVTs.Add(dvt);
+                db.NHACUNGCAPs.Add(ncc);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Có lỗi xảy ra trong quá trình xử lý dữ liệu" + ex.Message);
+            }
+
+        }
+        public void update(DataLayer.NHACUNGCAP ncc)
+        {
+            DataLayer.NHACUNGCAP _ncc = db.NHACUNGCAPs.FirstOrDefault(x => x.MaNCC == ncc.MaNCC);
+            _ncc.TenNCC = ncc.TenNCC;
+            _ncc.SDT = ncc.SDT;
+            _ncc.Email = ncc.Email;
+            _ncc.Fax = ncc.Fax;
+            _ncc.DiaChi = ncc.DiaChi;
+            _ncc.Disabled = ncc.Disabled;
+            try
+            {
                 db.SaveChanges();
             }
             catch (Exception ex)
@@ -42,28 +53,12 @@ namespace BusinessLayer
                 throw new Exception("Có lỗi xảy ra trong quá trình xử lý dữ liệu" + ex.Message);
             }
         }
-
-        public void update(DataLayer.DVT dvt)
+        public void delete(int mancc)
         {
-            DataLayer.DVT _dvt = db.DVTs.FirstOrDefault(x => x.ID == dvt.ID);
-            _dvt.ID = dvt.ID;
-            _dvt.Ten = dvt.Ten;
+            DataLayer.NHACUNGCAP _ncc = db.NHACUNGCAPs.FirstOrDefault(x => x.MaNCC == mancc);
+            _ncc.Disabled = true;
             try
             {
-               
-                db.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Có lỗi xảy ra trong quá trình xử lý dữ liệu" + ex.Message);
-            }
-        }
-        public void delete(int iddv)
-        {
-            DataLayer.DVT _dvt = db.DVTs.FirstOrDefault(x => x.ID == iddv);
-            try
-            {
-                db.DVTs.Remove(_dvt);
                 db.SaveChanges();
             }
             catch (Exception ex)

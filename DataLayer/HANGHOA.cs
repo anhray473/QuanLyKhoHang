@@ -21,6 +21,9 @@ namespace DataLayer
         public Nullable<double> DonGia { get; set; }
         public Nullable<int> XuatXu { get; set; }
         public Nullable<int> MaNCC { get; set; }
+        public Nullable<int> IDNhom { get; set; }
+        public Nullable<System.DateTime> NgayTao { get; set; }
+        public Nullable<int> NguoiTao { get; set; }
         public Nullable<bool> Disabled { get; set; }
     }
 }

@@ -28,7 +28,6 @@ namespace DataLayer
         public virtual DbSet<CONGTY> CONGTies { get; set; }
         public virtual DbSet<DONVI> DONVIs { get; set; }
         public virtual DbSet<DVT> DVTs { get; set; }
-        public virtual DbSet<HANGHOA> HANGHOAs { get; set; }
         public virtual DbSet<NHACUNGCAP> NHACUNGCAPs { get; set; }
         public virtual DbSet<SYS_FUNC> SYS_FUNC { get; set; }
         public virtual DbSet<SYS_GROUP> SYS_GROUP { get; set; }
@@ -40,5 +39,7 @@ namespace DataLayer
         public virtual DbSet<XUATXU> XUATXUs { get; set; }
         public virtual DbSet<CHUNGTU> CHUNGTUs { get; set; }
         public virtual DbSet<CHUNGTU_CT> CHUNGTU_CT { get; set; }
+        public virtual DbSet<HANGHOA> HANGHOAs { get; set; }
+        public virtual DbSet<NHOMHH> NHOMHHs { get; set; }
     }
 }

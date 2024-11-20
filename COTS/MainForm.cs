@@ -97,14 +97,32 @@ namespace COTS
                         break;
                     }
                 case "DONVI":
-                        {
-                            frmDonVi frm = new frmDonVi();
-                            frm.ShowDialog();
-                            break;
-                        }
-                        
-                        
-                }
+                    {
+                        frmDonVi frm = new frmDonVi();
+                        frm.ShowDialog();
+                        break;
+                    }
+                case "NHACUNGCAP":
+                    {
+                        frmNhaCungCap frm = new frmNhaCungCap();
+                        frm.ShowDialog();
+                        break;
+                    }
+                case "NHOMHH":
+                    {
+                        frmNhomHH frm = new frmNhomHH();
+                        frm.ShowDialog();
+                        break;
+                    }
+                case "DVT":
+                    {
+                        frmDVT frm = new frmDVT();
+                        frm.ShowDialog();
+                        break;
+                    }
+
+
+            }
             
         }
     }
