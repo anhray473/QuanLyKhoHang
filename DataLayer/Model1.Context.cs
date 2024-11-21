@@ -36,10 +36,11 @@ namespace DataLayer
         public virtual DbSet<SYS_RIGHT_REP> SYS_RIGHT_REP { get; set; }
         public virtual DbSet<SYS_USER> SYS_USER { get; set; }
         public virtual DbSet<TONKHO> TONKHOes { get; set; }
-        public virtual DbSet<XUATXU> XUATXUs { get; set; }
         public virtual DbSet<CHUNGTU> CHUNGTUs { get; set; }
         public virtual DbSet<CHUNGTU_CT> CHUNGTU_CT { get; set; }
-        public virtual DbSet<HANGHOA> HANGHOAs { get; set; }
+        public virtual DbSet<XUATXU> XUATXUs { get; set; }
         public virtual DbSet<NHOMHH> NHOMHHs { get; set; }
+        public virtual DbSet<HANGHOA> HANGHOAs { get; set; }
+        public virtual DbSet<SYS_SEQUENCE> SYS_SEQUENCE { get; set; }
     }
 }

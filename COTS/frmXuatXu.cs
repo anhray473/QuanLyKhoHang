@@ -12,26 +12,26 @@ using System.Windows.Forms;
 
 namespace COTS
 {
-    public partial class frmNhomHH : DevExpress.XtraEditors.XtraForm
+    public partial class frmXuatXu : DevExpress.XtraEditors.XtraForm
     {
-        public frmNhomHH()
+        public frmXuatXu()
         {
             InitializeComponent();
         }
-        NHOMHH _nhh;
+        XUATXU _xx;
         bool _them;
-        int _idn;
+        int _id;
 
-        private void frmNhomHH_Load(object sender, EventArgs e)
+        private void frmXuatXu_Load(object sender, EventArgs e)
         {
-            _nhh = new NHOMHH();
+            _xx = new XUATXU();
             loadData();
             showHideControl(true);
             _enabled(false);
         }
         void loadData()
         {
-            gcDanhSach.DataSource = _nhh.getAll();
+            gcDanhSach.DataSource = _xx.getAll();
             gvDanhSach.OptionsBehavior.Editable = false;
         }
         void showHideControl(bool t)
@@ -46,15 +46,21 @@ namespace COTS
         void _enabled(bool t)
         {
             txtTen.Enabled = t;
-            txtMota.Enabled = t;
             chkDisabled.Enabled = t;
         }
         void _reset()
         {
-            txtMota.Text = "";
             txtTen.Text = "";
             chkDisabled.Checked = false;
 
+        }
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                _xx.delete(_id);
+            }
+            loadData();
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -65,40 +71,22 @@ namespace COTS
             _reset();
         }
 
-        private void btnSua_Click(object sender, EventArgs e)
-        {
-            _them = false;
-            _enabled(true);
-            showHideControl(false);
-        }
-
-        private void btnXoa_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-            {
-                _nhh.delete(_idn);
-            }
-            loadData();
-        }
-
         private void btnLuu_Click(object sender, EventArgs e)
         {
             if (_them)
             {
-                DataLayer.NHOMHH nhh = new DataLayer.NHOMHH();
-                nhh.TenNhom = txtTen.Text;
-                nhh.Mota =txtMota.Text;
-                nhh.Disabled = chkDisabled.Checked;
-                _nhh.add(nhh);
+                DataLayer.XUATXU xx = new DataLayer.XUATXU();
+                xx.Ten = txtTen.Text;
+                xx.Disabled = chkDisabled.Checked;
+                _xx.add(xx);
 
             }
             else
             {
-                DataLayer.NHOMHH nhh = _nhh.getItem(_idn);
-                nhh.TenNhom = txtTen.Text;
-                nhh.Mota = txtMota.Text;
-                nhh.Disabled = chkDisabled.Checked;
-                _nhh.update(nhh);
+                DataLayer.XUATXU xx = _xx.getItem(_id);
+                xx.Ten = txtTen.Text;
+                xx.Disabled = chkDisabled.Checked;
+                _xx.update(xx);
             }
             _them = false;
             loadData();
@@ -121,12 +109,18 @@ namespace COTS
         {
             if (gvDanhSach.RowCount > 0)
             {
-                _idn = int.Parse(gvDanhSach.GetFocusedRowCellValue("IDNhom").ToString());
-                txtMota.Text = gvDanhSach.GetFocusedRowCellValue("Mota").ToString();
-                txtTen.Text = gvDanhSach.GetFocusedRowCellValue("TenNhom").ToString();
+                _id = int.Parse(gvDanhSach.GetFocusedRowCellValue("ID").ToString());
+                txtTen.Text = gvDanhSach.GetFocusedRowCellValue("Ten").ToString();
                 chkDisabled.Checked = bool.Parse(gvDanhSach.GetFocusedRowCellValue("Disabled").ToString());
 
             }
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            _them = false;
+            _enabled(true);
+            showHideControl(false);
         }
     }
 }

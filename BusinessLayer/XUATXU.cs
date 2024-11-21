@@ -7,46 +7,32 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer
 {
-    public class NHOMHH
+    public class XUATXU
     {
         Entities db;
-
-        public NHOMHH()
-
-        {
+        public XUATXU() 
+        { 
             db = Entities.CreateEntities();
         }
-
-        public DataLayer.NHOMHH getItem(int maNhom)
+        public DataLayer.XUATXU getItem(int id)
         {
-            return db.NHOMHHs.FirstOrDefault(x => x.IDNhom == maNhom);
+            return db.XUATXUs.FirstOrDefault(x => x.ID == id);
         }
 
-        public List<DataLayer.NHOMHH> getAll()
+        public List<DataLayer.XUATXU> getAll()
         {
-            return db.NHOMHHs.ToList();
+            return db.XUATXUs.ToList();
         }
-        public void add(DataLayer.NHOMHH nhom)
+
+        public List<DataLayer.XUATXU> getAll(int id)
+        {
+            return db.XUATXUs.Where(x => x.ID == id).ToList();
+        }
+        public void add(DataLayer.XUATXU xx)
         {
             try
             {
-                db.NHOMHHs.Add(nhom);
-                db.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Có lỗi xảy ra trong quá trình xử lý dữ liệu" + ex.Message);
-            }
-
-        }
-        public void update(DataLayer.NHOMHH nhh)
-        {
-            DataLayer.NHOMHH _nhh = db.NHOMHHs.FirstOrDefault(x => x.IDNhom == nhh.IDNhom);
-            _nhh.TenNhom = nhh.TenNhom;
-            _nhh.Disabled = nhh.Disabled;
-            _nhh.Mota = nhh.Mota;
-            try
-            {
+                db.XUATXUs.Add(xx);
                 db.SaveChanges();
             }
             catch (Exception ex)
@@ -54,13 +40,16 @@ namespace BusinessLayer
                 throw new Exception("Có lỗi xảy ra trong quá trình xử lý dữ liệu" + ex.Message);
             }
         }
-        public void delete(int idn)
+
+        public void update(DataLayer.XUATXU xx)
         {
-            DataLayer.NHOMHH _nhh = db.NHOMHHs.FirstOrDefault(x => x.IDNhom == idn);
-            _nhh.Disabled = true;
+            DataLayer.XUATXU _xx = db.XUATXUs.FirstOrDefault(x => x.ID == xx.ID);
+            _xx.ID = xx.ID;
+            _xx.Ten = xx.Ten;
+            _xx.Disabled = xx.Disabled;
             try
             {
-                
+
                 db.SaveChanges();
             }
             catch (Exception ex)
@@ -68,5 +57,20 @@ namespace BusinessLayer
                 throw new Exception("Có lỗi xảy ra trong quá trình xử lý dữ liệu" + ex.Message);
             }
         }
+        public void delete(int id)
+        {
+            DataLayer.XUATXU _xx = db.XUATXUs.FirstOrDefault(x => x.ID == id);
+            _xx.Disabled = true;
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Có lỗi xảy ra trong quá trình xử lý dữ liệu" + ex.Message);
+            }
+        }
+    
     }
+   
 }

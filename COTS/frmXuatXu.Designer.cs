@@ -1,6 +1,6 @@
 ﻿namespace COTS
 {
-    partial class frmNhomHH
+    partial class frmXuatXu
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNhomHH));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmXuatXu));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnThem = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -44,12 +44,9 @@
             this.gcDanhSach = new DevExpress.XtraGrid.GridControl();
             this.gvDanhSach = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.Disabled = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.TenNhom = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Mota = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Ten = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.chkDisabled = new System.Windows.Forms.CheckBox();
-            this.txtMota = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.txtTen = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
@@ -76,8 +73,8 @@
             this.btnThoat});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(726, 59);
-            this.toolStrip1.TabIndex = 4;
+            this.toolStrip1.Size = new System.Drawing.Size(756, 59);
+            this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // btnThem
@@ -177,11 +174,10 @@
             this.gcDanhSach.Location = new System.Drawing.Point(0, 59);
             this.gcDanhSach.MainView = this.gvDanhSach;
             this.gcDanhSach.Name = "gcDanhSach";
-            this.gcDanhSach.Size = new System.Drawing.Size(726, 301);
-            this.gcDanhSach.TabIndex = 5;
+            this.gcDanhSach.Size = new System.Drawing.Size(756, 367);
+            this.gcDanhSach.TabIndex = 4;
             this.gcDanhSach.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvDanhSach});
-            this.gcDanhSach.Click += new System.EventHandler(this.gvDanhSach_Click);
             // 
             // gvDanhSach
             // 
@@ -189,8 +185,7 @@
             this.gvDanhSach.Appearance.HeaderPanel.Options.UseFont = true;
             this.gvDanhSach.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.Disabled,
-            this.TenNhom,
-            this.Mota});
+            this.Ten});
             this.gvDanhSach.GridControl = this.gcDanhSach;
             this.gvDanhSach.Name = "gvDanhSach";
             this.gvDanhSach.Click += new System.EventHandler(this.gvDanhSach_Click);
@@ -199,47 +194,34 @@
             // 
             this.Disabled.Caption = "DISABLED";
             this.Disabled.FieldName = "Disabled";
-            this.Disabled.MaxWidth = 100;
+            this.Disabled.MaxWidth = 80;
             this.Disabled.MinWidth = 25;
             this.Disabled.Name = "Disabled";
             this.Disabled.Visible = true;
             this.Disabled.VisibleIndex = 0;
-            this.Disabled.Width = 70;
+            this.Disabled.Width = 60;
             // 
-            // TenNhom
+            // Ten
             // 
-            this.TenNhom.Caption = "TÊN NHÓM";
-            this.TenNhom.FieldName = "TenNhom";
-            this.TenNhom.MaxWidth = 300;
-            this.TenNhom.MinWidth = 50;
-            this.TenNhom.Name = "TenNhom";
-            this.TenNhom.Visible = true;
-            this.TenNhom.VisibleIndex = 1;
-            this.TenNhom.Width = 70;
-            // 
-            // Mota
-            // 
-            this.Mota.Caption = "MÔ TẢ";
-            this.Mota.FieldName = "Mota";
-            this.Mota.MaxWidth = 400;
-            this.Mota.MinWidth = 25;
-            this.Mota.Name = "Mota";
-            this.Mota.Visible = true;
-            this.Mota.VisibleIndex = 2;
-            this.Mota.Width = 94;
+            this.Ten.Caption = "XUẤT XỨ";
+            this.Ten.FieldName = "Ten";
+            this.Ten.MaxWidth = 100;
+            this.Ten.MinWidth = 25;
+            this.Ten.Name = "Ten";
+            this.Ten.Visible = true;
+            this.Ten.VisibleIndex = 1;
+            this.Ten.Width = 94;
             // 
             // groupControl1
             // 
             this.groupControl1.Controls.Add(this.chkDisabled);
-            this.groupControl1.Controls.Add(this.txtMota);
-            this.groupControl1.Controls.Add(this.label6);
             this.groupControl1.Controls.Add(this.txtTen);
             this.groupControl1.Controls.Add(this.label1);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl1.Location = new System.Drawing.Point(0, 360);
+            this.groupControl1.Location = new System.Drawing.Point(0, 426);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(726, 135);
-            this.groupControl1.TabIndex = 6;
+            this.groupControl1.Size = new System.Drawing.Size(756, 119);
+            this.groupControl1.TabIndex = 7;
             this.groupControl1.Text = "Thông tin";
             // 
             // chkDisabled
@@ -253,28 +235,10 @@
             this.chkDisabled.Text = "Disabled";
             this.chkDisabled.UseVisualStyleBackColor = true;
             // 
-            // txtMota
-            // 
-            this.txtMota.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMota.Location = new System.Drawing.Point(164, 76);
-            this.txtMota.Name = "txtMota";
-            this.txtMota.Size = new System.Drawing.Size(502, 28);
-            this.txtMota.TabIndex = 12;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(33, 83);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(52, 21);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Mô tả";
-            // 
             // txtTen
             // 
             this.txtTen.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTen.Location = new System.Drawing.Point(164, 42);
+            this.txtTen.Location = new System.Drawing.Point(106, 42);
             this.txtTen.Name = "txtTen";
             this.txtTen.Size = new System.Drawing.Size(338, 28);
             this.txtTen.TabIndex = 1;
@@ -285,21 +249,21 @@
             this.label1.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(33, 45);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(125, 21);
+            this.label1.Size = new System.Drawing.Size(67, 21);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Tên nhóm hàng";
+            this.label1.Text = "Xuất xứ";
             // 
-            // frmNhomHH
+            // frmXuatXu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(726, 495);
+            this.ClientSize = new System.Drawing.Size(756, 545);
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.gcDanhSach);
             this.Controls.Add(this.toolStrip1);
-            this.Name = "frmNhomHH";
-            this.Text = "frmNhomHH";
-            this.Load += new System.EventHandler(this.frmNhomHH_Load);
+            this.Name = "frmXuatXu";
+            this.Text = "frmXuatXu";
+            this.Load += new System.EventHandler(this.frmXuatXu_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).EndInit();
@@ -328,14 +292,11 @@
         private System.Windows.Forms.ToolStripButton btnThoat;
         private DevExpress.XtraGrid.GridControl gcDanhSach;
         private DevExpress.XtraGrid.Views.Grid.GridView gvDanhSach;
-        private DevExpress.XtraGrid.Columns.GridColumn TenNhom;
+        private DevExpress.XtraGrid.Columns.GridColumn Disabled;
+        private DevExpress.XtraGrid.Columns.GridColumn Ten;
         private DevExpress.XtraEditors.GroupControl groupControl1;
-        private System.Windows.Forms.TextBox txtMota;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckBox chkDisabled;
         private System.Windows.Forms.TextBox txtTen;
         private System.Windows.Forms.Label label1;
-        private DevExpress.XtraGrid.Columns.GridColumn Disabled;
-        private DevExpress.XtraGrid.Columns.GridColumn Mota;
-        private System.Windows.Forms.CheckBox chkDisabled;
     }
 }

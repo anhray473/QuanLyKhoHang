@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="KHOHANG.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="KHOHANG.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CHUNGTU">
           <Key>
             <PropertyRef Name="ID" />
@@ -80,10 +80,11 @@
           </Key>
           <Property Name="Code" Type="varchar" MaxLength="13" Nullable="false" />
           <Property Name="TenHang" Type="nvarchar" MaxLength="50" />
-          <Property Name="TenTat" Type="nchar" MaxLength="10" />
+          <Property Name="TenTat" Type="nvarchar" MaxLength="50" />
           <Property Name="DVT" Type="nvarchar" MaxLength="50" />
           <Property Name="DonGia" Type="float" />
-          <Property Name="XuatXu" Type="int" />
+          <Property Name="MoTa" Type="nvarchar" MaxLength="255" />
+          <Property Name="MaXX" Type="int" />
           <Property Name="MaNCC" Type="int" />
           <Property Name="IDNhom" Type="int" />
           <Property Name="NgayTao" Type="datetime" />
@@ -108,6 +109,8 @@
           </Key>
           <Property Name="IDNhom" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TenNhom" Type="nvarchar" MaxLength="50" />
+          <Property Name="Disabled" Type="bit" />
+          <Property Name="Mota" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="SYS_FUNC">
           <Key>
@@ -161,6 +164,13 @@
           <Property Name="IDUser" Type="int" Nullable="false" />
           <Property Name="User_RIGHT" Type="int" />
         </EntityType>
+        <EntityType Name="SYS_SEQUENCE">
+          <Key>
+            <PropertyRef Name="SEQNAME" />
+          </Key>
+          <Property Name="SEQNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SEQVUALE" Type="int" />
+        </EntityType>
         <EntityType Name="SYS_USER">
           <Key>
             <PropertyRef Name="IDUser" />
@@ -196,6 +206,7 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Ten" Type="nvarchar" MaxLength="50" />
+          <Property Name="Disabled" Type="bit" />
         </EntityType>
         <EntityContainer Name="KHOHANGStoreContainer">
           <EntitySet Name="CHUNGTU" EntityType="Self.CHUNGTU" Schema="dbo" store:Type="Tables" />
@@ -211,6 +222,7 @@
           <EntitySet Name="SYS_REPORT" EntityType="Self.SYS_REPORT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SYS_RIGHT" EntityType="Self.SYS_RIGHT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SYS_RIGHT_REP" EntityType="Self.SYS_RIGHT_REP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SYS_SEQUENCE" EntityType="Self.SYS_SEQUENCE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SYS_USER" EntityType="Self.SYS_USER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TONKHO" EntityType="Self.TONKHO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="XUATXU" EntityType="Self.XUATXU" Schema="dbo" store:Type="Tables" />
@@ -231,11 +243,12 @@
           <EntitySet Name="SYS_RIGHT_REP" EntityType="KHOHANG.SYS_RIGHT_REP" />
           <EntitySet Name="SYS_USER" EntityType="KHOHANG.SYS_USER" />
           <EntitySet Name="TONKHOes" EntityType="KHOHANG.TONKHO" />
-          <EntitySet Name="XUATXUs" EntityType="KHOHANG.XUATXU" />
           <EntitySet Name="CHUNGTUs" EntityType="KHOHANG.CHUNGTU" />
           <EntitySet Name="CHUNGTU_CT" EntityType="KHOHANG.CHUNGTU_CT" />
-          <EntitySet Name="HANGHOAs" EntityType="KHOHANG.HANGHOA" />
+          <EntitySet Name="XUATXUs" EntityType="KHOHANG.XUATXU" />
           <EntitySet Name="NHOMHHs" EntityType="KHOHANG.NHOMHH" />
+          <EntitySet Name="HANGHOAs" EntityType="KHOHANG.HANGHOA" />
+          <EntitySet Name="SYS_SEQUENCE" EntityType="KHOHANG.SYS_SEQUENCE" />
         </EntityContainer>
         <EntityType Name="CONGTY">
           <Key>
@@ -364,13 +377,6 @@
           <Property Name="ThanhTien" Type="Double" />
           <Property Name="Ngay" Type="DateTime" Precision="3" />
         </EntityType>
-        <EntityType Name="XUATXU">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="CHUNGTU">
           <Key>
             <PropertyRef Name="ID" />
@@ -406,20 +412,12 @@
           <Property Name="ThanhTien" Type="Double" />
           <Property Name="Ngay" Type="DateTime" Precision="3" />
         </EntityType>
-        <EntityType Name="HANGHOA">
+        <EntityType Name="XUATXU">
           <Key>
-            <PropertyRef Name="Code" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Code" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="false" />
-          <Property Name="TenHang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="TenTat" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="DVT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DonGia" Type="Double" />
-          <Property Name="XuatXu" Type="Int32" />
-          <Property Name="MaNCC" Type="Int32" />
-          <Property Name="IDNhom" Type="Int32" />
-          <Property Name="NgayTao" Type="DateTime" Precision="3" />
-          <Property Name="NguoiTao" Type="Int32" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Disabled" Type="Boolean" />
         </EntityType>
         <EntityType Name="NHOMHH">
@@ -428,6 +426,32 @@
           </Key>
           <Property Name="IDNhom" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenNhom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Disabled" Type="Boolean" />
+          <Property Name="Mota" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="HANGHOA">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="TenHang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TenTat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DVT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DonGia" Type="Double" />
+          <Property Name="MoTa" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MaXX" Type="Int32" />
+          <Property Name="MaNCC" Type="Int32" />
+          <Property Name="IDNhom" Type="Int32" />
+          <Property Name="NgayTao" Type="DateTime" Precision="3" />
+          <Property Name="NguoiTao" Type="Int32" />
+          <Property Name="Disabled" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="SYS_SEQUENCE">
+          <Key>
+            <PropertyRef Name="SEQNAME" />
+          </Key>
+          <Property Name="SEQNAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SEQVUALE" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -569,14 +593,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="XUATXUs">
-            <EntityTypeMapping TypeName="KHOHANG.XUATXU">
-              <MappingFragment StoreEntitySet="XUATXU">
-                <ScalarProperty Name="Ten" ColumnName="Ten" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="CHUNGTUs">
             <EntityTypeMapping TypeName="KHOHANG.CHUNGTU">
               <MappingFragment StoreEntitySet="CHUNGTU">
@@ -614,6 +630,25 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="XUATXUs">
+            <EntityTypeMapping TypeName="KHOHANG.XUATXU">
+              <MappingFragment StoreEntitySet="XUATXU">
+                <ScalarProperty Name="Disabled" ColumnName="Disabled" />
+                <ScalarProperty Name="Ten" ColumnName="Ten" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NHOMHHs">
+            <EntityTypeMapping TypeName="KHOHANG.NHOMHH">
+              <MappingFragment StoreEntitySet="NHOMHH">
+                <ScalarProperty Name="Mota" ColumnName="Mota" />
+                <ScalarProperty Name="Disabled" ColumnName="Disabled" />
+                <ScalarProperty Name="TenNhom" ColumnName="TenNhom" />
+                <ScalarProperty Name="IDNhom" ColumnName="IDNhom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="HANGHOAs">
             <EntityTypeMapping TypeName="KHOHANG.HANGHOA">
               <MappingFragment StoreEntitySet="HANGHOA">
@@ -622,7 +657,8 @@
                 <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
                 <ScalarProperty Name="IDNhom" ColumnName="IDNhom" />
                 <ScalarProperty Name="MaNCC" ColumnName="MaNCC" />
-                <ScalarProperty Name="XuatXu" ColumnName="XuatXu" />
+                <ScalarProperty Name="MaXX" ColumnName="MaXX" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
                 <ScalarProperty Name="DonGia" ColumnName="DonGia" />
                 <ScalarProperty Name="DVT" ColumnName="DVT" />
                 <ScalarProperty Name="TenTat" ColumnName="TenTat" />
@@ -631,11 +667,11 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="NHOMHHs">
-            <EntityTypeMapping TypeName="KHOHANG.NHOMHH">
-              <MappingFragment StoreEntitySet="NHOMHH">
-                <ScalarProperty Name="TenNhom" ColumnName="TenNhom" />
-                <ScalarProperty Name="IDNhom" ColumnName="IDNhom" />
+          <EntitySetMapping Name="SYS_SEQUENCE">
+            <EntityTypeMapping TypeName="KHOHANG.SYS_SEQUENCE">
+              <MappingFragment StoreEntitySet="SYS_SEQUENCE">
+                <ScalarProperty Name="SEQVUALE" ColumnName="SEQVUALE" />
+                <ScalarProperty Name="SEQNAME" ColumnName="SEQNAME" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

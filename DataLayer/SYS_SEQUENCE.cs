@@ -12,11 +12,9 @@ namespace DataLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class NHOMHH
+    public partial class SYS_SEQUENCE
     {
-        public int IDNhom { get; set; }
-        public string TenNhom { get; set; }
-        public Nullable<bool> Disabled { get; set; }
-        public string Mota { get; set; }
+        public string SEQNAME { get; set; }
+        public Nullable<int> SEQVUALE { get; set; }
     }
 }

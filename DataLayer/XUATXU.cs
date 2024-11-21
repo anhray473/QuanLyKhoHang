@@ -16,5 +16,6 @@ namespace DataLayer
     {
         public int ID { get; set; }
         public string Ten { get; set; }
+        public Nullable<bool> Disabled { get; set; }
     }
 }

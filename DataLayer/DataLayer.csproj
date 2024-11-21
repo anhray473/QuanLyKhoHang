@@ -108,6 +108,9 @@
     <Compile Include="SYS_RIGHT_REP.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="SYS_SEQUENCE.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="SYS_USER.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

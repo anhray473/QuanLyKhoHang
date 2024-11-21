@@ -120,6 +120,18 @@ namespace COTS
                         frm.ShowDialog();
                         break;
                     }
+                case "XUATXU":
+                    {
+                        frmXuatXu frm = new frmXuatXu();
+                        frm.ShowDialog();
+                        break;
+                    }
+                case "HANGHOA":
+                    {
+                        frmHangHoa frm = new frmHangHoa();
+                        frm.ShowDialog();
+                        break;
+                    }
 
 
             }
