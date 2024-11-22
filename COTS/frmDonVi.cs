@@ -1,5 +1,5 @@
 ﻿using BusinessLayer;
-
+using DataLayer;
 using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
@@ -107,7 +107,7 @@ namespace COTS
         {
             if (_them)
             {
-                DataLayer.DONVI dvi = new DataLayer.DONVI();
+                tb_DONVI dvi = new tb_DONVI();
                 dvi.MaCTy = cboCty.SelectedValue.ToString();
                 dvi.MaDVi = txtMa.Text;
                 dvi.TenDVi = txtTen.Text;
@@ -123,7 +123,7 @@ namespace COTS
             }
             else
             {
-                DataLayer.DONVI dvi = _donvi.getItem(_madvi);
+                tb_DONVI dvi = _donvi.getItem(_madvi);
                 dvi.MaCTy = cboCty.SelectedValue.ToString();
                 dvi.MaDVi = txtMa.Text;
                 dvi.TenDVi = txtTen.Text;

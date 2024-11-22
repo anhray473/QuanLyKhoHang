@@ -14,25 +14,25 @@ namespace BusinessLayer
         { 
             db = Entities.CreateEntities();
         }
-        public DataLayer.XUATXU getItem(int id)
+        public tb_XUATXU getItem(int id)
         {
-            return db.XUATXUs.FirstOrDefault(x => x.ID == id);
+            return db.tb_XUATXU.FirstOrDefault(x => x.ID == id);
         }
 
-        public List<DataLayer.XUATXU> getAll()
+        public List<tb_XUATXU> getAll()
         {
-            return db.XUATXUs.ToList();
+            return db.tb_XUATXU.ToList();
         }
 
-        public List<DataLayer.XUATXU> getAll(int id)
+        public List<tb_XUATXU> getAll(int id)
         {
-            return db.XUATXUs.Where(x => x.ID == id).ToList();
+            return db.tb_XUATXU.Where(x => x.ID == id).ToList();
         }
-        public void add(DataLayer.XUATXU xx)
+        public void add(tb_XUATXU xx)
         {
             try
             {
-                db.XUATXUs.Add(xx);
+                db.tb_XUATXU.Add(xx);
                 db.SaveChanges();
             }
             catch (Exception ex)
@@ -41,9 +41,9 @@ namespace BusinessLayer
             }
         }
 
-        public void update(DataLayer.XUATXU xx)
+        public void update(tb_XUATXU xx)
         {
-            DataLayer.XUATXU _xx = db.XUATXUs.FirstOrDefault(x => x.ID == xx.ID);
+            tb_XUATXU _xx = db.tb_XUATXU.FirstOrDefault(x => x.ID == xx.ID);
             _xx.ID = xx.ID;
             _xx.Ten = xx.Ten;
             _xx.Disabled = xx.Disabled;
@@ -59,7 +59,7 @@ namespace BusinessLayer
         }
         public void delete(int id)
         {
-            DataLayer.XUATXU _xx = db.XUATXUs.FirstOrDefault(x => x.ID == id);
+            tb_XUATXU _xx = db.tb_XUATXU.FirstOrDefault(x => x.ID == id);
             _xx.Disabled = true;
             try
             {

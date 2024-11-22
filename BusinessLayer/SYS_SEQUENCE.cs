@@ -14,15 +14,15 @@ namespace BusinessLayer
         {
             db = Entities.CreateEntities();
         }
-        public DataLayer.SYS_SEQUENCE getItem(string seqname)
+        public tb_SYS_SEQUENCE getItem(string seqname)
         {
-            return db.SYS_SEQUENCE.FirstOrDefault(x=>x.SEQNAME==seqname);
+            return db.tb_SYS_SEQUENCE.FirstOrDefault(x=>x.SEQNAME==seqname);
         }
-        public void add(DataLayer.SYS_SEQUENCE sequence) 
+        public void add(tb_SYS_SEQUENCE sequence) 
         {
             try
             {
-                db.SYS_SEQUENCE.Add(sequence);
+                db.tb_SYS_SEQUENCE.Add(sequence);
                 db.SaveChanges();
             }
             catch (Exception ex) 
@@ -30,13 +30,12 @@ namespace BusinessLayer
                 throw new Exception("Lỗi: " + ex.Message);
             }
         }
-        public void update(DataLayer.SYS_SEQUENCE sequence)
+        public void update(tb_SYS_SEQUENCE sequence)
         {
-            var seq = db.SYS_SEQUENCE.FirstOrDefault(x=>x.SEQNAME ==sequence.SEQNAME );
+            var seq = db.tb_SYS_SEQUENCE.FirstOrDefault(x=>x.SEQNAME ==sequence.SEQNAME);
             seq.SEQVUALE = sequence.SEQVUALE + 1;
             try
             {
-                db.SYS_SEQUENCE.Add(sequence);
                 db.SaveChanges();
             }
             catch (Exception ex)

@@ -41,6 +41,7 @@
             this.btnBoQua = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.btnThoat = new System.Windows.Forms.ToolStripButton();
+            this.btnExport = new System.Windows.Forms.ToolStripButton();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cboNhom = new System.Windows.Forms.ComboBox();
@@ -104,7 +105,8 @@
             this.toolStripSeparator3,
             this.btnBoQua,
             this.toolStripSeparator5,
-            this.btnThoat});
+            this.btnThoat,
+            this.btnExport});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1144, 59);
@@ -201,6 +203,17 @@
             this.btnThoat.Text = "Thoát";
             this.btnThoat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
+            // 
+            // btnExport
+            // 
+            this.btnExport.Image = global::COTS.Properties.Resources.excel;
+            this.btnExport.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnExport.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(70, 56);
+            this.btnExport.Text = "Xuất File";
+            this.btnExport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // splitContainerControl1
             // 
@@ -333,7 +346,9 @@
             // 
             this.DonGia.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.DonGia.AppearanceHeader.Options.UseFont = true;
-            this.DonGia.Caption = "TRỊ GIÁ";
+            this.DonGia.Caption = "ĐƠN GIÁ";
+            this.DonGia.DisplayFormat.FormatString = "{0:N0}";
+            this.DonGia.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.DonGia.FieldName = "DonGia";
             this.DonGia.MaxWidth = 100;
             this.DonGia.MinWidth = 80;
@@ -579,6 +594,7 @@
             this.txtCode.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCode.Location = new System.Drawing.Point(91, 43);
             this.txtCode.Name = "txtCode";
+            this.txtCode.ReadOnly = true;
             this.txtCode.Size = new System.Drawing.Size(202, 28);
             this.txtCode.TabIndex = 1;
             // 
@@ -671,5 +687,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ComboBox cboNhom;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ToolStripButton btnExport;
     }
 }

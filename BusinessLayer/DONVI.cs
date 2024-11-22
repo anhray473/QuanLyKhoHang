@@ -15,26 +15,26 @@ namespace BusinessLayer
             db = Entities.CreateEntities();
         }
 
-        public DataLayer.DONVI getItem(string maDVi)
+        public tb_DONVI getItem(string maDVi)
         {
-            return db.DONVIs.FirstOrDefault(x => x.MaDVi == maDVi);
+            return db.tb_DONVI.FirstOrDefault(x => x.MaDVi == maDVi);
         }
 
-        public List<DataLayer.DONVI> getAll() 
+        public List<tb_DONVI> getAll() 
         { 
-            return db.DONVIs.ToList();
+            return db.tb_DONVI.ToList();
         }
 
-        public List<DataLayer.DONVI> getAll(string maCTy)
+        public List<tb_DONVI> getAll(string maCTy)
         {
-            return db.DONVIs.Where(x => x.MaCTy == maCTy).ToList();
+            return db.tb_DONVI.Where(x => x.MaCTy == maCTy).ToList();
         }
 
-        public void add (DataLayer.DONVI dvi) 
+        public void add (tb_DONVI dvi) 
         {
             try
             {
-                db.DONVIs.Add(dvi);
+                db.tb_DONVI.Add(dvi);
                 db.SaveChanges();
             }
             catch (Exception ex)
@@ -43,9 +43,9 @@ namespace BusinessLayer
             }
         }
 
-        public void update(DataLayer.DONVI dvi)
+        public void update(tb_DONVI dvi)
         {
-            DataLayer.DONVI _dvi = db.DONVIs.FirstOrDefault(x => x.MaDVi == dvi.MaDVi);
+            tb_DONVI _dvi = db.tb_DONVI.FirstOrDefault(x => x.MaDVi == dvi.MaDVi);
             _dvi.MaCTy = dvi.MaCTy;
             _dvi.TenDVi = dvi.TenDVi;
             _dvi.SDT = dvi.SDT;
@@ -66,7 +66,7 @@ namespace BusinessLayer
         }
         public void delete(string maDVi)
         {
-            DataLayer.DONVI _dvi= db.DONVIs.FirstOrDefault(x => x.MaDVi==maDVi);
+            tb_DONVI _dvi= db.tb_DONVI.FirstOrDefault(x => x.MaDVi==maDVi);
             _dvi.Disabled = true;
             try
             {

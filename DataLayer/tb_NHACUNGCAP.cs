@@ -12,9 +12,14 @@ namespace DataLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class SYS_SEQUENCE
+    public partial class tb_NHACUNGCAP
     {
-        public string SEQNAME { get; set; }
-        public Nullable<int> SEQVUALE { get; set; }
+        public int MaNCC { get; set; }
+        public string TenNCC { get; set; }
+        public string SDT { get; set; }
+        public string Fax { get; set; }
+        public string Email { get; set; }
+        public string DiaChi { get; set; }
+        public Nullable<bool> Disabled { get; set; }
     }
 }

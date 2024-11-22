@@ -12,7 +12,7 @@ namespace DataLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class CHUNGTU
+    public partial class tb_CHUNGTU
     {
         public System.Guid ID { get; set; }
         public string SCT { get; set; }

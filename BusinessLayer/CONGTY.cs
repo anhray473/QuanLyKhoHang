@@ -16,20 +16,20 @@ namespace BusinessLayer
             db = Entities.CreateEntities();        
         }
 
-        public DataLayer.CONGTY getItem(string maCTy)
+        public tb_CONGTY getItem(string maCTy)
         {
-            return db.CONGTies.FirstOrDefault(x=>x.MaCTy==maCTy);
+            return db.tb_CONGTY.FirstOrDefault(x=>x.MaCTy==maCTy);
         }
 
-        public List<DataLayer.CONGTY> getAll() 
+        public List<tb_CONGTY> getAll() 
         {
-            return db.CONGTies.ToList();
+            return db.tb_CONGTY.ToList();
         }
-        public void add(DataLayer.CONGTY cty)
+        public void add(tb_CONGTY cty)
         {
             try
             {
-                db.CONGTies.Add(cty);
+                db.tb_CONGTY.Add(cty);
                 db.SaveChanges();
             }
             catch (Exception ex)
@@ -38,9 +38,9 @@ namespace BusinessLayer
             }
             
         }
-        public void update(DataLayer.CONGTY cty)
+        public void update(tb_CONGTY cty)
         {
-            DataLayer.CONGTY _cty = db.CONGTies.FirstOrDefault(x => x.MaCTy == cty.MaCTy);
+            tb_CONGTY _cty = db.tb_CONGTY.FirstOrDefault(x => x.MaCTy == cty.MaCTy);
             _cty.TenCTy = cty.TenCTy;
             _cty.SDT = cty.SDT;
             _cty.Email = cty.Email;
@@ -58,7 +58,7 @@ namespace BusinessLayer
         }
         public void delete(string maCTy)
         {
-            DataLayer.CONGTY _cty = db.CONGTies.FirstOrDefault(x => x.MaCTy == maCTy);
+            tb_CONGTY _cty = db.tb_CONGTY.FirstOrDefault(x => x.MaCTy == maCTy);
             _cty.Disabled = true;
             try
             {

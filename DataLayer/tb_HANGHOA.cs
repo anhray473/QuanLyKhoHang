@@ -12,11 +12,19 @@ namespace DataLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class NHOMHH
+    public partial class tb_HANGHOA
     {
-        public int IDNhom { get; set; }
-        public string TenNhom { get; set; }
+        public string Code { get; set; }
+        public string TenHang { get; set; }
+        public string TenTat { get; set; }
+        public string DVT { get; set; }
+        public Nullable<double> DonGia { get; set; }
+        public string MoTa { get; set; }
+        public Nullable<int> MaXX { get; set; }
+        public Nullable<int> MaNCC { get; set; }
+        public Nullable<int> IDNhom { get; set; }
+        public Nullable<System.DateTime> NgayTao { get; set; }
+        public Nullable<int> NguoiTao { get; set; }
         public Nullable<bool> Disabled { get; set; }
-        public string Mota { get; set; }
     }
 }

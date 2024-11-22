@@ -14,19 +14,19 @@ namespace BusinessLayer
         {
             db =Entities.CreateEntities();
         }
-        public DataLayer.NHACUNGCAP getItem(int maNCC)
+        public tb_NHACUNGCAP getItem(int maNCC)
         {
-            return db.NHACUNGCAPs.FirstOrDefault(x => x.MaNCC == maNCC);
+            return db.tb_NHACUNGCAP.FirstOrDefault(x => x.MaNCC == maNCC);
         }
-        public List<DataLayer.NHACUNGCAP> getAll() 
+        public List<tb_NHACUNGCAP> getAll() 
         {
-            return db.NHACUNGCAPs.ToList();
+            return db.tb_NHACUNGCAP.ToList();
         }
-        public void add(DataLayer.NHACUNGCAP ncc)
+        public void add(tb_NHACUNGCAP ncc)
         {
             try
             {
-                db.NHACUNGCAPs.Add(ncc);
+                db.tb_NHACUNGCAP.Add(ncc);
                 db.SaveChanges();
             }
             catch (Exception ex)
@@ -35,9 +35,9 @@ namespace BusinessLayer
             }
 
         }
-        public void update(DataLayer.NHACUNGCAP ncc)
+        public void update(tb_NHACUNGCAP ncc)
         {
-            DataLayer.NHACUNGCAP _ncc = db.NHACUNGCAPs.FirstOrDefault(x => x.MaNCC == ncc.MaNCC);
+            tb_NHACUNGCAP _ncc = db.tb_NHACUNGCAP.FirstOrDefault(x => x.MaNCC == ncc.MaNCC);
             _ncc.TenNCC = ncc.TenNCC;
             _ncc.SDT = ncc.SDT;
             _ncc.Email = ncc.Email;
@@ -55,7 +55,7 @@ namespace BusinessLayer
         }
         public void delete(int mancc)
         {
-            DataLayer.NHACUNGCAP _ncc = db.NHACUNGCAPs.FirstOrDefault(x => x.MaNCC == mancc);
+            tb_NHACUNGCAP _ncc = db.tb_NHACUNGCAP.FirstOrDefault(x => x.MaNCC == mancc);
             _ncc.Disabled = true;
             try
             {

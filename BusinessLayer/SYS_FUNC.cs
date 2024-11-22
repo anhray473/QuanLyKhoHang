@@ -16,13 +16,13 @@ namespace BusinessLayer
             db = Entities.CreateEntities();
         }
 
-        public List<DataLayer.SYS_FUNC> getParent()
+        public List<tb_SYS_FUNC> getParent()
         {
-            return db.SYS_FUNC.Where(x => x.Isgroup == true && x.Menu == true).OrderBy(s => s.SORT).ToList();
+            return db.tb_SYS_FUNC.Where(x => x.Isgroup == true && x.Menu == true).OrderBy(s => s.SORT).ToList();
         }
-        public List<DataLayer.SYS_FUNC> getChild(string parent) 
+        public List<tb_SYS_FUNC> getChild(string parent) 
         {
-            return db.SYS_FUNC.Where(x => x.Isgroup == false && x.Menu == true && x.Parent == parent).OrderBy(s => s.SORT).ToList();        
+            return db.tb_SYS_FUNC.Where(x => x.Isgroup == false && x.Menu == true && x.Parent == parent).OrderBy(s => s.SORT).ToList();        
         }
     }
 }

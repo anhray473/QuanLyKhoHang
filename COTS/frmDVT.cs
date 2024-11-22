@@ -1,4 +1,5 @@
 ﻿using BusinessLayer;
+using DataLayer;
 using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
@@ -76,14 +77,14 @@ namespace COTS
         {
             if (_them)
             {
-                DataLayer.DVT dvt = new DataLayer.DVT();
+                tb_DVT dvt = new tb_DVT();
                 dvt.Ten = txtTen.Text;
                 _dvt.add(dvt);
 
             }
             else
             {
-                DataLayer.DVT dvt = _dvt.getItem(_id);
+                tb_DVT dvt = _dvt.getItem(_id);
                 dvt.Ten = txtTen.Text;
                 _dvt.update(dvt);
             }

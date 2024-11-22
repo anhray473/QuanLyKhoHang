@@ -25,22 +25,22 @@ namespace DataLayer
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<CONGTY> CONGTies { get; set; }
-        public virtual DbSet<DONVI> DONVIs { get; set; }
-        public virtual DbSet<DVT> DVTs { get; set; }
-        public virtual DbSet<NHACUNGCAP> NHACUNGCAPs { get; set; }
-        public virtual DbSet<SYS_FUNC> SYS_FUNC { get; set; }
-        public virtual DbSet<SYS_GROUP> SYS_GROUP { get; set; }
-        public virtual DbSet<SYS_REPORT> SYS_REPORT { get; set; }
-        public virtual DbSet<SYS_RIGHT> SYS_RIGHT { get; set; }
-        public virtual DbSet<SYS_RIGHT_REP> SYS_RIGHT_REP { get; set; }
-        public virtual DbSet<SYS_USER> SYS_USER { get; set; }
-        public virtual DbSet<TONKHO> TONKHOes { get; set; }
-        public virtual DbSet<CHUNGTU> CHUNGTUs { get; set; }
-        public virtual DbSet<CHUNGTU_CT> CHUNGTU_CT { get; set; }
-        public virtual DbSet<XUATXU> XUATXUs { get; set; }
-        public virtual DbSet<NHOMHH> NHOMHHs { get; set; }
-        public virtual DbSet<HANGHOA> HANGHOAs { get; set; }
-        public virtual DbSet<SYS_SEQUENCE> SYS_SEQUENCE { get; set; }
+        public virtual DbSet<tb_CHUNGTU> tb_CHUNGTU { get; set; }
+        public virtual DbSet<tb_CHUNGTU_CT> tb_CHUNGTU_CT { get; set; }
+        public virtual DbSet<tb_CONGTY> tb_CONGTY { get; set; }
+        public virtual DbSet<tb_DONVI> tb_DONVI { get; set; }
+        public virtual DbSet<tb_DVT> tb_DVT { get; set; }
+        public virtual DbSet<tb_NHACUNGCAP> tb_NHACUNGCAP { get; set; }
+        public virtual DbSet<tb_NHOMHH> tb_NHOMHH { get; set; }
+        public virtual DbSet<tb_SYS_FUNC> tb_SYS_FUNC { get; set; }
+        public virtual DbSet<tb_SYS_GROUP> tb_SYS_GROUP { get; set; }
+        public virtual DbSet<tb_SYS_REPORT> tb_SYS_REPORT { get; set; }
+        public virtual DbSet<tb_SYS_RIGHT> tb_SYS_RIGHT { get; set; }
+        public virtual DbSet<tb_SYS_RIGHT_REP> tb_SYS_RIGHT_REP { get; set; }
+        public virtual DbSet<tb_SYS_SEQUENCE> tb_SYS_SEQUENCE { get; set; }
+        public virtual DbSet<tb_SYS_USER> tb_SYS_USER { get; set; }
+        public virtual DbSet<tb_TONKHO> tb_TONKHO { get; set; }
+        public virtual DbSet<tb_XUATXU> tb_XUATXU { get; set; }
+        public virtual DbSet<tb_HANGHOA> tb_HANGHOA { get; set; }
     }
 }

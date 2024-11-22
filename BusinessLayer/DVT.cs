@@ -16,25 +16,25 @@ namespace BusinessLayer
 
         }
 
-        public DataLayer.DVT getItem(int iddv)
+        public tb_DVT getItem(int iddv)
         {
-            return db.DVTs.FirstOrDefault(x => x.ID == iddv);
+            return db.tb_DVT.FirstOrDefault(x => x.ID == iddv);
         }
 
-        public List<DataLayer.DVT> getAll()
+        public List<tb_DVT> getAll()
         {
-            return db.DVTs.ToList();
+            return db.tb_DVT.ToList();
         }
 
-        public List<DataLayer.DVT> getAll(int iddv)
+        public List<tb_DVT> getAll(int iddv)
         {
-            return db.DVTs.Where(x => x.ID == iddv).ToList();
+            return db.tb_DVT.Where(x => x.ID == iddv).ToList();
         }
-        public void add(DataLayer.DVT dvt)
+        public void add(tb_DVT dvt)
         {
             try
             {
-                db.DVTs.Add(dvt);
+                db.tb_DVT.Add(dvt);
                 db.SaveChanges();
             }
             catch (Exception ex)
@@ -43,9 +43,9 @@ namespace BusinessLayer
             }
         }
 
-        public void update(DataLayer.DVT dvt)
+        public void update(tb_DVT dvt)
         {
-            DataLayer.DVT _dvt = db.DVTs.FirstOrDefault(x => x.ID == dvt.ID);
+            tb_DVT _dvt = db.tb_DVT.FirstOrDefault(x => x.ID == dvt.ID);
             _dvt.ID = dvt.ID;
             _dvt.Ten = dvt.Ten;
             try
@@ -60,10 +60,10 @@ namespace BusinessLayer
         }
         public void delete(int iddv)
         {
-            DataLayer.DVT _dvt = db.DVTs.FirstOrDefault(x => x.ID == iddv);
+            tb_DVT _dvt = db.tb_DVT.FirstOrDefault(x => x.ID == iddv);
             try
             {
-                db.DVTs.Remove(_dvt);
+                db.tb_DVT.Remove(_dvt);
                 db.SaveChanges();
             }
             catch (Exception ex)

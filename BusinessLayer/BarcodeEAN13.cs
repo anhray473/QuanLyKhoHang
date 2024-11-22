@@ -30,7 +30,7 @@ namespace BusinessLayer
                     iSum += iDigit * 1;
                 }
             }
-            int checkSum = (10 -(iSum % 10))%10;
+            int checkSum = (10 - (iSum % 10)) % 10;
             code += checkSum.ToString();
             return code;
         }

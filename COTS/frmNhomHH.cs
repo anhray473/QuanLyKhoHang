@@ -1,4 +1,5 @@
 ﻿using BusinessLayer;
+using DataLayer;
 using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
@@ -85,7 +86,7 @@ namespace COTS
         {
             if (_them)
             {
-                DataLayer.NHOMHH nhh = new DataLayer.NHOMHH();
+                tb_NHOMHH nhh = new tb_NHOMHH();
                 nhh.TenNhom = txtTen.Text;
                 nhh.Mota =txtMota.Text;
                 nhh.Disabled = chkDisabled.Checked;
@@ -94,7 +95,7 @@ namespace COTS
             }
             else
             {
-                DataLayer.NHOMHH nhh = _nhh.getItem(_idn);
+                tb_NHOMHH nhh = _nhh.getItem(_idn);
                 nhh.TenNhom = txtTen.Text;
                 nhh.Mota = txtMota.Text;
                 nhh.Disabled = chkDisabled.Checked;

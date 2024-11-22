@@ -12,9 +12,9 @@ namespace DataLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class SYS_RIGHT_REP
+    public partial class tb_SYS_RIGHT
     {
-        public int RepCode { get; set; }
+        public string FUNC_Code { get; set; }
         public int IDUser { get; set; }
         public Nullable<int> User_RIGHT { get; set; }
     }

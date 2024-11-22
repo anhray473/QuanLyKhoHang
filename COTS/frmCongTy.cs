@@ -1,4 +1,5 @@
 ﻿using BusinessLayer;
+using DataLayer;
 using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
@@ -95,7 +96,7 @@ namespace COTS
         {
             if (_them)
             {
-                DataLayer.CONGTY cty = new DataLayer.CONGTY();
+                tb_CONGTY cty = new tb_CONGTY();
                 cty.MaCTy = txtMa.Text;
                 cty.TenCTy = txtTen.Text;
                 cty.SDT = txtSDT.Text;
@@ -108,7 +109,7 @@ namespace COTS
             }
             else
             {
-                DataLayer.CONGTY cty = _congty.getItem(_macty);
+                tb_CONGTY cty = _congty.getItem(_macty);
                 cty.MaCTy = txtMa.Text;
                 cty.TenCTy = txtTen.Text;
                 cty.SDT = txtSDT.Text;

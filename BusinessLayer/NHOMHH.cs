@@ -17,20 +17,20 @@ namespace BusinessLayer
             db = Entities.CreateEntities();
         }
 
-        public DataLayer.NHOMHH getItem(int maNhom)
+        public tb_NHOMHH getItem(int maNhom)
         {
-            return db.NHOMHHs.FirstOrDefault(x => x.IDNhom == maNhom);
+            return db.tb_NHOMHH.FirstOrDefault(x => x.IDNhom == maNhom);
         }
 
-        public List<DataLayer.NHOMHH> getAll()
+        public List<tb_NHOMHH> getAll()
         {
-            return db.NHOMHHs.ToList();
+            return db.tb_NHOMHH.ToList();
         }
-        public void add(DataLayer.NHOMHH nhom)
+        public void add(tb_NHOMHH nhom)
         {
             try
             {
-                db.NHOMHHs.Add(nhom);
+                db.tb_NHOMHH.Add(nhom);
                 db.SaveChanges();
             }
             catch (Exception ex)
@@ -39,9 +39,9 @@ namespace BusinessLayer
             }
 
         }
-        public void update(DataLayer.NHOMHH nhh)
+        public void update(tb_NHOMHH nhh)
         {
-            DataLayer.NHOMHH _nhh = db.NHOMHHs.FirstOrDefault(x => x.IDNhom == nhh.IDNhom);
+            tb_NHOMHH _nhh = db.tb_NHOMHH.FirstOrDefault(x => x.IDNhom == nhh.IDNhom);
             _nhh.TenNhom = nhh.TenNhom;
             _nhh.Disabled = nhh.Disabled;
             _nhh.Mota = nhh.Mota;
@@ -56,7 +56,7 @@ namespace BusinessLayer
         }
         public void delete(int idn)
         {
-            DataLayer.NHOMHH _nhh = db.NHOMHHs.FirstOrDefault(x => x.IDNhom == idn);
+            tb_NHOMHH _nhh = db.tb_NHOMHH.FirstOrDefault(x => x.IDNhom == idn);
             _nhh.Disabled = true;
             try
             {

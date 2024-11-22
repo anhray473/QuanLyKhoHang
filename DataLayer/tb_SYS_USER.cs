@@ -12,10 +12,15 @@ namespace DataLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class XUATXU
+    public partial class tb_SYS_USER
     {
-        public int ID { get; set; }
-        public string Ten { get; set; }
+        public int IDUser { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public string HoVaTen { get; set; }
+        public string MaCTy { get; set; }
+        public string MaDVi { get; set; }
         public Nullable<bool> Disabled { get; set; }
+        public Nullable<bool> Isgroup { get; set; }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using BusinessLayer;
-
+using DataLayer;
 using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
@@ -95,7 +95,7 @@ namespace COTS
         {
             if (_them)
             {
-                DataLayer.NHACUNGCAP ncc = new DataLayer.NHACUNGCAP();
+                tb_NHACUNGCAP ncc = new tb_NHACUNGCAP();
                 ncc.TenNCC = txtTen.Text;
                 ncc.SDT = txtSDT.Text;
                 ncc.Fax = txtFax.Text;
@@ -107,7 +107,7 @@ namespace COTS
             }
             else
             {
-                DataLayer.NHACUNGCAP ncc = _ncc.getItem(_mancc);
+                tb_NHACUNGCAP ncc = _ncc.getItem(_mancc);
                 ncc.TenNCC = txtTen.Text;
                 ncc.SDT = txtSDT.Text;
                 ncc.Fax = txtFax.Text;

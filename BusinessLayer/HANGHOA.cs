@@ -14,19 +14,48 @@ namespace BusinessLayer
         { 
             db = Entities.CreateEntities();
         }
-        public DataLayer.HANGHOA getItem(string barcode)
+        public tb_HANGHOA getItem(string barcode)
         {
-            return db.HANGHOAs.FirstOrDefault(x=>x.Code == barcode);
+            return db.tb_HANGHOA.FirstOrDefault(x=>x.Code == barcode);
         }
-        public List<DataLayer.HANGHOA> getListByNhom(int idNhom) 
+        public List<tb_HANGHOA> getListByNhom(int idNhom) 
         {
-            return db.HANGHOAs.Where(x=>x.IDNhom == idNhom).OrderBy(o=>o.NgayTao).ToList();
+            return db.tb_HANGHOA.Where(x=>x.IDNhom == idNhom).OrderBy(o=>o.NgayTao).ToList();
         }
-        public DataLayer.HANGHOA add(DataLayer.HANGHOA hh)
+        public List<obj_HANGHOA> getListByNhomFull(int idNhom)
+        {
+            var lst = db.tb_HANGHOA.Where(x => x.IDNhom == idNhom).OrderBy(o => o.NgayTao).ToList();
+            List<obj_HANGHOA> lstObj = new List<obj_HANGHOA>();
+            obj_HANGHOA hh;
+            foreach (var item in lst)
+            {
+                hh =  new obj_HANGHOA();
+                hh.Code = item.Code;
+                hh.TenHang = item.TenHang;
+                hh.TenTat = item.TenTat;
+                hh.MoTa = item.MoTa;
+                hh.IDNhom = item.IDNhom;
+                var n=db.tb_NHOMHH.FirstOrDefault(x=>x.IDNhom==item.IDNhom);
+                hh.TenNhom = n.TenNhom;
+                hh.MaNCC = item.MaNCC;
+                var c = db.tb_NHACUNGCAP.FirstOrDefault(x => x.MaNCC == item.MaNCC);
+                hh.TenNCC = c.TenNCC;
+                hh.MaXX = item.MaXX;
+                var xx = db.tb_XUATXU.FirstOrDefault(x => x.ID == item.MaXX);
+                hh.TenXX = xx.Ten;
+                hh.DonGia = item.DonGia;
+                hh.DVT = item.DVT;
+                lstObj.Add(hh);
+
+
+            }    
+            return lstObj;
+        }
+        public tb_HANGHOA add(tb_HANGHOA hh)
         {
             try
             {
-                db.HANGHOAs.Add(hh);
+                db.tb_HANGHOA.Add(hh);
                 db.SaveChanges();
                 return hh;
             }
@@ -36,9 +65,9 @@ namespace BusinessLayer
             }
             
         }
-        public DataLayer.HANGHOA update(DataLayer.HANGHOA hh)
+        public tb_HANGHOA update(tb_HANGHOA hh)
         {
-            DataLayer.HANGHOA _hh = db.HANGHOAs.FirstOrDefault(x => x.Code == hh.Code);
+            tb_HANGHOA _hh = db.tb_HANGHOA.FirstOrDefault(x => x.Code == hh.Code);
             _hh.TenHang = hh.TenHang;
             _hh.TenTat = hh.TenTat;
             _hh.DVT = hh.DVT;
@@ -50,7 +79,7 @@ namespace BusinessLayer
             try
             {
                 db.SaveChanges();
-                return hh;
+                return _hh;
             }
             catch (Exception ex)
             {
@@ -59,7 +88,7 @@ namespace BusinessLayer
         }
         public void delete(string barcode)
         {
-            DataLayer.HANGHOA _hh = db.HANGHOAs.FirstOrDefault(x => x.Code == barcode);
+            tb_HANGHOA _hh = db.tb_HANGHOA.FirstOrDefault(x => x.Code == barcode);
             _hh.Disabled = true;
             try
             {

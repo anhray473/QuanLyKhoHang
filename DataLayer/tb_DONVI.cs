@@ -12,18 +12,17 @@ namespace DataLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class TONKHO
+    public partial class tb_DONVI
     {
-        public System.Guid ID { get; set; }
-        public Nullable<int> NamKy { get; set; }
-        public Nullable<int> Nam { get; set; }
-        public Nullable<int> Ky { get; set; }
         public string MaDVi { get; set; }
-        public Nullable<int> SLDau { get; set; }
-        public Nullable<int> SLNhap { get; set; }
-        public Nullable<int> SLXuat { get; set; }
-        public Nullable<int> SLCuoi { get; set; }
-        public Nullable<double> ThanhTien { get; set; }
-        public Nullable<System.DateTime> Ngay { get; set; }
+        public string TenDVi { get; set; }
+        public string SDT { get; set; }
+        public string Fax { get; set; }
+        public string Email { get; set; }
+        public string DiaChi { get; set; }
+        public string MaCTy { get; set; }
+        public Nullable<bool> Disabled { get; set; }
+        public Nullable<bool> Kho { get; set; }
+        public string KyHieu { get; set; }
     }
 }

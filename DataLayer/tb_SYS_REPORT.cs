@@ -12,9 +12,15 @@ namespace DataLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class SYS_GROUP
+    public partial class tb_SYS_REPORT
     {
-        public int Group { get; set; }
-        public int ThanhVien { get; set; }
+        public int RepCode { get; set; }
+        public string MoTa { get; set; }
+        public string TenRep { get; set; }
+        public Nullable<bool> Visibled { get; set; }
+        public Nullable<bool> TuNgay { get; set; }
+        public Nullable<bool> ThangNam { get; set; }
+        public Nullable<bool> MaCTy { get; set; }
+        public Nullable<bool> MaDVi { get; set; }
     }
 }

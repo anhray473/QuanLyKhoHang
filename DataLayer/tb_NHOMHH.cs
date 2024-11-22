@@ -12,14 +12,11 @@ namespace DataLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class CONGTY
+    public partial class tb_NHOMHH
     {
-        public string MaCTy { get; set; }
-        public string TenCTy { get; set; }
-        public string SDT { get; set; }
-        public string Email { get; set; }
-        public string Fax { get; set; }
-        public string DiaChi { get; set; }
+        public int IDNhom { get; set; }
+        public string TenNhom { get; set; }
         public Nullable<bool> Disabled { get; set; }
+        public string Mota { get; set; }
     }
 }
