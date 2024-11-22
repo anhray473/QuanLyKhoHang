@@ -54,7 +54,7 @@ namespace COTS
             txtEmail.Enabled = t;
             txtDiaChi.Enabled = t;
             chkDisabled.Enabled = t;
-            checkKho.Enabled = t;
+            chkKho.Enabled = t;
             txtKyHieu.Enabled = t;
         }
         void _reset()
@@ -66,7 +66,7 @@ namespace COTS
             txtEmail.Text = "";
             txtDiaChi.Text = "";
             chkDisabled.Checked = false;
-            checkKho.Checked = false;
+            chkKho.Checked = false;
             txtKyHieu.Text = "";
         }
         void loadCongTy()
@@ -117,7 +117,7 @@ namespace COTS
                 dvi.DiaChi = txtDiaChi.Text;
                 dvi.Disabled = chkDisabled.Checked;
                 dvi.KyHieu = txtKyHieu.Text;
-                dvi.Kho = checkKho.Checked;
+                dvi.Kho = chkKho.Checked;
                 _donvi.add(dvi);
 
             }
@@ -133,7 +133,7 @@ namespace COTS
                 dvi.DiaChi = txtDiaChi.Text;
                 dvi.Disabled = chkDisabled.Checked;
                 dvi.KyHieu = txtKyHieu.Text;
-                dvi.Kho = checkKho.Checked;
+                dvi.Kho = chkKho.Checked;
                 _donvi.update(dvi);
 
             }
@@ -180,7 +180,7 @@ namespace COTS
                 txtDiaChi.Text = gvDanhSach.GetFocusedRowCellValue("DiaChi").ToString();
                 chkDisabled.Checked = bool.Parse(gvDanhSach.GetFocusedRowCellValue("Disabled").ToString());
                 txtKyHieu.Text=gvDanhSach.GetFocusedRowCellValue("KyHieu").ToString() ;
-                checkKho.Checked = bool.Parse(gvDanhSach.GetFocusedRowCellValue("Kho").ToString());
+                chkKho.Checked = bool.Parse(gvDanhSach.GetFocusedRowCellValue("Kho").ToString());
             }
         }
     }

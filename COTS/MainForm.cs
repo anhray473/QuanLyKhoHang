@@ -132,6 +132,12 @@ namespace COTS
                         frm.ShowDialog();
                         break;
                     }
+                case "NHAPMUA":
+                    {
+                        frmNhapMua frm = new frmNhapMua();
+                        frm.ShowDialog();
+                        break;
+                    }
 
 
             }

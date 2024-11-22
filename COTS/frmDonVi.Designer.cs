@@ -51,10 +51,12 @@
             this.Fax = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Email = new DevExpress.XtraGrid.Columns.GridColumn();
             this.DiaChi = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Kho = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.KyHieu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.txtKyHieu = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.checkKho = new System.Windows.Forms.CheckBox();
+            this.chkKho = new System.Windows.Forms.CheckBox();
             this.cboCty = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtMa = new System.Windows.Forms.TextBox();
@@ -70,8 +72,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtTen = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.Kho = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.KyHieu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDanhSach)).BeginInit();
@@ -219,6 +219,7 @@
             this.KyHieu});
             this.gvDanhSach.GridControl = this.gcDanhSach;
             this.gvDanhSach.Name = "gvDanhSach";
+            this.gvDanhSach.RowHeight = 30;
             this.gvDanhSach.Click += new System.EventHandler(this.gvDanhSach_Click);
             // 
             // Disabled
@@ -267,7 +268,7 @@
             // SDT
             // 
             this.SDT.Caption = "ĐIỆN THOẠI";
-            this.SDT.FieldName = "DienThoai";
+            this.SDT.FieldName = "SDT";
             this.SDT.MaxWidth = 100;
             this.SDT.MinWidth = 25;
             this.SDT.Name = "SDT";
@@ -308,11 +309,31 @@
             this.DiaChi.VisibleIndex = 7;
             this.DiaChi.Width = 400;
             // 
+            // Kho
+            // 
+            this.Kho.Caption = "KHO";
+            this.Kho.FieldName = "Kho";
+            this.Kho.MinWidth = 25;
+            this.Kho.Name = "Kho";
+            this.Kho.Visible = true;
+            this.Kho.VisibleIndex = 8;
+            this.Kho.Width = 94;
+            // 
+            // KyHieu
+            // 
+            this.KyHieu.Caption = "KÝ HIỆU";
+            this.KyHieu.FieldName = "KyHieu";
+            this.KyHieu.MinWidth = 25;
+            this.KyHieu.Name = "KyHieu";
+            this.KyHieu.Visible = true;
+            this.KyHieu.VisibleIndex = 9;
+            this.KyHieu.Width = 94;
+            // 
             // groupControl1
             // 
             this.groupControl1.Controls.Add(this.txtKyHieu);
             this.groupControl1.Controls.Add(this.label8);
-            this.groupControl1.Controls.Add(this.checkKho);
+            this.groupControl1.Controls.Add(this.chkKho);
             this.groupControl1.Controls.Add(this.cboCty);
             this.groupControl1.Controls.Add(this.label7);
             this.groupControl1.Controls.Add(this.txtMa);
@@ -351,15 +372,15 @@
             this.label8.TabIndex = 16;
             this.label8.Text = "Ký hiệu";
             // 
-            // checkKho
+            // chkKho
             // 
-            this.checkKho.AutoSize = true;
-            this.checkKho.Location = new System.Drawing.Point(830, 42);
-            this.checkKho.Name = "checkKho";
-            this.checkKho.Size = new System.Drawing.Size(50, 20);
-            this.checkKho.TabIndex = 15;
-            this.checkKho.Text = "Kho";
-            this.checkKho.UseVisualStyleBackColor = true;
+            this.chkKho.AutoSize = true;
+            this.chkKho.Location = new System.Drawing.Point(830, 42);
+            this.chkKho.Name = "chkKho";
+            this.chkKho.Size = new System.Drawing.Size(50, 20);
+            this.chkKho.TabIndex = 15;
+            this.chkKho.Text = "Kho";
+            this.chkKho.UseVisualStyleBackColor = true;
             // 
             // cboCty
             // 
@@ -485,26 +506,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Tên đơn vị";
             // 
-            // Kho
-            // 
-            this.Kho.Caption = "KHO";
-            this.Kho.FieldName = "Kho";
-            this.Kho.MinWidth = 25;
-            this.Kho.Name = "Kho";
-            this.Kho.Visible = true;
-            this.Kho.VisibleIndex = 8;
-            this.Kho.Width = 94;
-            // 
-            // KyHieu
-            // 
-            this.KyHieu.Caption = "KÝ HIỆU";
-            this.KyHieu.FieldName = "KyHieu";
-            this.KyHieu.MinWidth = 25;
-            this.KyHieu.Name = "KyHieu";
-            this.KyHieu.Visible = true;
-            this.KyHieu.VisibleIndex = 9;
-            this.KyHieu.Width = 94;
-            // 
             // frmDonVi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -514,7 +515,7 @@
             this.Controls.Add(this.gcDanhSach);
             this.Controls.Add(this.toolStrip1);
             this.Name = "frmDonVi";
-            this.Text = "frmDonVi";
+            this.Text = "Danh mục đơn vị";
             this.Load += new System.EventHandler(this.frmDonVi_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
@@ -569,7 +570,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn MaDVi;
         private System.Windows.Forms.TextBox txtKyHieu;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.CheckBox checkKho;
+        private System.Windows.Forms.CheckBox chkKho;
         private System.Windows.Forms.ComboBox cboCty;
         private DevExpress.XtraGrid.Columns.GridColumn Kho;
         private DevExpress.XtraGrid.Columns.GridColumn KyHieu;

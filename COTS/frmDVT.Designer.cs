@@ -236,7 +236,7 @@
             this.Controls.Add(this.gcDanhSach);
             this.Controls.Add(this.toolStrip1);
             this.Name = "frmDVT";
-            this.Text = "frmDVT";
+            this.Text = "Danh mục đơn vị tính";
             this.Load += new System.EventHandler(this.frmDVT_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

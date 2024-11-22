@@ -21,5 +21,6 @@ namespace DataLayer
         public Nullable<double> DonGia { get; set; }
         public Nullable<double> ThanhTien { get; set; }
         public Nullable<System.DateTime> Ngay { get; set; }
+        public Nullable<int> STT { get; set; }
     }
 }
