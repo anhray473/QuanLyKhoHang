@@ -25,12 +25,13 @@ namespace DataLayer
         public string MaCTy { get; set; }
         public string MaDVi { get; set; }
         public string MaDVi2 { get; set; }
-        public Nullable<bool> TrangThai { get; set; }
+        public Nullable<int> TrangThai { get; set; }
         public Nullable<System.DateTime> NgayTao { get; set; }
         public Nullable<int> NguoiTao { get; set; }
         public Nullable<System.DateTime> NgaySua { get; set; }
         public Nullable<int> NguoiSua { get; set; }
         public Nullable<System.DateTime> NgayXoa { get; set; }
         public Nullable<int> NguoiXoa { get; set; }
+        public Nullable<int> LCT { get; set; }
     }
 }

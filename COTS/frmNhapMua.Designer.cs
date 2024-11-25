@@ -62,7 +62,7 @@
             this.GhiChu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TrangThai = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
+            this.tabChungTu = new DevExpress.XtraTab.XtraTabControl();
             this.pageDanhSach = new DevExpress.XtraTab.XtraTabPage();
             this.pageChiTiet = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
@@ -97,8 +97,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDanhSach)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
-            this.xtraTabControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tabChungTu)).BeginInit();
+            this.tabChungTu.SuspendLayout();
             this.pageDanhSach.SuspendLayout();
             this.pageChiTiet.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
@@ -468,15 +468,15 @@
             this.gridView1.GridControl = this.gcDanhSach;
             this.gridView1.Name = "gridView1";
             // 
-            // xtraTabControl1
+            // tabChungTu
             // 
-            this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl1.Location = new System.Drawing.Point(0, 59);
-            this.xtraTabControl1.Name = "xtraTabControl1";
-            this.xtraTabControl1.SelectedTabPage = this.pageDanhSach;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1098, 575);
-            this.xtraTabControl1.TabIndex = 7;
-            this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.tabChungTu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabChungTu.Location = new System.Drawing.Point(0, 59);
+            this.tabChungTu.Name = "tabChungTu";
+            this.tabChungTu.SelectedTabPage = this.pageDanhSach;
+            this.tabChungTu.Size = new System.Drawing.Size(1098, 575);
+            this.tabChungTu.TabIndex = 7;
+            this.tabChungTu.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.pageDanhSach,
             this.pageChiTiet});
             // 
@@ -681,6 +681,8 @@
             this.gvChiTiet.GridControl = this.gcChiTiet;
             this.gvChiTiet.Name = "gvChiTiet";
             this.gvChiTiet.RowHeight = 25;
+            this.gvChiTiet.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gvChiTiet_CustomDrawRowIndicator);
+            this.gvChiTiet.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gvChiTiet_CellValueChanged);
             // 
             // Code
             // 
@@ -757,7 +759,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1098, 634);
-            this.Controls.Add(this.xtraTabControl1);
+            this.Controls.Add(this.tabChungTu);
             this.Controls.Add(this.toolStrip1);
             this.Name = "frmNhapMua";
             this.Text = "frmNhapMua";
@@ -774,8 +776,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDanhSach)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
-            this.xtraTabControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tabChungTu)).EndInit();
+            this.tabChungTu.ResumeLayout(false);
             this.pageDanhSach.ResumeLayout(false);
             this.pageChiTiet.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel1)).EndInit();
@@ -829,7 +831,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn GhiChu;
         private DevExpress.XtraGrid.Columns.GridColumn TrangThai;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
+        private DevExpress.XtraTab.XtraTabControl tabChungTu;
         private DevExpress.XtraTab.XtraTabPage pageDanhSach;
         private DevExpress.XtraTab.XtraTabPage pageChiTiet;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl2;

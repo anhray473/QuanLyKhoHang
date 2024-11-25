@@ -14,6 +14,10 @@ namespace BusinessLayer
         { 
             db = Entities.CreateEntities();
         }
+        public List<tb_HANGHOA> getList()
+        {
+            return db.tb_HANGHOA.ToList();
+        }
         public tb_HANGHOA getItem(string barcode)
         {
             return db.tb_HANGHOA.FirstOrDefault(x=>x.Code == barcode);
@@ -21,6 +25,10 @@ namespace BusinessLayer
         public List<tb_HANGHOA> getListByNhom(int idNhom) 
         {
             return db.tb_HANGHOA.Where(x=>x.IDNhom == idNhom).OrderBy(o=>o.NgayTao).ToList();
+        }
+        public List<tb_HANGHOA>getListByKeyword(string keyword)
+        {
+            return db.tb_HANGHOA.Where(ts=> ts.TenHang.Contains(keyword)).ToList();
         }
         public List<obj_HANGHOA> getListByNhomFull(int idNhom)
         {
@@ -98,6 +106,15 @@ namespace BusinessLayer
             {
                 throw new Exception("Có lỗi xảy ra trong quá trình xử lý dữ liệu" + ex.Message);
             }
+        }
+        public bool checkExist(string barcode)
+        {
+            var h = db.tb_HANGHOA.FirstOrDefault(x=>x.Code == barcode);
+            if (h != null)
+            {
+                return true;
+            }else
+                return false;
         }
     }
 }

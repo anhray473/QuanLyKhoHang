@@ -86,6 +86,12 @@
     <Compile Include="frmConnect.Designer.cs">
       <DependentUpon>frmConnect.cs</DependentUpon>
     </Compile>
+    <Compile Include="myPop\frmDanhMuc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="myPop\frmDanhMuc.Designer.cs">
+      <DependentUpon>frmDanhMuc.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDonVi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +140,12 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="myPop\popLoiImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="myPop\popLoiImport.Designer.cs">
+      <DependentUpon>popLoiImport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmChoXuLy.resx">
@@ -144,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmConnect.resx">
       <DependentUpon>frmConnect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="myPop\frmDanhMuc.resx">
+      <DependentUpon>frmDanhMuc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDonVi.resx">
       <DependentUpon>frmDonVi.cs</DependentUpon>
@@ -168,6 +183,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="myPop\popLoiImport.resx">
+      <DependentUpon>popLoiImport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
