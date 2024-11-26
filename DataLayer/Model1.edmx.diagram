@@ -5,9 +5,12 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="abefbf74b60c4fb194b8f2f1879c1914" Name="Diagram1" ZoomLevel="55">
+        <EntityTypeShape EntityType="KHOHANG.tb_CHUNGTU" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="KHOHANG.tb_CHUNGTU_CT" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="KHOHANG.tb_CONGTY" Width="1.5" PointX="4.75" PointY="0.75" />
         <EntityTypeShape EntityType="KHOHANG.tb_DONVI" Width="1.5" PointX="2.75" PointY="4.75" />
         <EntityTypeShape EntityType="KHOHANG.tb_DVT" Width="1.5" PointX="4.75" PointY="4.75" />
+        <EntityTypeShape EntityType="KHOHANG.tb_HANGHOA" Width="1.5" PointX="6.75" PointY="0.75" />
         <EntityTypeShape EntityType="KHOHANG.tb_NHACUNGCAP" Width="1.5" PointX="6.75" PointY="5.75" />
         <EntityTypeShape EntityType="KHOHANG.tb_NHOMHH" Width="1.5" PointX="8.75" PointY="0.75" />
         <EntityTypeShape EntityType="KHOHANG.tb_SYS_FUNC" Width="1.5" PointX="0.75" PointY="8.75" />
@@ -19,9 +22,7 @@
         <EntityTypeShape EntityType="KHOHANG.tb_SYS_USER" Width="1.5" PointX="10.75" PointY="3.75" />
         <EntityTypeShape EntityType="KHOHANG.tb_TONKHO" Width="1.5" PointX="6.75" PointY="10.75" />
         <EntityTypeShape EntityType="KHOHANG.tb_XUATXU" Width="1.5" PointX="10.75" PointY="7.75" />
-        <EntityTypeShape EntityType="KHOHANG.tb_HANGHOA" Width="1.5" PointX="9.375" PointY="10.75" />
-        <EntityTypeShape EntityType="KHOHANG.tb_CHUNGTU_CT" Width="1.5" PointX="11.375" PointY="10.75" />
-        <EntityTypeShape EntityType="KHOHANG.tb_CHUNGTU" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="KHOHANG.V_CHUNGTU_CT" Width="1.5" PointX="9.375" PointY="10.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

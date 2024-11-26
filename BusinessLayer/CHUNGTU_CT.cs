@@ -63,14 +63,11 @@ namespace BusinessLayer
         public tb_CHUNGTU_CT update(tb_CHUNGTU_CT chungtuct)
         {
             tb_CHUNGTU_CT _chungtuct = db.tb_CHUNGTU_CT.FirstOrDefault(x => x.IDCT == chungtuct.IDCT);
-            _chungtuct.TenHang = chungtuct.TenHang;
-            _chungtuct.TenTat = chungtuct.TenTat;
-            _chungtuct.DVT = chungtuct.DVT;
+            _chungtuct.CODE = chungtuct.CODE;
+            _chungtuct.SoLuong = chungtuct.SoLuong;
             _chungtuct.DonGia = chungtuct.DonGia;
-            _chungtuct.MoTa = chungtuct.MoTa;
-            _chungtuct.MaXX = chungtuct.MaXX;
-            _chungtuct.MaNCC = chungtuct.MaNCC;
-            _chungtuct.Disabled = chungtuct.Disabled;
+            _chungtuct.ThanhTien = chungtuct.ThanhTien;
+            _chungtuct.Ngay = chungtuct.Ngay;
             try
             {
                 db.SaveChanges();
@@ -92,6 +89,27 @@ namespace BusinessLayer
             catch (Exception ex)
             {
                 throw new Exception("Có lỗi xảy ra trong quá trình xử lý dữ liệu" + ex.Message);
+            }
+        }
+        public void deleteAll(Guid chungTuId)
+        {
+            // Lấy danh sách các bản ghi liên quan đến chungTuId
+            var chungTuCTList = db.tb_CHUNGTU_CT.Where(x => x.ID == chungTuId).ToList();
+
+            if (chungTuCTList == null || !chungTuCTList.Any())
+                throw new Exception("Không tìm thấy bản ghi nào liên quan đến chứng từ này.");
+
+            // Xóa tất cả các bản ghi tìm được
+            db.tb_CHUNGTU_CT.RemoveRange(chungTuCTList);
+
+            try
+            {
+                // Lưu thay đổi vào cơ sở dữ liệu
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Có lỗi xảy ra khi xóa các bản ghi: " + ex.Message);
             }
         }
     }

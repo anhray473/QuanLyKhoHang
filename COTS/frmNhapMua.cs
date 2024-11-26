@@ -219,8 +219,8 @@ namespace COTS
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if(_right ==1)
-                MessageBox.Show("Không có quyền thao tác.", "Lỗi" , MessageBoxButtons.OK , MessageBoxIcon.Exclamation);
+            if (_right == 1)
+                MessageBox.Show("Không có quyền thao tác.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             else
             {
                 tb_CHUNGTU cur = (tb_CHUNGTU)_bdChungTu.Current;
@@ -230,24 +230,23 @@ namespace COTS
                     _sua = true;
                     showHideControl(false);
                     _enabled(true);
-                    tabChungTu.SelectedTabPage=pageChiTiet;
+                    tabChungTu.SelectedTabPage = pageChiTiet;
                     tabChungTu.TabPages[0].PageEnabled = false;
-                    gvChiTiet.OptionsBehavior.Editable=true;
-                    contextMenuChiTiet.Enabled = true;
+                    gvChiTiet.OptionsBehavior.Editable = true;
                     cboDonVi.Enabled = false;
 
-                    if(gvChiTiet.RowCount ==0)
+                    if (gvChiTiet.RowCount == 0)
                     {
                         List<V_CHUNGTU_CT> _lstChiTiet = new List<V_CHUNGTU_CT>();
-                        _bdChungTu.DataSource = _lstChiTiet ;
-                        gcChiTiet.DataSource = _bdChungTu ;
+                        _bdChungTu.DataSource = _lstChiTiet;
+                        gcChiTiet.DataSource = _bdChungTu;
                         gvChiTiet.AddNewRow();
                         gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle, "STT", 1);
-                    }    
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Không được phép chỉnh sửa chứng từ đã hoàn tất.","Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Không được phép chỉnh sửa chứng từ đã hoàn tất.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
             }
@@ -267,7 +266,7 @@ namespace COTS
                     tb_CHUNGTU cur = (tb_CHUNGTU)_bdChungTu.Current;
                     int index = _bdChungTu.Position;
                     _chungtu.delete(cur.ID, 1);
-                    gvDanhSach.SetRowCellValue(index, "NguoiXoa", 0);
+                    gvDanhSach.SetRowCellValue(index, "NguoiXoa", 0);//XOng user id thêm vào
                     lblXoa.Visible = true;
                 }
                 else
@@ -282,7 +281,7 @@ namespace COTS
             _them = false;
             _sua = false;
             gvChiTiet.OptionsBehavior.Editable = false;
-            c
+            
 
         }
 
@@ -537,7 +536,7 @@ namespace COTS
                     }
                     SizeF _Size = e.Graphics.MeasureString(e.Info.DisplayText,e.Appearance.Font);
                     Int32 _Width = Convert.ToInt32(_Size.Width)+20;
-                    BeginInvoke(new MethodInvoker(delegate { cal(_Width, gvChiTiet); }));
+                   // BeginInvoke(new MethodInvoker(delegate { cal(_Width, gvChiTiet); }));
                 }
             }
             else
@@ -546,7 +545,7 @@ namespace COTS
                 e.Info.DisplayText = string.Format("[{0}]", (e.RowHandle * -1));
                 SizeF _Size = e.Graphics.MeasureString(e.Info.DisplayText, e.Appearance.Font);
                 Int32 _Width = Convert.ToInt32(_Size.Width) + 20;
-                BeginInvoke(new MethodInvoker(delegate { cal(_Width, gvChiTiet); }));
+               // BeginInvoke(new MethodInvoker(delegate { cal(_Width, gvChiTiet); }));
             }
         }
     }

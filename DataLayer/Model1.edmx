@@ -210,6 +210,19 @@
           <Property Name="Ten" Type="nvarchar" MaxLength="50" />
           <Property Name="Disabled" Type="bit" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'QLKH.dbo.V_CHUNGTU_CT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_CHUNGTU_CT">
+          <Key>
+            <PropertyRef Name="IDCT" />
+          </Key>
+          <Property Name="STT" Type="int" />
+          <Property Name="IDCT" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CODE" Type="varchar" MaxLength="13" />
+          <Property Name="SoLuong" Type="int" />
+          <Property Name="DonGia" Type="float" />
+          <Property Name="ThanhTien" Type="float" />
+        </EntityType>
         <EntityContainer Name="KHOHANGStoreContainer">
           <EntitySet Name="tb_CHUNGTU" EntityType="Self.tb_CHUNGTU" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_CHUNGTU_CT" EntityType="Self.tb_CHUNGTU_CT" Schema="dbo" store:Type="Tables" />
@@ -228,15 +241,28 @@
           <EntitySet Name="tb_SYS_USER" EntityType="Self.tb_SYS_USER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_TONKHO" EntityType="Self.tb_TONKHO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_XUATXU" EntityType="Self.tb_XUATXU" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="V_CHUNGTU_CT" EntityType="Self.V_CHUNGTU_CT" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_CHUNGTU_CT].[STT] AS [STT], 
+    [V_CHUNGTU_CT].[IDCT] AS [IDCT], 
+    [V_CHUNGTU_CT].[CODE] AS [CODE], 
+    [V_CHUNGTU_CT].[SoLuong] AS [SoLuong], 
+    [V_CHUNGTU_CT].[DonGia] AS [DonGia], 
+    [V_CHUNGTU_CT].[ThanhTien] AS [ThanhTien]
+    FROM [dbo].[V_CHUNGTU_CT] AS [V_CHUNGTU_CT]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="KHOHANG" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tb_CHUNGTU" EntityType="KHOHANG.tb_CHUNGTU" />
+          <EntitySet Name="tb_CHUNGTU_CT" EntityType="KHOHANG.tb_CHUNGTU_CT" />
           <EntitySet Name="tb_CONGTY" EntityType="KHOHANG.tb_CONGTY" />
           <EntitySet Name="tb_DONVI" EntityType="KHOHANG.tb_DONVI" />
           <EntitySet Name="tb_DVT" EntityType="KHOHANG.tb_DVT" />
+          <EntitySet Name="tb_HANGHOA" EntityType="KHOHANG.tb_HANGHOA" />
           <EntitySet Name="tb_NHACUNGCAP" EntityType="KHOHANG.tb_NHACUNGCAP" />
           <EntitySet Name="tb_NHOMHH" EntityType="KHOHANG.tb_NHOMHH" />
           <EntitySet Name="tb_SYS_FUNC" EntityType="KHOHANG.tb_SYS_FUNC" />
@@ -248,10 +274,45 @@
           <EntitySet Name="tb_SYS_USER" EntityType="KHOHANG.tb_SYS_USER" />
           <EntitySet Name="tb_TONKHO" EntityType="KHOHANG.tb_TONKHO" />
           <EntitySet Name="tb_XUATXU" EntityType="KHOHANG.tb_XUATXU" />
-          <EntitySet Name="tb_HANGHOA" EntityType="KHOHANG.tb_HANGHOA" />
-          <EntitySet Name="tb_CHUNGTU_CT" EntityType="KHOHANG.tb_CHUNGTU_CT" />
-          <EntitySet Name="tb_CHUNGTU" EntityType="KHOHANG.tb_CHUNGTU" />
+          <EntitySet Name="V_CHUNGTU_CT" EntityType="KHOHANG.V_CHUNGTU_CT" />
         </EntityContainer>
+        <EntityType Name="tb_CHUNGTU">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="SCT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ngay" Type="DateTime" Precision="3" />
+          <Property Name="SCT2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ngay2" Type="DateTime" Precision="3" />
+          <Property Name="SoLuong" Type="Int32" />
+          <Property Name="TongTien" Type="Double" />
+          <Property Name="GhiChu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MaCTy" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MaDVi" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MaDVi2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TrangThai" Type="Int32" />
+          <Property Name="NgayTao" Type="DateTime" Precision="3" />
+          <Property Name="NguoiTao" Type="Int32" />
+          <Property Name="NgaySua" Type="DateTime" Precision="3" />
+          <Property Name="NguoiSua" Type="Int32" />
+          <Property Name="NgayXoa" Type="DateTime" Precision="3" />
+          <Property Name="NguoiXoa" Type="Int32" />
+          <Property Name="LCT" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tb_CHUNGTU_CT">
+          <Key>
+            <PropertyRef Name="IDCT" />
+          </Key>
+          <Property Name="IDCT" Type="Guid" Nullable="false" />
+          <Property Name="ID" Type="Guid" />
+          <Property Name="CODE" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="SoLuong" Type="Int32" />
+          <Property Name="DonGia" Type="Double" />
+          <Property Name="ThanhTien" Type="Double" />
+          <Property Name="Ngay" Type="DateTime" Precision="3" />
+          <Property Name="STT" Type="Int32" />
+        </EntityType>
         <EntityType Name="tb_CONGTY">
           <Key>
             <PropertyRef Name="MaCTy" />
@@ -285,6 +346,23 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tb_HANGHOA">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="TenHang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TenTat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DVT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DonGia" Type="Double" />
+          <Property Name="MoTa" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MaXX" Type="Int32" />
+          <Property Name="MaNCC" Type="Int32" />
+          <Property Name="IDNhom" Type="Int32" />
+          <Property Name="NgayTao" Type="DateTime" Precision="3" />
+          <Property Name="NguoiTao" Type="Int32" />
+          <Property Name="Disabled" Type="Boolean" />
         </EntityType>
         <EntityType Name="tb_NHACUNGCAP">
           <Key>
@@ -403,59 +481,16 @@
           <Property Name="Ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Disabled" Type="Boolean" />
         </EntityType>
-        <EntityType Name="tb_HANGHOA">
-          <Key>
-            <PropertyRef Name="Code" />
-          </Key>
-          <Property Name="Code" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="false" />
-          <Property Name="TenHang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="TenTat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DVT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DonGia" Type="Double" />
-          <Property Name="MoTa" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="MaXX" Type="Int32" />
-          <Property Name="MaNCC" Type="Int32" />
-          <Property Name="IDNhom" Type="Int32" />
-          <Property Name="NgayTao" Type="DateTime" Precision="3" />
-          <Property Name="NguoiTao" Type="Int32" />
-          <Property Name="Disabled" Type="Boolean" />
-        </EntityType>
-        <EntityType Name="tb_CHUNGTU_CT">
+        <EntityType Name="V_CHUNGTU_CT">
           <Key>
             <PropertyRef Name="IDCT" />
           </Key>
+          <Property Name="STT" Type="Int32" />
           <Property Name="IDCT" Type="Guid" Nullable="false" />
-          <Property Name="ID" Type="Guid" />
           <Property Name="CODE" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
           <Property Name="SoLuong" Type="Int32" />
           <Property Name="DonGia" Type="Double" />
           <Property Name="ThanhTien" Type="Double" />
-          <Property Name="Ngay" Type="DateTime" Precision="3" />
-          <Property Name="STT" Type="Int32" />
-        </EntityType>
-        <EntityType Name="tb_CHUNGTU">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Guid" Nullable="false" />
-          <Property Name="SCT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Ngay" Type="DateTime" Precision="3" />
-          <Property Name="SCT2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Ngay2" Type="DateTime" Precision="3" />
-          <Property Name="SoLuong" Type="Int32" />
-          <Property Name="TongTien" Type="Double" />
-          <Property Name="GhiChu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="MaCTy" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="MaDVi" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="MaDVi2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="TrangThai" Type="Int32" />
-          <Property Name="NgayTao" Type="DateTime" Precision="3" />
-          <Property Name="NguoiTao" Type="Int32" />
-          <Property Name="NgaySua" Type="DateTime" Precision="3" />
-          <Property Name="NguoiSua" Type="Int32" />
-          <Property Name="NgayXoa" Type="DateTime" Precision="3" />
-          <Property Name="NguoiXoa" Type="Int32" />
-          <Property Name="LCT" Type="Int32" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -463,6 +498,45 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="KHOHANGStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="tb_CHUNGTU">
+            <EntityTypeMapping TypeName="KHOHANG.tb_CHUNGTU">
+              <MappingFragment StoreEntitySet="tb_CHUNGTU">
+                <ScalarProperty Name="LCT" ColumnName="LCT" />
+                <ScalarProperty Name="NguoiXoa" ColumnName="NguoiXoa" />
+                <ScalarProperty Name="NgayXoa" ColumnName="NgayXoa" />
+                <ScalarProperty Name="NguoiSua" ColumnName="NguoiSua" />
+                <ScalarProperty Name="NgaySua" ColumnName="NgaySua" />
+                <ScalarProperty Name="NguoiTao" ColumnName="NguoiTao" />
+                <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="MaDVi2" ColumnName="MaDVi2" />
+                <ScalarProperty Name="MaDVi" ColumnName="MaDVi" />
+                <ScalarProperty Name="MaCTy" ColumnName="MaCTy" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="Ngay2" ColumnName="Ngay2" />
+                <ScalarProperty Name="SCT2" ColumnName="SCT2" />
+                <ScalarProperty Name="Ngay" ColumnName="Ngay" />
+                <ScalarProperty Name="SCT" ColumnName="SCT" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_CHUNGTU_CT">
+            <EntityTypeMapping TypeName="KHOHANG.tb_CHUNGTU_CT">
+              <MappingFragment StoreEntitySet="tb_CHUNGTU_CT">
+                <ScalarProperty Name="STT" ColumnName="STT" />
+                <ScalarProperty Name="Ngay" ColumnName="Ngay" />
+                <ScalarProperty Name="ThanhTien" ColumnName="ThanhTien" />
+                <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDCT" ColumnName="IDCT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tb_CONGTY">
             <EntityTypeMapping TypeName="KHOHANG.tb_CONGTY">
               <MappingFragment StoreEntitySet="tb_CONGTY">
@@ -497,6 +571,24 @@
               <MappingFragment StoreEntitySet="tb_DVT">
                 <ScalarProperty Name="Ten" ColumnName="Ten" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_HANGHOA">
+            <EntityTypeMapping TypeName="KHOHANG.tb_HANGHOA">
+              <MappingFragment StoreEntitySet="tb_HANGHOA">
+                <ScalarProperty Name="Disabled" ColumnName="Disabled" />
+                <ScalarProperty Name="NguoiTao" ColumnName="NguoiTao" />
+                <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+                <ScalarProperty Name="IDNhom" ColumnName="IDNhom" />
+                <ScalarProperty Name="MaNCC" ColumnName="MaNCC" />
+                <ScalarProperty Name="MaXX" ColumnName="MaXX" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+                <ScalarProperty Name="DVT" ColumnName="DVT" />
+                <ScalarProperty Name="TenTat" ColumnName="TenTat" />
+                <ScalarProperty Name="TenHang" ColumnName="TenHang" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -624,60 +716,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tb_HANGHOA">
-            <EntityTypeMapping TypeName="KHOHANG.tb_HANGHOA">
-              <MappingFragment StoreEntitySet="tb_HANGHOA">
-                <ScalarProperty Name="Disabled" ColumnName="Disabled" />
-                <ScalarProperty Name="NguoiTao" ColumnName="NguoiTao" />
-                <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
-                <ScalarProperty Name="IDNhom" ColumnName="IDNhom" />
-                <ScalarProperty Name="MaNCC" ColumnName="MaNCC" />
-                <ScalarProperty Name="MaXX" ColumnName="MaXX" />
-                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
-                <ScalarProperty Name="DonGia" ColumnName="DonGia" />
-                <ScalarProperty Name="DVT" ColumnName="DVT" />
-                <ScalarProperty Name="TenTat" ColumnName="TenTat" />
-                <ScalarProperty Name="TenHang" ColumnName="TenHang" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tb_CHUNGTU_CT">
-            <EntityTypeMapping TypeName="KHOHANG.tb_CHUNGTU_CT">
-              <MappingFragment StoreEntitySet="tb_CHUNGTU_CT">
-                <ScalarProperty Name="STT" ColumnName="STT" />
-                <ScalarProperty Name="Ngay" ColumnName="Ngay" />
+          <EntitySetMapping Name="V_CHUNGTU_CT">
+            <EntityTypeMapping TypeName="KHOHANG.V_CHUNGTU_CT">
+              <MappingFragment StoreEntitySet="V_CHUNGTU_CT">
                 <ScalarProperty Name="ThanhTien" ColumnName="ThanhTien" />
                 <ScalarProperty Name="DonGia" ColumnName="DonGia" />
                 <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
                 <ScalarProperty Name="CODE" ColumnName="CODE" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="IDCT" ColumnName="IDCT" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tb_CHUNGTU">
-            <EntityTypeMapping TypeName="KHOHANG.tb_CHUNGTU">
-              <MappingFragment StoreEntitySet="tb_CHUNGTU">
-                <ScalarProperty Name="LCT" ColumnName="LCT" />
-                <ScalarProperty Name="NguoiXoa" ColumnName="NguoiXoa" />
-                <ScalarProperty Name="NgayXoa" ColumnName="NgayXoa" />
-                <ScalarProperty Name="NguoiSua" ColumnName="NguoiSua" />
-                <ScalarProperty Name="NgaySua" ColumnName="NgaySua" />
-                <ScalarProperty Name="NguoiTao" ColumnName="NguoiTao" />
-                <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
-                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
-                <ScalarProperty Name="MaDVi2" ColumnName="MaDVi2" />
-                <ScalarProperty Name="MaDVi" ColumnName="MaDVi" />
-                <ScalarProperty Name="MaCTy" ColumnName="MaCTy" />
-                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
-                <ScalarProperty Name="TongTien" ColumnName="TongTien" />
-                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
-                <ScalarProperty Name="Ngay2" ColumnName="Ngay2" />
-                <ScalarProperty Name="SCT2" ColumnName="SCT2" />
-                <ScalarProperty Name="Ngay" ColumnName="Ngay" />
-                <ScalarProperty Name="SCT" ColumnName="SCT" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="STT" ColumnName="STT" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
