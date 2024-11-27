@@ -78,10 +78,8 @@ namespace COTS
 
 
             xuatThongTin();
-            cboDonVi.SelectedIndexChanged += CboDonVi_SelectedIndexChanged;
             cboKho.SelectedIndexChanged += CboKho_SelectedIndexChanged;
             showHideControl(true);
-            //ContextMenuC
         }
 
         private void CboKho_SelectedIndexChanged(object sender, EventArgs e)
@@ -90,11 +88,6 @@ namespace COTS
             _bdChungTu.DataSource =_listChungTu;
             gcDanhSach.DataSource =_bdChungTu;
             xuatThongTin();
-        }
-
-        private void CboDonVi_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
         }
 
         private void _bdChungTu_PositionChanged(object sender, EventArgs e)
@@ -536,7 +529,7 @@ namespace COTS
                     }
                     SizeF _Size = e.Graphics.MeasureString(e.Info.DisplayText,e.Appearance.Font);
                     Int32 _Width = Convert.ToInt32(_Size.Width)+20;
-                   // BeginInvoke(new MethodInvoker(delegate { cal(_Width, gvChiTiet); }));
+                    BeginInvoke(new MethodInvoker(delegate { cal(_Width, gvChiTiet); }));
                 }
             }
             else
@@ -545,7 +538,14 @@ namespace COTS
                 e.Info.DisplayText = string.Format("[{0}]", (e.RowHandle * -1));
                 SizeF _Size = e.Graphics.MeasureString(e.Info.DisplayText, e.Appearance.Font);
                 Int32 _Width = Convert.ToInt32(_Size.Width) + 20;
-               // BeginInvoke(new MethodInvoker(delegate { cal(_Width, gvChiTiet); }));
+                BeginInvoke(new MethodInvoker(delegate { cal(_Width, gvChiTiet); }));
+            }
+        }
+        private void cal(int newWidth, DevExpress.XtraGrid.Views.Grid.GridView gridView)
+        {
+            if (gridView.IndicatorWidth < newWidth)
+            {
+                gridView.IndicatorWidth = newWidth;
             }
         }
     }

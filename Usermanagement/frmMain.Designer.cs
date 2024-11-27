@@ -206,6 +206,7 @@
             this.gvUser.GridControl = this.gcUser;
             this.gvUser.Name = "gvUser";
             this.gvUser.OptionsView.ShowGroupPanel = false;
+            this.gvUser.DoubleClick += new System.EventHandler(this.gvUser_DoubleClick);
             // 
             // Disabled
             // 

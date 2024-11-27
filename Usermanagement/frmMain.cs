@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Usermanagement.MyComponent;
+using static DevExpress.XtraEditors.Mask.MaskSettings;
 
 namespace Usermanagement
 {
@@ -24,8 +25,10 @@ namespace Usermanagement
         string _madvi;
         bool _isRoot;
         SYS_USER _sysuser;
-        void loadUser(string macty, string madvi)
+
+        public void loadUser(string macty, string madvi)
         {
+            _sysuser = new SYS_USER();
             gcUser.DataSource = _sysuser./*getAll()*/ getUserByDVi(macty, madvi);
             gvUser.OptionsBehavior.Editable = false;
         }
@@ -83,24 +86,57 @@ namespace Usermanagement
             _congty = new CONGTY();
             _donvi = new DONVI();
             _sysuser = new SYS_USER();
+            _isRoot = true ;
             loadTreeView();
             loadUser("CT01","~");
         }
 
         private void btnNguoiDung_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if(_treeView.Text == "")
+            {
+                MessageBox.Show("Vui lòng chọn Đơn vị.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             frmGroup frm = new frmGroup();
+            frm._them = true;
+            frm._macty = _macty;
+            frm._madvi = _madvi;
             frm.ShowDialog();
         }
 
         private void btnUser_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            if (_treeView.Text == "")
+            {
+                MessageBox.Show("Vui lòng chọn Đơn vị.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            frmUsers frm = new frmUsers();
+            frm._them = true;
+            frm._macty = _macty;
+            frm._madvi = _madvi;
+            frm._idUS = int.Parse(gvUser.GetFocusedRowCellValue("IDUser").ToString());
+            
+            frm.ShowDialog();
         }
 
         private void btnCapNhat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            if (gvUser.RowCount > 0 && gvUser.GetFocusedRowCellValue("Isgroup").Equals(true))
+            {
+                frmGroup frm = new frmGroup();
+                frm._them = false;
+                frm._idUS = int.Parse(gvUser.GetFocusedRowCellValue("IDUser").ToString());
+                frm.ShowDialog();
+            }
+            else
+            {
+                frmUsers frm = new frmUsers();
+                frm._them = false;
+                frm._idUS = int.Parse(gvUser.GetFocusedRowCellValue("IDUser").ToString());
+                frm.ShowDialog();
+            }
         }
 
         private void btnChucNang_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -118,6 +154,22 @@ namespace Usermanagement
             this.Close();
         }
 
-        
+        private void gvUser_DoubleClick(object sender, EventArgs e)
+        {
+            if (gvUser.RowCount > 0 && gvUser.GetFocusedRowCellValue("Isgroup").Equals(true))
+            {
+                frmGroup frm = new frmGroup();
+                frm._them = false;
+                frm._idUS = int.Parse(gvUser.GetFocusedRowCellValue("IDUser").ToString());
+                frm.ShowDialog();
+            }
+            else
+            {
+                frmUsers frm = new frmUsers();
+                frm._them = false;
+                frm._idUS = int.Parse(gvUser.GetFocusedRowCellValue("IDUser").ToString());
+                frm.ShowDialog();
+            }
+        }
     }
 }

@@ -30,20 +30,20 @@
         {
             this.tabGroup = new DevExpress.XtraTab.XtraTabControl();
             this.pageNhom = new DevExpress.XtraTab.XtraTabPage();
-            this.pageThanhVien = new DevExpress.XtraTab.XtraTabPage();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtMoTa = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnLuu = new System.Windows.Forms.Button();
-            this.btnDong = new System.Windows.Forms.Button();
+            this.txtTenNhom = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pageThanhVien = new DevExpress.XtraTab.XtraTabPage();
+            this.btnLoai = new System.Windows.Forms.Button();
+            this.btnThem = new System.Windows.Forms.Button();
             this.gcThanhVien = new DevExpress.XtraGrid.GridControl();
             this.gvThanhVien = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.btnThem = new System.Windows.Forms.Button();
-            this.btnLoai = new System.Windows.Forms.Button();
             this.IDUser = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Username = new DevExpress.XtraGrid.Columns.GridColumn();
             this.HoVaTen = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnLuu = new System.Windows.Forms.Button();
+            this.btnDong = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tabGroup)).BeginInit();
             this.tabGroup.SuspendLayout();
             this.pageNhom.SuspendLayout();
@@ -66,48 +66,21 @@
             // 
             // pageNhom
             // 
-            this.pageNhom.Controls.Add(this.textBox2);
+            this.pageNhom.Controls.Add(this.txtMoTa);
             this.pageNhom.Controls.Add(this.label2);
-            this.pageNhom.Controls.Add(this.textBox1);
+            this.pageNhom.Controls.Add(this.txtTenNhom);
             this.pageNhom.Controls.Add(this.label1);
             this.pageNhom.Name = "pageNhom";
-            this.pageNhom.Size = new System.Drawing.Size(506, 267);
+            this.pageNhom.Size = new System.Drawing.Size(692, 426);
             this.pageNhom.Text = "Thông tin nhóm";
             // 
-            // pageThanhVien
+            // txtMoTa
             // 
-            this.pageThanhVien.Controls.Add(this.btnLoai);
-            this.pageThanhVien.Controls.Add(this.btnThem);
-            this.pageThanhVien.Controls.Add(this.gcThanhVien);
-            this.pageThanhVien.Name = "pageThanhVien";
-            this.pageThanhVien.Size = new System.Drawing.Size(692, 426);
-            this.pageThanhVien.Text = "Thành viên";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(64, 75);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 21);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Tên nhóm";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(154, 72);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(243, 28);
-            this.textBox1.TabIndex = 1;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(154, 118);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(243, 28);
-            this.textBox2.TabIndex = 3;
+            this.txtMoTa.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMoTa.Location = new System.Drawing.Point(154, 118);
+            this.txtMoTa.Name = "txtMoTa";
+            this.txtMoTa.Size = new System.Drawing.Size(243, 28);
+            this.txtMoTa.TabIndex = 3;
             // 
             // label2
             // 
@@ -119,27 +92,55 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Mô tả";
             // 
-            // btnLuu
+            // txtTenNhom
             // 
-            this.btnLuu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLuu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnLuu.Location = new System.Drawing.Point(361, 513);
-            this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(125, 43);
-            this.btnLuu.TabIndex = 1;
-            this.btnLuu.Text = "Lưu";
-            this.btnLuu.UseVisualStyleBackColor = false;
+            this.txtTenNhom.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtTenNhom.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTenNhom.Location = new System.Drawing.Point(154, 72);
+            this.txtTenNhom.Name = "txtTenNhom";
+            this.txtTenNhom.Size = new System.Drawing.Size(243, 28);
+            this.txtTenNhom.TabIndex = 1;
             // 
-            // btnDong
+            // label1
             // 
-            this.btnDong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnDong.Location = new System.Drawing.Point(516, 513);
-            this.btnDong.Name = "btnDong";
-            this.btnDong.Size = new System.Drawing.Size(125, 43);
-            this.btnDong.TabIndex = 2;
-            this.btnDong.Text = "Đóng";
-            this.btnDong.UseVisualStyleBackColor = false;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(64, 75);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(84, 21);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Tên nhóm";
+            // 
+            // pageThanhVien
+            // 
+            this.pageThanhVien.Controls.Add(this.btnLoai);
+            this.pageThanhVien.Controls.Add(this.btnThem);
+            this.pageThanhVien.Controls.Add(this.gcThanhVien);
+            this.pageThanhVien.Name = "pageThanhVien";
+            this.pageThanhVien.Size = new System.Drawing.Size(692, 426);
+            this.pageThanhVien.Text = "Thành viên";
+            // 
+            // btnLoai
+            // 
+            this.btnLoai.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLoai.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnLoai.Location = new System.Drawing.Point(488, 372);
+            this.btnLoai.Name = "btnLoai";
+            this.btnLoai.Size = new System.Drawing.Size(108, 35);
+            this.btnLoai.TabIndex = 4;
+            this.btnLoai.Text = "Loại";
+            this.btnLoai.UseVisualStyleBackColor = false;
+            // 
+            // btnThem
+            // 
+            this.btnThem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnThem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnThem.Location = new System.Drawing.Point(360, 372);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(108, 35);
+            this.btnThem.TabIndex = 3;
+            this.btnThem.Text = "Thêm";
+            this.btnThem.UseVisualStyleBackColor = false;
             // 
             // gcThanhVien
             // 
@@ -161,28 +162,6 @@
             this.gvThanhVien.GridControl = this.gcThanhVien;
             this.gvThanhVien.Name = "gvThanhVien";
             this.gvThanhVien.OptionsView.ShowGroupPanel = false;
-            // 
-            // btnThem
-            // 
-            this.btnThem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnThem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnThem.Location = new System.Drawing.Point(360, 372);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(108, 35);
-            this.btnThem.TabIndex = 3;
-            this.btnThem.Text = "Thêm";
-            this.btnThem.UseVisualStyleBackColor = false;
-            // 
-            // btnLoai
-            // 
-            this.btnLoai.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLoai.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnLoai.Location = new System.Drawing.Point(488, 372);
-            this.btnLoai.Name = "btnLoai";
-            this.btnLoai.Size = new System.Drawing.Size(108, 35);
-            this.btnLoai.TabIndex = 4;
-            this.btnLoai.Text = "Loại";
-            this.btnLoai.UseVisualStyleBackColor = false;
             // 
             // IDUser
             // 
@@ -214,6 +193,30 @@
             this.HoVaTen.VisibleIndex = 2;
             this.HoVaTen.Width = 94;
             // 
+            // btnLuu
+            // 
+            this.btnLuu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLuu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnLuu.Location = new System.Drawing.Point(361, 513);
+            this.btnLuu.Name = "btnLuu";
+            this.btnLuu.Size = new System.Drawing.Size(125, 43);
+            this.btnLuu.TabIndex = 1;
+            this.btnLuu.Text = "Lưu";
+            this.btnLuu.UseVisualStyleBackColor = false;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
+            // 
+            // btnDong
+            // 
+            this.btnDong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnDong.Location = new System.Drawing.Point(516, 513);
+            this.btnDong.Name = "btnDong";
+            this.btnDong.Size = new System.Drawing.Size(125, 43);
+            this.btnDong.TabIndex = 2;
+            this.btnDong.Text = "Đóng";
+            this.btnDong.UseVisualStyleBackColor = false;
+            this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
+            // 
             // frmGroup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -241,9 +244,9 @@
         private DevExpress.XtraTab.XtraTabControl tabGroup;
         private DevExpress.XtraTab.XtraTabPage pageNhom;
         private DevExpress.XtraTab.XtraTabPage pageThanhVien;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtMoTa;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtTenNhom;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnLuu;
         private System.Windows.Forms.Button btnDong;
