@@ -43,5 +43,6 @@ namespace DataLayer
         public virtual DbSet<tb_TONKHO> tb_TONKHO { get; set; }
         public virtual DbSet<tb_XUATXU> tb_XUATXU { get; set; }
         public virtual DbSet<V_CHUNGTU_CT> V_CHUNGTU_CT { get; set; }
+        public virtual DbSet<V_USER_NOTIN_GROUP> V_USER_NOTIN_GROUP { get; set; }
     }
 }

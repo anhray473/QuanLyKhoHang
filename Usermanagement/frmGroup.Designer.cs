@@ -141,6 +141,7 @@
             this.btnThem.TabIndex = 3;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = false;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // gcThanhVien
             // 
@@ -197,7 +198,7 @@
             // 
             this.btnLuu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLuu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnLuu.Location = new System.Drawing.Point(361, 513);
+            this.btnLuu.Location = new System.Drawing.Point(373, 467);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(125, 43);
             this.btnLuu.TabIndex = 1;
@@ -209,7 +210,7 @@
             // 
             this.btnDong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnDong.Location = new System.Drawing.Point(516, 513);
+            this.btnDong.Location = new System.Drawing.Point(528, 467);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(125, 43);
             this.btnDong.TabIndex = 2;
@@ -221,7 +222,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(694, 590);
+            this.ClientSize = new System.Drawing.Size(694, 522);
             this.Controls.Add(this.btnDong);
             this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.tabGroup);

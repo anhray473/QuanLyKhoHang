@@ -97,5 +97,15 @@ namespace Usermanagement
             }
             objMain.loadUser(_macty, _madvi);
         }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            frmShowMembers frm = new frmShowMembers();
+            frm._idGroup = _idUS;
+            frm._macty = _macty;
+            frm._madvi = _madvi;
+            frm.ShowDialog();
+
+        }
     }
 }
