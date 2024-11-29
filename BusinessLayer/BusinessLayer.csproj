@@ -65,6 +65,7 @@
     <Compile Include="SYS_GROUP.cs" />
     <Compile Include="SYS_SEQUENCE.cs" />
     <Compile Include="SYS_USER.cs" />
+    <Compile Include="VIEW_USER_IN_GROUP.cs" />
     <Compile Include="VIEW_USER_NOTIN_GROUP.cs" />
     <Compile Include="XUATXU.cs" />
     <Compile Include="_TRANGTHAI.cs" />

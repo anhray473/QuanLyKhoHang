@@ -48,8 +48,8 @@ namespace Usermanagement
                 {
                     TreeNode childNode = new TreeNode();
                     childNode.Text = dv.MaDVi+" - "+ dv.TenDVi;
-                    childNode.Tag = dv.MaCTy+ " . "+ dv.MaDVi;
-                    childNode.Name = dv.MaCTy + " . " + dv.MaDVi;
+                    childNode.Tag = dv.MaCTy+ /*"."+*/ dv.MaDVi;
+                    childNode.Name = dv.MaCTy + /*"." +*/ dv.MaDVi;
                     _treeView.TreeView.Nodes[ParentNode.Name].Nodes.Add(childNode);
 
                 }
@@ -74,7 +74,7 @@ namespace Usermanagement
             {
                 _isRoot= false;
                 _macty = _treeView.TreeView.SelectedNode.Name.Substring(0,4);
-                _madvi = _treeView.TreeView.SelectedNode.Name.Substring(5);
+                _madvi = _treeView.TreeView.SelectedNode.Name.Substring(5,9);
             }
             loadUser(_macty, _madvi);
             _treeView.dropDown.Close();
@@ -88,7 +88,7 @@ namespace Usermanagement
             _sysuser = new SYS_USER();
             _isRoot = true ;
             loadTreeView();
-            loadUser("CT01","~");
+            loadUser(_macty, _madvi);
         }
 
         private void btnNguoiDung_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

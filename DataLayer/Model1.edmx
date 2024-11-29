@@ -182,7 +182,7 @@
           <Property Name="Password" Type="varchar" MaxLength="50" />
           <Property Name="HoVaTen" Type="nvarchar" MaxLength="50" />
           <Property Name="MaCTy" Type="varchar" MaxLength="10" />
-          <Property Name="MaDVi" Type="varchar" MaxLength="10" />
+          <Property Name="MaDVi" Type="varchar" MaxLength="20" />
           <Property Name="Disabled" Type="bit" />
           <Property Name="Isgroup" Type="bit" />
         </EntityType>
@@ -222,6 +222,24 @@ warning 6002: The table/view 'QLKH.dbo.V_CHUNGTU_CT' does not have a primary key
           <Property Name="SoLuong" Type="int" />
           <Property Name="DonGia" Type="float" />
           <Property Name="ThanhTien" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'QLKH.dbo.V_USER_IN_GROUP' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_USER_IN_GROUP">
+          <Key>
+            <PropertyRef Name="Group" />
+            <PropertyRef Name="ThanhVien" />
+          </Key>
+          <Property Name="IDUser" Type="int" />
+          <Property Name="Username" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="HoVaTen" Type="nvarchar" MaxLength="50" />
+          <Property Name="MaCTy" Type="varchar" MaxLength="10" />
+          <Property Name="MaDVi" Type="varchar" MaxLength="10" />
+          <Property Name="Disabled" Type="bit" />
+          <Property Name="Isgroup" Type="bit" />
+          <Property Name="Group" Type="int" Nullable="false" />
+          <Property Name="ThanhVien" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'QLKH.dbo.V_USER_NOTIN_GROUP' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -266,6 +284,20 @@ warning 6002: The table/view 'QLKH.dbo.V_USER_NOTIN_GROUP' does not have a prima
     [V_CHUNGTU_CT].[ThanhTien] AS [ThanhTien]
     FROM [dbo].[V_CHUNGTU_CT] AS [V_CHUNGTU_CT]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="V_USER_IN_GROUP" EntityType="Self.V_USER_IN_GROUP" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_USER_IN_GROUP].[IDUser] AS [IDUser], 
+    [V_USER_IN_GROUP].[Username] AS [Username], 
+    [V_USER_IN_GROUP].[Password] AS [Password], 
+    [V_USER_IN_GROUP].[HoVaTen] AS [HoVaTen], 
+    [V_USER_IN_GROUP].[MaCTy] AS [MaCTy], 
+    [V_USER_IN_GROUP].[MaDVi] AS [MaDVi], 
+    [V_USER_IN_GROUP].[Disabled] AS [Disabled], 
+    [V_USER_IN_GROUP].[Isgroup] AS [Isgroup], 
+    [V_USER_IN_GROUP].[Group] AS [Group], 
+    [V_USER_IN_GROUP].[ThanhVien] AS [ThanhVien]
+    FROM [dbo].[V_USER_IN_GROUP] AS [V_USER_IN_GROUP]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="V_USER_NOTIN_GROUP" EntityType="Self.V_USER_NOTIN_GROUP" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [V_USER_NOTIN_GROUP].[IDUser] AS [IDUser], 
@@ -298,11 +330,12 @@ warning 6002: The table/view 'QLKH.dbo.V_USER_NOTIN_GROUP' does not have a prima
           <EntitySet Name="tb_SYS_RIGHT" EntityType="KHOHANG.tb_SYS_RIGHT" />
           <EntitySet Name="tb_SYS_RIGHT_REP" EntityType="KHOHANG.tb_SYS_RIGHT_REP" />
           <EntitySet Name="tb_SYS_SEQUENCE" EntityType="KHOHANG.tb_SYS_SEQUENCE" />
-          <EntitySet Name="tb_SYS_USER" EntityType="KHOHANG.tb_SYS_USER" />
           <EntitySet Name="tb_TONKHO" EntityType="KHOHANG.tb_TONKHO" />
           <EntitySet Name="tb_XUATXU" EntityType="KHOHANG.tb_XUATXU" />
           <EntitySet Name="V_CHUNGTU_CT" EntityType="KHOHANG.V_CHUNGTU_CT" />
           <EntitySet Name="V_USER_NOTIN_GROUP" EntityType="KHOHANG.V_USER_NOTIN_GROUP" />
+          <EntitySet Name="V_USER_IN_GROUP" EntityType="KHOHANG.V_USER_IN_GROUP" />
+          <EntitySet Name="tb_SYS_USER" EntityType="KHOHANG.tb_SYS_USER" />
         </EntityContainer>
         <EntityType Name="tb_CHUNGTU">
           <Key>
@@ -472,19 +505,6 @@ warning 6002: The table/view 'QLKH.dbo.V_USER_NOTIN_GROUP' does not have a prima
           <Property Name="SEQNAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SEQVUALE" Type="Int32" />
         </EntityType>
-        <EntityType Name="tb_SYS_USER">
-          <Key>
-            <PropertyRef Name="IDUser" />
-          </Key>
-          <Property Name="IDUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="HoVaTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MaCTy" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="MaDVi" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Disabled" Type="Boolean" />
-          <Property Name="Isgroup" Type="Boolean" />
-        </EntityType>
         <EntityType Name="tb_TONKHO">
           <Key>
             <PropertyRef Name="ID" />
@@ -530,6 +550,35 @@ warning 6002: The table/view 'QLKH.dbo.V_USER_NOTIN_GROUP' does not have a prima
           <Property Name="HoVaTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MaCTy" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="MaDVi" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Disabled" Type="Boolean" />
+          <Property Name="Isgroup" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="V_USER_IN_GROUP">
+          <Key>
+            <PropertyRef Name="Group" />
+            <PropertyRef Name="ThanhVien" />
+          </Key>
+          <Property Name="IDUser" Type="Int32" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HoVaTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaCTy" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MaDVi" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Disabled" Type="Boolean" />
+          <Property Name="Isgroup" Type="Boolean" />
+          <Property Name="Group" Type="Int32" Nullable="false" />
+          <Property Name="ThanhVien" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_SYS_USER">
+          <Key>
+            <PropertyRef Name="IDUser" />
+          </Key>
+          <Property Name="IDUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HoVaTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaCTy" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MaDVi" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Disabled" Type="Boolean" />
           <Property Name="Isgroup" Type="Boolean" />
         </EntityType>
@@ -717,20 +766,6 @@ warning 6002: The table/view 'QLKH.dbo.V_USER_NOTIN_GROUP' does not have a prima
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tb_SYS_USER">
-            <EntityTypeMapping TypeName="KHOHANG.tb_SYS_USER">
-              <MappingFragment StoreEntitySet="tb_SYS_USER">
-                <ScalarProperty Name="Isgroup" ColumnName="Isgroup" />
-                <ScalarProperty Name="Disabled" ColumnName="Disabled" />
-                <ScalarProperty Name="MaDVi" ColumnName="MaDVi" />
-                <ScalarProperty Name="MaCTy" ColumnName="MaCTy" />
-                <ScalarProperty Name="HoVaTen" ColumnName="HoVaTen" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tb_TONKHO">
             <EntityTypeMapping TypeName="KHOHANG.tb_TONKHO">
               <MappingFragment StoreEntitySet="tb_TONKHO">
@@ -772,6 +807,36 @@ warning 6002: The table/view 'QLKH.dbo.V_USER_NOTIN_GROUP' does not have a prima
           <EntitySetMapping Name="V_USER_NOTIN_GROUP">
             <EntityTypeMapping TypeName="KHOHANG.V_USER_NOTIN_GROUP">
               <MappingFragment StoreEntitySet="V_USER_NOTIN_GROUP">
+                <ScalarProperty Name="Isgroup" ColumnName="Isgroup" />
+                <ScalarProperty Name="Disabled" ColumnName="Disabled" />
+                <ScalarProperty Name="MaDVi" ColumnName="MaDVi" />
+                <ScalarProperty Name="MaCTy" ColumnName="MaCTy" />
+                <ScalarProperty Name="HoVaTen" ColumnName="HoVaTen" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_USER_IN_GROUP">
+            <EntityTypeMapping TypeName="KHOHANG.V_USER_IN_GROUP">
+              <MappingFragment StoreEntitySet="V_USER_IN_GROUP">
+                <ScalarProperty Name="ThanhVien" ColumnName="ThanhVien" />
+                <ScalarProperty Name="Group" ColumnName="Group" />
+                <ScalarProperty Name="Isgroup" ColumnName="Isgroup" />
+                <ScalarProperty Name="Disabled" ColumnName="Disabled" />
+                <ScalarProperty Name="MaDVi" ColumnName="MaDVi" />
+                <ScalarProperty Name="MaCTy" ColumnName="MaCTy" />
+                <ScalarProperty Name="HoVaTen" ColumnName="HoVaTen" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_SYS_USER">
+            <EntityTypeMapping TypeName="KHOHANG.tb_SYS_USER">
+              <MappingFragment StoreEntitySet="tb_SYS_USER">
                 <ScalarProperty Name="Isgroup" ColumnName="Isgroup" />
                 <ScalarProperty Name="Disabled" ColumnName="Disabled" />
                 <ScalarProperty Name="MaDVi" ColumnName="MaDVi" />

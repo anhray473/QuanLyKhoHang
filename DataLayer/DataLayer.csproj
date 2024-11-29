@@ -123,6 +123,9 @@
     <Compile Include="V_CHUNGTU_CT.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="V_USER_IN_GROUP.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="V_USER_NOTIN_GROUP.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

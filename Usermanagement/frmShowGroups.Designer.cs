@@ -1,6 +1,6 @@
 ﻿namespace Usermanagement
 {
-    partial class frmShowMembers
+    partial class frmShowGroups
     {
         /// <summary>
         /// Required designer variable.
@@ -28,37 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.gcThanhVien = new DevExpress.XtraGrid.GridControl();
-            this.gvThanhVien = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gcNhom = new DevExpress.XtraGrid.GridControl();
+            this.gvNhom = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.IDUser = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Username = new DevExpress.XtraGrid.Columns.GridColumn();
             this.HoVaTen = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnDong = new System.Windows.Forms.Button();
             this.btnLuu = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.gcThanhVien)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvThanhVien)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcNhom)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvNhom)).BeginInit();
             this.SuspendLayout();
             // 
-            // gcThanhVien
+            // gcNhom
             // 
-            this.gcThanhVien.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gcThanhVien.Location = new System.Drawing.Point(0, 0);
-            this.gcThanhVien.MainView = this.gvThanhVien;
-            this.gcThanhVien.Name = "gcThanhVien";
-            this.gcThanhVien.Size = new System.Drawing.Size(548, 274);
-            this.gcThanhVien.TabIndex = 1;
-            this.gcThanhVien.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gvThanhVien});
+            this.gcNhom.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gcNhom.Location = new System.Drawing.Point(0, 0);
+            this.gcNhom.MainView = this.gvNhom;
+            this.gcNhom.Name = "gcNhom";
+            this.gcNhom.Size = new System.Drawing.Size(546, 215);
+            this.gcNhom.TabIndex = 2;
+            this.gcNhom.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvNhom});
             // 
-            // gvThanhVien
+            // gvNhom
             // 
-            this.gvThanhVien.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gvNhom.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.IDUser,
             this.Username,
             this.HoVaTen});
-            this.gvThanhVien.GridControl = this.gcThanhVien;
-            this.gvThanhVien.Name = "gvThanhVien";
-            this.gvThanhVien.OptionsView.ShowGroupPanel = false;
+            this.gvNhom.GridControl = this.gcNhom;
+            this.gvNhom.Name = "gvNhom";
+            this.gvNhom.OptionsView.ShowGroupPanel = false;
             // 
             // IDUser
             // 
@@ -92,10 +92,10 @@
             // 
             this.btnDong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnDong.Location = new System.Drawing.Point(408, 280);
+            this.btnDong.Location = new System.Drawing.Point(409, 263);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(125, 43);
-            this.btnDong.TabIndex = 4;
+            this.btnDong.TabIndex = 6;
             this.btnDong.Text = "Đóng";
             this.btnDong.UseVisualStyleBackColor = false;
             this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
@@ -104,35 +104,35 @@
             // 
             this.btnLuu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLuu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnLuu.Location = new System.Drawing.Point(253, 280);
+            this.btnLuu.Location = new System.Drawing.Point(254, 263);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(125, 43);
-            this.btnLuu.TabIndex = 3;
+            this.btnLuu.TabIndex = 5;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = false;
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
-            // frmShowMembers
+            // frmShowGroups
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(548, 331);
+            this.ClientSize = new System.Drawing.Size(546, 318);
             this.Controls.Add(this.btnDong);
             this.Controls.Add(this.btnLuu);
-            this.Controls.Add(this.gcThanhVien);
-            this.Name = "frmShowMembers";
-            this.Text = "Danh sách thành viên";
-            this.Load += new System.EventHandler(this.frmShowMembers_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.gcThanhVien)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvThanhVien)).EndInit();
+            this.Controls.Add(this.gcNhom);
+            this.Name = "frmShowGroups";
+            this.Text = "Danh sách nhóm";
+            this.Load += new System.EventHandler(this.frmShowGroups_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.gcNhom)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvNhom)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private DevExpress.XtraGrid.GridControl gcThanhVien;
-        private DevExpress.XtraGrid.Views.Grid.GridView gvThanhVien;
+        private DevExpress.XtraGrid.GridControl gcNhom;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvNhom;
         private DevExpress.XtraGrid.Columns.GridColumn IDUser;
         private DevExpress.XtraGrid.Columns.GridColumn Username;
         private DevExpress.XtraGrid.Columns.GridColumn HoVaTen;

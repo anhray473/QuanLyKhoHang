@@ -39,10 +39,11 @@ namespace DataLayer
         public virtual DbSet<tb_SYS_RIGHT> tb_SYS_RIGHT { get; set; }
         public virtual DbSet<tb_SYS_RIGHT_REP> tb_SYS_RIGHT_REP { get; set; }
         public virtual DbSet<tb_SYS_SEQUENCE> tb_SYS_SEQUENCE { get; set; }
-        public virtual DbSet<tb_SYS_USER> tb_SYS_USER { get; set; }
         public virtual DbSet<tb_TONKHO> tb_TONKHO { get; set; }
         public virtual DbSet<tb_XUATXU> tb_XUATXU { get; set; }
         public virtual DbSet<V_CHUNGTU_CT> V_CHUNGTU_CT { get; set; }
         public virtual DbSet<V_USER_NOTIN_GROUP> V_USER_NOTIN_GROUP { get; set; }
+        public virtual DbSet<V_USER_IN_GROUP> V_USER_IN_GROUP { get; set; }
+        public virtual DbSet<tb_SYS_USER> tb_SYS_USER { get; set; }
     }
 }

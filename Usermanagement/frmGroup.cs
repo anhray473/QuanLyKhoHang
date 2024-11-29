@@ -28,11 +28,15 @@ namespace Usermanagement
         public bool _them;
         SYS_USER _sysuser;
         tb_SYS_USER _user;
+        VIEW_USER_IN_GROUP  _vUserInGroup;
+        SYS_GROUP _sysGroup;
         frmMain objMain = (frmMain)Application.OpenForms["frmMain"];
 
         private void frmGroup_Load(object sender, EventArgs e)
         {
             _sysuser = new SYS_USER();
+            _sysGroup = new SYS_GROUP();
+            
             if (!_them)
             {
                 var user = _sysuser.getItem(_idUS);
@@ -41,6 +45,7 @@ namespace Usermanagement
                 _madvi = user.MaDVi;
                 txtMoTa.Text = user.HoVaTen;
                 txtTenNhom.ReadOnly = true;
+                loadUserInGroup(_idUS);
             }
             else
             {
@@ -50,6 +55,12 @@ namespace Usermanagement
             
         }
 
+        public void loadUserInGroup(int idgroup)
+        {
+            _vUserInGroup = new VIEW_USER_IN_GROUP();
+            gcThanhVien.DataSource = _vUserInGroup.getUserInGroup(_madvi, _macty, idgroup );
+            gvThanhVien.OptionsBehavior.Editable = false;
+        }
         private void btnLuu_Click(object sender, EventArgs e)
         {
             if (txtTenNhom.Text.Trim()=="")
@@ -106,6 +117,15 @@ namespace Usermanagement
             frm._madvi = _madvi;
             frm.ShowDialog();
 
+        }
+
+        private void btnLoai_Click(object sender, EventArgs e)
+        {
+            if (gvThanhVien.GetFocusedRowCellValue("IDUser") != null)
+            {
+                _sysGroup.delGr(int.Parse(gvThanhVien.GetFocusedRowCellValue("IDUser").ToString()), _idUS);
+                loadUserInGroup(_idUS);
+            }
         }
     }
 }

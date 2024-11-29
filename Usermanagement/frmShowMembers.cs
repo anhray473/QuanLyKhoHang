@@ -40,10 +40,13 @@ namespace Usermanagement
         }
         private void btnLuu_Click(object sender, EventArgs e)
         {
+            
             tb_SYS_GROUP gr = new tb_SYS_GROUP();
             gr.Group = _idGroup;
             gr.ThanhVien = int.Parse(gvThanhVien.GetFocusedRowCellValue("IDUser").ToString());
             _sysGr.add(gr);
+            objGroup.loadUserInGroup(_idGroup);
+            this.Close();
         }
 
         private void btnDong_Click(object sender, EventArgs e)

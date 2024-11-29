@@ -29,32 +29,32 @@
         private void InitializeComponent()
         {
             this.tabUser = new DevExpress.XtraTab.XtraTabControl();
-            this.pageGroup = new DevExpress.XtraTab.XtraTabPage();
             this.pageUser = new DevExpress.XtraTab.XtraTabPage();
-            this.btnDong = new System.Windows.Forms.Button();
-            this.btnLuu = new System.Windows.Forms.Button();
+            this.btnLoai = new System.Windows.Forms.Button();
+            this.btnThem = new System.Windows.Forms.Button();
             this.gcThanhVien = new DevExpress.XtraGrid.GridControl();
             this.gvThanhVien = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.IDUser = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Username = new DevExpress.XtraGrid.Columns.GridColumn();
             this.HoVaTen = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.btnLoai = new System.Windows.Forms.Button();
-            this.btnThem = new System.Windows.Forms.Button();
+            this.pageGroup = new DevExpress.XtraTab.XtraTabPage();
+            this.chkDisabled = new System.Windows.Forms.CheckBox();
+            this.txtRepass = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtPass = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.txtHoTen = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtPass = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtRepass = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.chkDisabled = new System.Windows.Forms.CheckBox();
+            this.btnDong = new System.Windows.Forms.Button();
+            this.btnLuu = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tabUser)).BeginInit();
             this.tabUser.SuspendLayout();
-            this.pageGroup.SuspendLayout();
             this.pageUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcThanhVien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvThanhVien)).BeginInit();
+            this.pageGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabUser
@@ -69,21 +69,6 @@
             this.pageGroup,
             this.pageUser});
             // 
-            // pageGroup
-            // 
-            this.pageGroup.Controls.Add(this.chkDisabled);
-            this.pageGroup.Controls.Add(this.txtRepass);
-            this.pageGroup.Controls.Add(this.label4);
-            this.pageGroup.Controls.Add(this.txtPass);
-            this.pageGroup.Controls.Add(this.label3);
-            this.pageGroup.Controls.Add(this.txtHoTen);
-            this.pageGroup.Controls.Add(this.label2);
-            this.pageGroup.Controls.Add(this.txtUsername);
-            this.pageGroup.Controls.Add(this.label1);
-            this.pageGroup.Name = "pageGroup";
-            this.pageGroup.Size = new System.Drawing.Size(663, 270);
-            this.pageGroup.Text = "Thông tin";
-            // 
             // pageUser
             // 
             this.pageUser.Controls.Add(this.btnLoai);
@@ -93,29 +78,29 @@
             this.pageUser.Size = new System.Drawing.Size(663, 270);
             this.pageUser.Text = "Nhóm";
             // 
-            // btnDong
+            // btnLoai
             // 
-            this.btnDong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnDong.Location = new System.Drawing.Point(492, 330);
-            this.btnDong.Name = "btnDong";
-            this.btnDong.Size = new System.Drawing.Size(125, 43);
-            this.btnDong.TabIndex = 4;
-            this.btnDong.Text = "Đóng";
-            this.btnDong.UseVisualStyleBackColor = false;
-            this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
+            this.btnLoai.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLoai.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnLoai.Location = new System.Drawing.Point(491, 221);
+            this.btnLoai.Name = "btnLoai";
+            this.btnLoai.Size = new System.Drawing.Size(108, 35);
+            this.btnLoai.TabIndex = 6;
+            this.btnLoai.Text = "Loại";
+            this.btnLoai.UseVisualStyleBackColor = false;
+            this.btnLoai.Click += new System.EventHandler(this.btnLoai_Click);
             // 
-            // btnLuu
+            // btnThem
             // 
-            this.btnLuu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLuu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnLuu.Location = new System.Drawing.Point(337, 330);
-            this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(125, 43);
-            this.btnLuu.TabIndex = 3;
-            this.btnLuu.Text = "Lưu";
-            this.btnLuu.UseVisualStyleBackColor = false;
-            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
+            this.btnThem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnThem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnThem.Location = new System.Drawing.Point(363, 221);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(108, 35);
+            this.btnThem.TabIndex = 5;
+            this.btnThem.Text = "Thêm";
+            this.btnThem.UseVisualStyleBackColor = false;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // gcThanhVien
             // 
@@ -168,27 +153,68 @@
             this.HoVaTen.VisibleIndex = 2;
             this.HoVaTen.Width = 94;
             // 
-            // btnLoai
+            // pageGroup
             // 
-            this.btnLoai.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLoai.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnLoai.Location = new System.Drawing.Point(491, 221);
-            this.btnLoai.Name = "btnLoai";
-            this.btnLoai.Size = new System.Drawing.Size(108, 35);
-            this.btnLoai.TabIndex = 6;
-            this.btnLoai.Text = "Loại";
-            this.btnLoai.UseVisualStyleBackColor = false;
+            this.pageGroup.Controls.Add(this.chkDisabled);
+            this.pageGroup.Controls.Add(this.txtRepass);
+            this.pageGroup.Controls.Add(this.label4);
+            this.pageGroup.Controls.Add(this.txtPass);
+            this.pageGroup.Controls.Add(this.label3);
+            this.pageGroup.Controls.Add(this.txtHoTen);
+            this.pageGroup.Controls.Add(this.label2);
+            this.pageGroup.Controls.Add(this.txtUsername);
+            this.pageGroup.Controls.Add(this.label1);
+            this.pageGroup.Name = "pageGroup";
+            this.pageGroup.Size = new System.Drawing.Size(663, 270);
+            this.pageGroup.Text = "Thông tin";
             // 
-            // btnThem
+            // chkDisabled
             // 
-            this.btnThem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnThem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnThem.Location = new System.Drawing.Point(363, 221);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(108, 35);
-            this.btnThem.TabIndex = 5;
-            this.btnThem.Text = "Thêm";
-            this.btnThem.UseVisualStyleBackColor = false;
+            this.chkDisabled.AutoSize = true;
+            this.chkDisabled.Location = new System.Drawing.Point(204, 176);
+            this.chkDisabled.Name = "chkDisabled";
+            this.chkDisabled.Size = new System.Drawing.Size(97, 20);
+            this.chkDisabled.TabIndex = 12;
+            this.chkDisabled.Text = "Vô hiệu hóa";
+            this.chkDisabled.UseVisualStyleBackColor = true;
+            // 
+            // txtRepass
+            // 
+            this.txtRepass.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRepass.Location = new System.Drawing.Point(204, 128);
+            this.txtRepass.Name = "txtRepass";
+            this.txtRepass.Size = new System.Drawing.Size(276, 28);
+            this.txtRepass.TabIndex = 11;
+            this.txtRepass.UseSystemPasswordChar = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(56, 131);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(144, 21);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Nhập lại mật khẩu";
+            // 
+            // txtPass
+            // 
+            this.txtPass.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPass.Location = new System.Drawing.Point(204, 94);
+            this.txtPass.Name = "txtPass";
+            this.txtPass.Size = new System.Drawing.Size(276, 28);
+            this.txtPass.TabIndex = 9;
+            this.txtPass.UseSystemPasswordChar = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(56, 97);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(78, 21);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Mật khẩu";
             // 
             // txtHoTen
             // 
@@ -226,53 +252,29 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Tên đăng nhập";
             // 
-            // txtPass
+            // btnDong
             // 
-            this.txtPass.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPass.Location = new System.Drawing.Point(204, 94);
-            this.txtPass.Name = "txtPass";
-            this.txtPass.Size = new System.Drawing.Size(276, 28);
-            this.txtPass.TabIndex = 9;
-            this.txtPass.UseSystemPasswordChar = true;
+            this.btnDong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnDong.Location = new System.Drawing.Point(492, 330);
+            this.btnDong.Name = "btnDong";
+            this.btnDong.Size = new System.Drawing.Size(125, 43);
+            this.btnDong.TabIndex = 4;
+            this.btnDong.Text = "Đóng";
+            this.btnDong.UseVisualStyleBackColor = false;
+            this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
             // 
-            // label3
+            // btnLuu
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(56, 97);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 21);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Mật khẩu";
-            // 
-            // txtRepass
-            // 
-            this.txtRepass.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRepass.Location = new System.Drawing.Point(204, 128);
-            this.txtRepass.Name = "txtRepass";
-            this.txtRepass.Size = new System.Drawing.Size(276, 28);
-            this.txtRepass.TabIndex = 11;
-            this.txtRepass.UseSystemPasswordChar = true;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(56, 131);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(144, 21);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Nhập lại mật khẩu";
-            // 
-            // chkDisabled
-            // 
-            this.chkDisabled.AutoSize = true;
-            this.chkDisabled.Location = new System.Drawing.Point(204, 176);
-            this.chkDisabled.Name = "chkDisabled";
-            this.chkDisabled.Size = new System.Drawing.Size(97, 20);
-            this.chkDisabled.TabIndex = 12;
-            this.chkDisabled.Text = "Vô hiệu hóa";
-            this.chkDisabled.UseVisualStyleBackColor = true;
+            this.btnLuu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLuu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnLuu.Location = new System.Drawing.Point(337, 330);
+            this.btnLuu.Name = "btnLuu";
+            this.btnLuu.Size = new System.Drawing.Size(125, 43);
+            this.btnLuu.TabIndex = 3;
+            this.btnLuu.Text = "Lưu";
+            this.btnLuu.UseVisualStyleBackColor = false;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // frmUsers
             // 
@@ -287,11 +289,11 @@
             this.Load += new System.EventHandler(this.frmUsers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tabUser)).EndInit();
             this.tabUser.ResumeLayout(false);
-            this.pageGroup.ResumeLayout(false);
-            this.pageGroup.PerformLayout();
             this.pageUser.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcThanhVien)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvThanhVien)).EndInit();
+            this.pageGroup.ResumeLayout(false);
+            this.pageGroup.PerformLayout();
             this.ResumeLayout(false);
 
         }

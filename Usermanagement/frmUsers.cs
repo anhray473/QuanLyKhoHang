@@ -25,12 +25,15 @@ namespace Usermanagement
         public string _username;
         public string _fullname;
         public bool _them;
+        SYS_GROUP _sysgroup;
         SYS_USER _sysuser;
         tb_SYS_USER _user;
+        VIEW_USER_IN_GROUP _vUserInGroup;
         frmMain objMain = (frmMain)Application.OpenForms["frmMain"];
         private void frmUsers_Load(object sender, EventArgs e)
         {
             _sysuser = new SYS_USER();
+            _sysgroup = new SYS_GROUP();
             if (!_them)
             {
                 var user = _sysuser.getItem(_idUS);
@@ -42,6 +45,7 @@ namespace Usermanagement
                 txtRepass.Text = Encryptor.Encrypt(user.Password, "qwrt@123!poiuy", true);
                 chkDisabled.Checked = user.Disabled.Value;
                 txtUsername.ReadOnly = true;
+                loadGroupByUser(_idUS);
             }
             else
             {
@@ -53,7 +57,12 @@ namespace Usermanagement
                 chkDisabled.Checked = false;
             }
         }
-
+        public void loadGroupByUser(int idUser)
+        {
+            _vUserInGroup = new VIEW_USER_IN_GROUP();
+            gcThanhVien.DataSource = _vUserInGroup.getGroupByUser(_macty, _madvi, idUser);
+            gvThanhVien.OptionsBehavior.Editable = false;
+        }
         private void btnLuu_Click(object sender, EventArgs e)
         {
             if (txtUsername.Text.Trim() == "")
@@ -113,6 +122,21 @@ namespace Usermanagement
                 _sysuser.update(_user);
             }
             objMain.loadUser(_macty, _madvi);
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            frmShowGroups frm = new frmShowGroups();
+            frm._idUser = _idUS;
+            frm._macty = _macty;
+            frm._madvi = _madvi;
+            frm.ShowDialog();
+        }
+
+        private void btnLoai_Click(object sender, EventArgs e)
+        {
+            _sysgroup.delGr(_idUS, int.Parse(gvThanhVien.GetFocusedRowCellValue("IDUser").ToString()));
+            loadGroupByUser(_idUS);
         }
     }
 }
