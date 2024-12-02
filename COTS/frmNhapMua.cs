@@ -80,6 +80,70 @@ namespace COTS
             xuatThongTin();
             cboKho.SelectedIndexChanged += CboKho_SelectedIndexChanged;
             showHideControl(true);
+            //Mã chửa cháy
+            //try
+            //{
+            //    _import = false;
+            //    _listBarcode = new List<string>();
+            //    _chungtu = new CHUNGTU();
+            //    _chungtuct = new CHUNGTU_CT();
+            //    _hanghoa = new HANGHOA();
+            //    _sequence = new SYS_SEQUENCE();
+            //    _congty = new CONGTY();
+            //    _donvi = new DONVI();
+            //    _nhacungcap = new NHACUNGCAP();
+            //    _bdChungTuCT = new BindingSource();
+            //    _bdChungTu = new BindingSource();
+
+            //    dtTuNgay.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            //    dtDenNgay.Value = DateTime.Now;
+
+            //    _bdChungTu.PositionChanged += _bdChungTu_PositionChanged;
+            //    loadCongTy();
+
+            //    if (cboCongTy.Items.Count > 0)
+            //        cboCongTy.SelectedIndexChanged += CboCongTy_SelectedIndexChanged;
+
+            //    _trangthai = _TRANGTHAI.getList();
+            //    if (_trangthai != null)
+            //    {
+            //        cboTrangThai.DataSource = _trangthai;
+            //        cboTrangThai.DisplayMember = "_display";
+            //        cboTrangThai.ValueMember = "_value";
+            //    }
+
+            //    loadKho();
+            //    loadNCC();
+            //    loadKhoDanhSach();
+
+            //    var selectedKho = cboKho.SelectedValue?.ToString();
+            //    if (string.IsNullOrEmpty(selectedKho))
+            //    {
+            //        MessageBox.Show("Vui lòng chọn kho hợp lệ.");
+            //        return;
+            //    }
+
+            //    _listChungTu = _chungtu.getList(1, dtTuNgay.Value, dtDenNgay.Value.AddDays(1), selectedKho);
+            //    if (_listChungTu == null || !_listChungTu.Any())
+            //    {
+            //        _listChungTu = new List<CHUNGTU>();
+            //        MessageBox.Show("Không có chứng từ nào được tìm thấy.");
+            //    }
+
+            //    _bdChungTu.DataSource = _listChungTu;
+            //    gcDanhSach.DataSource = _bdChungTu;
+
+            //    xuatThongTin();
+
+            //    if (cboKho.Items.Count > 0)
+            //        cboKho.SelectedIndexChanged += CboKho_SelectedIndexChanged;
+
+            //    showHideControl(true);
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show($"Đã xảy ra lỗi khi tải: {ex.Message}");
+            //}
         }
 
         private void CboKho_SelectedIndexChanged(object sender, EventArgs e)

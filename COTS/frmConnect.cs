@@ -77,5 +77,10 @@ namespace COTS
                 MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void frmConnect_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

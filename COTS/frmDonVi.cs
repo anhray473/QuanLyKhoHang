@@ -162,7 +162,7 @@ namespace COTS
         }
         void loadDviByCty()
         {
-            gcDanhSach.DataSource = _donvi.getAll(cboCty.SelectedValue.ToString());
+            gcDanhSach.DataSource = _donvi.getAllCTy(cboCty.SelectedValue.ToString());
             gvDanhSach.OptionsBehavior.Editable = false;
         }
 

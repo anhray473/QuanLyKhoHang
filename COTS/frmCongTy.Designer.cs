@@ -246,7 +246,7 @@
             // SDT
             // 
             this.SDT.Caption = "ĐIỆN THOẠI";
-            this.SDT.FieldName = "DienThoai";
+            this.SDT.FieldName = "SDT";
             this.SDT.MaxWidth = 100;
             this.SDT.MinWidth = 25;
             this.SDT.Name = "SDT";

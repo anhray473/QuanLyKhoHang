@@ -1,4 +1,5 @@
-﻿using DataLayer;
+﻿using BusinessLayer;
+using DataLayer;
 using DevExpress.LookAndFeel;
 using DevExpress.Skins;
 using DevExpress.UserSkins;
@@ -43,10 +44,10 @@ namespace COTS
                 
                 
                 connoi = conStr;
-                //myFunction.servername = servername;
-                //myFunction.username = username;
-                //myFunction.password = password;
-                //myFunction.database = database;
+                MYFUNCTIONS._srv = servername;
+                MYFUNCTIONS._us = username;
+                MYFUNCTIONS._pw = password;
+                MYFUNCTIONS._db = database;
                 SqlConnection con = new SqlConnection(conStr);
 
                 try
@@ -58,11 +59,17 @@ namespace COTS
                 {
                     MessageBox.Show("Không thể kết nối CSDL.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     fs.Close();
-                    Application.Run(new frmConnect());
+                    //Application.Run(new frmConnect());
                 }
                 con.Close();
                 fs.Close();
-                Application.Run(new MainForm());
+                //Application.Run(new MainForm());
+                if (File.Exists("sysparam.ini"))
+                {
+                    Application.Run(new frmLogin());
+                }
+                else
+                    Application.Run(new frmSetParam());
 
             }
             else

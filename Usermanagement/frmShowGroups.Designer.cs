@@ -80,7 +80,7 @@
             // 
             // HoVaTen
             // 
-            this.HoVaTen.Caption = "HỌ VÀ TÊN";
+            this.HoVaTen.Caption = "FULLNAME";
             this.HoVaTen.FieldName = "HoVaTen";
             this.HoVaTen.MinWidth = 25;
             this.HoVaTen.Name = "HoVaTen";

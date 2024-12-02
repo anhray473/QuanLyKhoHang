@@ -19,6 +19,10 @@ namespace BusinessLayer
         {
             return db.tb_SYS_USER.FirstOrDefault(x=> x.IDUser == idUser);
         }
+        public tb_SYS_USER getItem(string username, string macty, string madvi)
+        {
+            return db.tb_SYS_USER.FirstOrDefault(x => x.Username == username && x.MaCTy == macty && x.MaDVi == madvi);
+        }
         public List<tb_SYS_USER> getAll()
         {
             return db.tb_SYS_USER.ToList();
@@ -26,6 +30,10 @@ namespace BusinessLayer
         public List<tb_SYS_USER> getUserByDVi(string macty, string madvi)
         {
             return db.tb_SYS_USER.Where(x=> x.MaCTy == macty && x.MaDVi== madvi).ToList();
+        }
+        public List<tb_SYS_USER> getUserByDViFunc(string macty, string madvi)
+        {
+            return db.tb_SYS_USER.Where(x => x.MaCTy == macty && x.MaDVi == madvi && x.Disabled==false).OrderByDescending(x=>x.Isgroup).ToList();
         }
         public bool checkUserExist(string macty, string madvi, string username)
         {

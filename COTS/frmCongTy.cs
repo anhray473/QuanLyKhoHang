@@ -140,16 +140,40 @@ namespace COTS
 
         private void gvDanhSach_Click(object sender, EventArgs e)
         {
-            if (gvDanhSach.RowCount > 0)
+            //if (gvDanhSach.RowCount > 0)
+            //{
+            //    _macty=gvDanhSach.GetFocusedRowCellValue("MaCTy").ToString();
+            //    txtMa.Text = gvDanhSach.GetFocusedRowCellValue("MaCTy").ToString();
+            //    txtTen.Text = gvDanhSach.GetFocusedRowCellValue("TenCTy").ToString();
+            //    txtSDT.Text = gvDanhSach.GetFocusedRowCellValue("SDT").ToString();
+            //    txtFax.Text = gvDanhSach.GetFocusedRowCellValue("Fax").ToString() ;
+            //    txtEmail.Text = gvDanhSach.GetFocusedRowCellValue("Email").ToString();
+            //    txtDiaChi.Text = gvDanhSach.GetFocusedRowCellValue("DiaChi").ToString();
+            //    chkDisabled.Checked = bool.Parse(gvDanhSach.GetFocusedRowCellValue("Disabled").ToString());
+            //}
+            try
             {
-                _macty=gvDanhSach.GetFocusedRowCellValue("MaCTy").ToString();
-                txtMa.Text = gvDanhSach.GetFocusedRowCellValue("MaCTy").ToString();
-                txtTen.Text = gvDanhSach.GetFocusedRowCellValue("TenCTy").ToString();
-                txtSDT.Text = gvDanhSach.GetFocusedRowCellValue("SDT").ToString();
-                txtFax.Text = gvDanhSach.GetFocusedRowCellValue("Fax").ToString() ;
-                txtEmail.Text = gvDanhSach.GetFocusedRowCellValue("Email").ToString();
-                txtDiaChi.Text = gvDanhSach.GetFocusedRowCellValue("DiaChi").ToString();
-                chkDisabled.Checked = bool.Parse(gvDanhSach.GetFocusedRowCellValue("Disabled").ToString());
+                if (gvDanhSach.RowCount > 0 && gvDanhSach.FocusedRowHandle >= 0)
+                {
+                    _macty = gvDanhSach.GetFocusedRowCellValue("MaCTy")?.ToString() ?? string.Empty;
+                    txtMa.Text = _macty;
+                    txtTen.Text = gvDanhSach.GetFocusedRowCellValue("TenCTy")?.ToString() ?? string.Empty;
+                    txtSDT.Text = gvDanhSach.GetFocusedRowCellValue("SDT")?.ToString() ?? string.Empty;
+                    txtFax.Text = gvDanhSach.GetFocusedRowCellValue("Fax")?.ToString() ?? string.Empty;
+                    txtEmail.Text = gvDanhSach.GetFocusedRowCellValue("Email")?.ToString() ?? string.Empty;
+                    txtDiaChi.Text = gvDanhSach.GetFocusedRowCellValue("DiaChi")?.ToString() ?? string.Empty;
+
+                    var disabled = gvDanhSach.GetFocusedRowCellValue("Disabled");
+                    chkDisabled.Checked = disabled != null && bool.Parse(disabled.ToString());
+                }
+                else
+                {
+                    MessageBox.Show("No data to display.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
             }
         }
     }

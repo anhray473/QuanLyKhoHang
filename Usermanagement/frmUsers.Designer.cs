@@ -129,8 +129,6 @@
             this.IDUser.FieldName = "IDUser";
             this.IDUser.MinWidth = 25;
             this.IDUser.Name = "IDUser";
-            this.IDUser.Visible = true;
-            this.IDUser.VisibleIndex = 0;
             this.IDUser.Width = 94;
             // 
             // Username
@@ -140,17 +138,17 @@
             this.Username.MinWidth = 25;
             this.Username.Name = "Username";
             this.Username.Visible = true;
-            this.Username.VisibleIndex = 1;
+            this.Username.VisibleIndex = 0;
             this.Username.Width = 94;
             // 
             // HoVaTen
             // 
-            this.HoVaTen.Caption = "HỌ VÀ TÊN";
+            this.HoVaTen.Caption = "FULLNAME";
             this.HoVaTen.FieldName = "HoVaTen";
             this.HoVaTen.MinWidth = 25;
             this.HoVaTen.Name = "HoVaTen";
             this.HoVaTen.Visible = true;
-            this.HoVaTen.VisibleIndex = 2;
+            this.HoVaTen.VisibleIndex = 1;
             this.HoVaTen.Width = 94;
             // 
             // pageGroup

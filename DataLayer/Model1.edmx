@@ -164,7 +164,7 @@
           </Key>
           <Property Name="RepCode" Type="int" Nullable="false" />
           <Property Name="IDUser" Type="int" Nullable="false" />
-          <Property Name="User_RIGHT" Type="int" />
+          <Property Name="User_RIGHT" Type="bit" />
         </EntityType>
         <EntityType Name="tb_SYS_SEQUENCE">
           <Key>
@@ -222,6 +222,36 @@ warning 6002: The table/view 'QLKH.dbo.V_CHUNGTU_CT' does not have a primary key
           <Property Name="SoLuong" Type="int" />
           <Property Name="DonGia" Type="float" />
           <Property Name="ThanhTien" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'QLKH.dbo.V_FUNC_SYS_RIGHT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_FUNC_SYS_RIGHT">
+          <Key>
+            <PropertyRef Name="FUNC_Code" />
+            <PropertyRef Name="SORT" />
+            <PropertyRef Name="IDUser" />
+          </Key>
+          <Property Name="FUNC_Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MoTa" Type="nvarchar" MaxLength="200" />
+          <Property Name="Isgroup" Type="bit" />
+          <Property Name="Parent" Type="varchar" MaxLength="50" />
+          <Property Name="SORT" Type="int" Nullable="false" />
+          <Property Name="IDUser" Type="int" Nullable="false" />
+          <Property Name="QUYEN" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'QLKH.dbo.V_SYS_RIGHT_REP' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_SYS_RIGHT_REP">
+          <Key>
+            <PropertyRef Name="RepCode" />
+            <PropertyRef Name="IDUser" />
+          </Key>
+          <Property Name="RepCode" Type="int" Nullable="false" />
+          <Property Name="MoTa" Type="nvarchar" MaxLength="50" />
+          <Property Name="TenRep" Type="nvarchar" MaxLength="50" />
+          <Property Name="Visibled" Type="bit" />
+          <Property Name="IDUser" Type="int" Nullable="false" />
+          <Property Name="QUYEN" Type="nvarchar" MaxLength="10" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'QLKH.dbo.V_USER_IN_GROUP' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -284,6 +314,27 @@ warning 6002: The table/view 'QLKH.dbo.V_USER_NOTIN_GROUP' does not have a prima
     [V_CHUNGTU_CT].[ThanhTien] AS [ThanhTien]
     FROM [dbo].[V_CHUNGTU_CT] AS [V_CHUNGTU_CT]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="V_FUNC_SYS_RIGHT" EntityType="Self.V_FUNC_SYS_RIGHT" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_FUNC_SYS_RIGHT].[FUNC_Code] AS [FUNC_Code], 
+    [V_FUNC_SYS_RIGHT].[MoTa] AS [MoTa], 
+    [V_FUNC_SYS_RIGHT].[Isgroup] AS [Isgroup], 
+    [V_FUNC_SYS_RIGHT].[Parent] AS [Parent], 
+    [V_FUNC_SYS_RIGHT].[SORT] AS [SORT], 
+    [V_FUNC_SYS_RIGHT].[IDUser] AS [IDUser], 
+    [V_FUNC_SYS_RIGHT].[QUYEN] AS [QUYEN]
+    FROM [dbo].[V_FUNC_SYS_RIGHT] AS [V_FUNC_SYS_RIGHT]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_SYS_RIGHT_REP" EntityType="Self.V_SYS_RIGHT_REP" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_SYS_RIGHT_REP].[RepCode] AS [RepCode], 
+    [V_SYS_RIGHT_REP].[MoTa] AS [MoTa], 
+    [V_SYS_RIGHT_REP].[TenRep] AS [TenRep], 
+    [V_SYS_RIGHT_REP].[Visibled] AS [Visibled], 
+    [V_SYS_RIGHT_REP].[IDUser] AS [IDUser], 
+    [V_SYS_RIGHT_REP].[QUYEN] AS [QUYEN]
+    FROM [dbo].[V_SYS_RIGHT_REP] AS [V_SYS_RIGHT_REP]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="V_USER_IN_GROUP" EntityType="Self.V_USER_IN_GROUP" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [V_USER_IN_GROUP].[IDUser] AS [IDUser], 
@@ -328,7 +379,6 @@ warning 6002: The table/view 'QLKH.dbo.V_USER_NOTIN_GROUP' does not have a prima
           <EntitySet Name="tb_SYS_GROUP" EntityType="KHOHANG.tb_SYS_GROUP" />
           <EntitySet Name="tb_SYS_REPORT" EntityType="KHOHANG.tb_SYS_REPORT" />
           <EntitySet Name="tb_SYS_RIGHT" EntityType="KHOHANG.tb_SYS_RIGHT" />
-          <EntitySet Name="tb_SYS_RIGHT_REP" EntityType="KHOHANG.tb_SYS_RIGHT_REP" />
           <EntitySet Name="tb_SYS_SEQUENCE" EntityType="KHOHANG.tb_SYS_SEQUENCE" />
           <EntitySet Name="tb_TONKHO" EntityType="KHOHANG.tb_TONKHO" />
           <EntitySet Name="tb_XUATXU" EntityType="KHOHANG.tb_XUATXU" />
@@ -336,6 +386,9 @@ warning 6002: The table/view 'QLKH.dbo.V_USER_NOTIN_GROUP' does not have a prima
           <EntitySet Name="V_USER_NOTIN_GROUP" EntityType="KHOHANG.V_USER_NOTIN_GROUP" />
           <EntitySet Name="V_USER_IN_GROUP" EntityType="KHOHANG.V_USER_IN_GROUP" />
           <EntitySet Name="tb_SYS_USER" EntityType="KHOHANG.tb_SYS_USER" />
+          <EntitySet Name="V_FUNC_SYS_RIGHT" EntityType="KHOHANG.V_FUNC_SYS_RIGHT" />
+          <EntitySet Name="V_SYS_RIGHT_REP" EntityType="KHOHANG.V_SYS_RIGHT_REP" />
+          <EntitySet Name="tb_SYS_RIGHT_REP" EntityType="KHOHANG.tb_SYS_RIGHT_REP" />
         </EntityContainer>
         <EntityType Name="tb_CHUNGTU">
           <Key>
@@ -489,15 +542,6 @@ warning 6002: The table/view 'QLKH.dbo.V_USER_NOTIN_GROUP' does not have a prima
           <Property Name="IDUser" Type="Int32" Nullable="false" />
           <Property Name="User_RIGHT" Type="Int32" />
         </EntityType>
-        <EntityType Name="tb_SYS_RIGHT_REP">
-          <Key>
-            <PropertyRef Name="RepCode" />
-            <PropertyRef Name="IDUser" />
-          </Key>
-          <Property Name="RepCode" Type="Int32" Nullable="false" />
-          <Property Name="IDUser" Type="Int32" Nullable="false" />
-          <Property Name="User_RIGHT" Type="Int32" />
-        </EntityType>
         <EntityType Name="tb_SYS_SEQUENCE">
           <Key>
             <PropertyRef Name="SEQNAME" />
@@ -581,6 +625,41 @@ warning 6002: The table/view 'QLKH.dbo.V_USER_NOTIN_GROUP' does not have a prima
           <Property Name="MaDVi" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Disabled" Type="Boolean" />
           <Property Name="Isgroup" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="V_FUNC_SYS_RIGHT">
+          <Key>
+            <PropertyRef Name="FUNC_Code" />
+            <PropertyRef Name="SORT" />
+            <PropertyRef Name="IDUser" />
+          </Key>
+          <Property Name="FUNC_Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MoTa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Isgroup" Type="Boolean" />
+          <Property Name="Parent" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SORT" Type="Int32" Nullable="false" />
+          <Property Name="IDUser" Type="Int32" Nullable="false" />
+          <Property Name="QUYEN" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="V_SYS_RIGHT_REP">
+          <Key>
+            <PropertyRef Name="RepCode" />
+            <PropertyRef Name="IDUser" />
+          </Key>
+          <Property Name="RepCode" Type="Int32" Nullable="false" />
+          <Property Name="MoTa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TenRep" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Visibled" Type="Boolean" />
+          <Property Name="IDUser" Type="Int32" Nullable="false" />
+          <Property Name="QUYEN" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tb_SYS_RIGHT_REP">
+          <Key>
+            <PropertyRef Name="RepCode" />
+            <PropertyRef Name="IDUser" />
+          </Key>
+          <Property Name="RepCode" Type="Int32" Nullable="false" />
+          <Property Name="IDUser" Type="Int32" Nullable="false" />
+          <Property Name="User_RIGHT" Type="Boolean" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -749,15 +828,6 @@ warning 6002: The table/view 'QLKH.dbo.V_USER_NOTIN_GROUP' does not have a prima
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tb_SYS_RIGHT_REP">
-            <EntityTypeMapping TypeName="KHOHANG.tb_SYS_RIGHT_REP">
-              <MappingFragment StoreEntitySet="tb_SYS_RIGHT_REP">
-                <ScalarProperty Name="User_RIGHT" ColumnName="User_RIGHT" />
-                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
-                <ScalarProperty Name="RepCode" ColumnName="RepCode" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tb_SYS_SEQUENCE">
             <EntityTypeMapping TypeName="KHOHANG.tb_SYS_SEQUENCE">
               <MappingFragment StoreEntitySet="tb_SYS_SEQUENCE">
@@ -845,6 +915,40 @@ warning 6002: The table/view 'QLKH.dbo.V_USER_NOTIN_GROUP' does not have a prima
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_FUNC_SYS_RIGHT">
+            <EntityTypeMapping TypeName="KHOHANG.V_FUNC_SYS_RIGHT">
+              <MappingFragment StoreEntitySet="V_FUNC_SYS_RIGHT">
+                <ScalarProperty Name="QUYEN" ColumnName="QUYEN" />
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+                <ScalarProperty Name="SORT" ColumnName="SORT" />
+                <ScalarProperty Name="Parent" ColumnName="Parent" />
+                <ScalarProperty Name="Isgroup" ColumnName="Isgroup" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="FUNC_Code" ColumnName="FUNC_Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_SYS_RIGHT_REP">
+            <EntityTypeMapping TypeName="KHOHANG.V_SYS_RIGHT_REP">
+              <MappingFragment StoreEntitySet="V_SYS_RIGHT_REP">
+                <ScalarProperty Name="QUYEN" ColumnName="QUYEN" />
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+                <ScalarProperty Name="Visibled" ColumnName="Visibled" />
+                <ScalarProperty Name="TenRep" ColumnName="TenRep" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="RepCode" ColumnName="RepCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_SYS_RIGHT_REP">
+            <EntityTypeMapping TypeName="KHOHANG.tb_SYS_RIGHT_REP">
+              <MappingFragment StoreEntitySet="tb_SYS_RIGHT_REP">
+                <ScalarProperty Name="User_RIGHT" ColumnName="User_RIGHT" />
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+                <ScalarProperty Name="RepCode" ColumnName="RepCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

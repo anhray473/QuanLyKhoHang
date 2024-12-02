@@ -75,6 +75,18 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPhanQuyenBaoCao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPhanQuyenBaoCao.Designer.cs">
+      <DependentUpon>frmPhanQuyenBaoCao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPhanQuyenChucNang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPhanQuyenChucNang.Designer.cs">
+      <DependentUpon>frmPhanQuyenChucNang.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmShowGroups.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +119,12 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmPhanQuyenBaoCao.resx">
+      <DependentUpon>frmPhanQuyenBaoCao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPhanQuyenChucNang.resx">
+      <DependentUpon>frmPhanQuyenChucNang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmShowGroups.resx">
       <DependentUpon>frmShowGroups.cs</DependentUpon>
     </EmbeddedResource>
@@ -125,6 +143,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="App.config" />
     <None Include="packages.config" />
@@ -147,6 +166,9 @@
       <Project>{69103c20-4b91-452e-9a3d-32b9e503b0e5}</Project>
       <Name>DataLayer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\team16x16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

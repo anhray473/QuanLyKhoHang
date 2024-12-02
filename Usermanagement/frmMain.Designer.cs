@@ -104,6 +104,7 @@
             // 
             this.btnChucNang.Caption = "Phân quyền chức năng";
             this.btnChucNang.Id = 4;
+            this.btnChucNang.ImageOptions.Image = global::Usermanagement.Properties.Resources.team16x16;
             this.btnChucNang.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnChucNang.ImageOptions.LargeImage")));
             this.btnChucNang.Name = "btnChucNang";
             this.btnChucNang.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnChucNang_ItemClick);
@@ -255,7 +256,7 @@
             // 
             // HoVaTen
             // 
-            this.HoVaTen.Caption = "HỌ VÀ TÊN";
+            this.HoVaTen.Caption = "FULNAME";
             this.HoVaTen.FieldName = "HoVaTen";
             this.HoVaTen.MinWidth = 25;
             this.HoVaTen.Name = "HoVaTen";

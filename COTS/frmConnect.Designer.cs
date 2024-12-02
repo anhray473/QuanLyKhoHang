@@ -171,6 +171,7 @@
             this.MinimizeBox = false;
             this.Name = "frmConnect";
             this.Text = "Kết nối cơ sở dữ liệu";
+            this.Load += new System.EventHandler(this.frmConnect_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();

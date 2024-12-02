@@ -17,7 +17,6 @@
         <EntityTypeShape EntityType="KHOHANG.tb_SYS_GROUP" Width="1.5" PointX="2.75" PointY="8.75" />
         <EntityTypeShape EntityType="KHOHANG.tb_SYS_REPORT" Width="1.5" PointX="8.75" PointY="3.75" />
         <EntityTypeShape EntityType="KHOHANG.tb_SYS_RIGHT" Width="1.5" PointX="8.75" PointY="7.75" />
-        <EntityTypeShape EntityType="KHOHANG.tb_SYS_RIGHT_REP" Width="1.5" PointX="4.75" PointY="9.75" />
         <EntityTypeShape EntityType="KHOHANG.tb_SYS_SEQUENCE" Width="1.5" PointX="10.75" PointY="0.75" />
         <EntityTypeShape EntityType="KHOHANG.tb_TONKHO" Width="1.5" PointX="6.75" PointY="10.75" />
         <EntityTypeShape EntityType="KHOHANG.tb_XUATXU" Width="1.5" PointX="10.75" PointY="7.75" />
@@ -25,6 +24,9 @@
         <EntityTypeShape EntityType="KHOHANG.V_USER_NOTIN_GROUP" Width="1.5" PointX="11.375" PointY="10.75" />
         <EntityTypeShape EntityType="KHOHANG.V_USER_IN_GROUP" Width="1.5" PointX="0.75" PointY="12.75" />
         <EntityTypeShape EntityType="KHOHANG.tb_SYS_USER" Width="1.5" PointX="11.375" PointY="3.75" />
+        <EntityTypeShape EntityType="KHOHANG.V_FUNC_SYS_RIGHT" Width="1.5" PointX="3.375" PointY="12.75" />
+        <EntityTypeShape EntityType="KHOHANG.V_SYS_RIGHT_REP" Width="1.5" PointX="13.375" PointY="0.75" />
+        <EntityTypeShape EntityType="KHOHANG.tb_SYS_RIGHT_REP" Width="1.5" PointX="13.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

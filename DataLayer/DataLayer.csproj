@@ -123,6 +123,12 @@
     <Compile Include="V_CHUNGTU_CT.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="V_FUNC_SYS_RIGHT.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_SYS_RIGHT_REP.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="V_USER_IN_GROUP.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
