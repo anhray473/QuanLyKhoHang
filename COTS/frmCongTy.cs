@@ -19,10 +19,18 @@ namespace COTS
         {
             InitializeComponent();
         }
+        public frmCongTy(tb_SYS_USER user, int right)
+        {
+            InitializeComponent();
+            this._user = user;
+            this._right = right;
+        }
 
         CONGTY _congty;
         bool _them;
         string _macty;
+        int _right;
+        tb_SYS_USER _user;
         private void frmCongTy_Load(object sender, EventArgs e)
         {
             _congty = new CONGTY();
@@ -66,6 +74,11 @@ namespace COTS
         }
         private void btnThem_Click(object sender, EventArgs e)
         {
+            if (_right == 1)
+            {
+                MessageBox.Show("Không có quyền thao tác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             _them =true;
             txtMa.Enabled = true;
             showHideControl(false);
@@ -76,6 +89,11 @@ namespace COTS
 
         private void btnSua_Click(object sender, EventArgs e)
         {
+            if (_right == 1)
+            {
+                MessageBox.Show("Không có quyền thao tác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             _them = false;
             _enabled(true);
             txtMa.Enabled = false;
@@ -84,7 +102,12 @@ namespace COTS
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Bạn có chắc chắn muốn xóa không?","Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (_right == 1)
+            {
+                MessageBox.Show("Không có quyền thao tác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (MessageBox.Show("Bạn có chắc chắn muốn xóa không?","Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 _congty.delete(_macty);
             }

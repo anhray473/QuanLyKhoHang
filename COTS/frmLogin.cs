@@ -83,13 +83,13 @@ namespace COTS
                 MessageBox.Show("Tên đăng nhập không tồn tại.","Thông báo", MessageBoxButtons.OK,MessageBoxIcon.Information);
                 return;
             }
-            string pass = txtPassword.Text;//Encryptor.Encrypt(txtPassword.Text, "qwert@123!poiuy", true);
+            string pass = txtPassword.Text; /*Encryptor.Encrypt(txtPassword.Text, "qwert@123!poiuy", true); */
             tb_SYS_USER user = _sysUser.getItem(txtUsername.Text.Trim(), _sysParam.macty, _sysParam.madvi);
             if (user.Password.Equals(pass))
             {
                 MainForm frm =  new MainForm(user);
                 frm.ShowDialog();
-                this.Hide();
+                this.Hide();    
             }
             else
             {

@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static DevExpress.XtraEditors.Mask.MaskSettings;
 
 namespace COTS
 {
@@ -18,6 +19,14 @@ namespace COTS
         public frmDonVi()
         {
             InitializeComponent();
+        }
+        int _right;
+        tb_SYS_USER _user;
+        public frmDonVi(tb_SYS_USER user, int right)
+        {
+            InitializeComponent();
+            this._user = user;
+            this._right = right;
         }
         DONVI _donvi;
         CONGTY _congty;
@@ -78,6 +87,11 @@ namespace COTS
 
         private void btnThem_Click(object sender, EventArgs e)
         {
+            if (_right == 1)
+            {
+                MessageBox.Show("Không có quyền thao tác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             _them = true;
             txtMa.Enabled = true;
             showHideControl(false);
@@ -88,6 +102,11 @@ namespace COTS
 
         private void btnSua_Click(object sender, EventArgs e)
         {
+            if (_right == 1)
+            {
+                MessageBox.Show("Không có quyền thao tác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             _them = false;
             _enabled(true);
             txtMa.Enabled = false;
@@ -96,6 +115,11 @@ namespace COTS
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
+            if (_right == 1)
+            {
+                MessageBox.Show("Không có quyền thao tác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             if (MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 _donvi.delete(_madvi);

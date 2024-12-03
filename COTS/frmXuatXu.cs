@@ -19,9 +19,17 @@ namespace COTS
         {
             InitializeComponent();
         }
+        public frmXuatXu(tb_SYS_USER user, int right)
+        {
+            InitializeComponent();
+            this._user = user;
+            this._right = right;
+        }
         XUATXU _xx;
         bool _them;
         int _id;
+        int _right;
+        tb_SYS_USER _user;
 
         private void frmXuatXu_Load(object sender, EventArgs e)
         {
@@ -57,6 +65,11 @@ namespace COTS
         }
         private void btnXoa_Click(object sender, EventArgs e)
         {
+            if (_right == 1)
+            {
+                MessageBox.Show("Không có quyền thao tác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             if (MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 _xx.delete(_id);
@@ -66,6 +79,11 @@ namespace COTS
 
         private void btnThem_Click(object sender, EventArgs e)
         {
+            if (_right == 1)
+            {
+                MessageBox.Show("Không có quyền thao tác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             _them = true;
             showHideControl(false);
             _enabled(true);
@@ -119,6 +137,11 @@ namespace COTS
 
         private void btnSua_Click(object sender, EventArgs e)
         {
+            if (_right == 1)
+            {
+                MessageBox.Show("Không có quyền thao tác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             _them = false;
             _enabled(true);
             showHideControl(false);

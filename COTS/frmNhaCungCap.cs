@@ -19,9 +19,18 @@ namespace COTS
         {
             InitializeComponent();
         }
+        public frmNhaCungCap(tb_SYS_USER user, int right)
+        {
+            InitializeComponent();
+            this._user = user;
+            this._right = right;
+        
+    }
         NHACUNGCAP _ncc;
         bool _them;
         int _mancc;
+        int _right;
+        tb_SYS_USER _user;
 
         private void frmNhaCungCap_Load(object sender, EventArgs e)
         {
@@ -67,6 +76,11 @@ namespace COTS
 
         private void btnThem_Click(object sender, EventArgs e)
         {
+            if (_right == 1)
+            {
+                MessageBox.Show("Không có quyền thao tác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             _them = true;
             txtMa.Enabled = false;
             showHideControl(false);
@@ -76,6 +90,11 @@ namespace COTS
 
         private void btnSua_Click(object sender, EventArgs e)
         {
+            if (_right == 1)
+            {
+                MessageBox.Show("Không có quyền thao tác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             _them = false;
             _enabled(true);
             txtMa.Enabled = false;
@@ -84,6 +103,11 @@ namespace COTS
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
+            if (_right == 1)
+            {
+                MessageBox.Show("Không có quyền thao tác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             if (MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 _ncc.delete(_mancc);

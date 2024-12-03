@@ -101,49 +101,49 @@ namespace COTS
                             //frmCongTy = frmConnect = new frmCongTy(_user, _uRight.User_RIGHT.Value);
                             //frmConnect.ShowDialog();
                             //break;
-                            frmCongTy frm = new frmCongTy();
+                            frmCongTy frm = new frmCongTy(_user, _uRight.User_RIGHT.Value);
                             frm.ShowDialog();
                             break;
                         }
                     case "DONVI":
                         {
-                            frmDonVi frm = new frmDonVi();
+                            frmDonVi frm = new frmDonVi(_user, _uRight.User_RIGHT.Value);
                             frm.ShowDialog();
                             break;
                         }
                     case "NHACUNGCAP":
                         {
-                            frmNhaCungCap frm = new frmNhaCungCap();
+                            frmNhaCungCap frm = new frmNhaCungCap(_user, _uRight.User_RIGHT.Value);
                             frm.ShowDialog();
                             break;
                         }
                     case "NHOMHH":
                         {
-                            frmNhomHH frm = new frmNhomHH();
+                            frmNhomHH frm = new frmNhomHH(_user, _uRight.User_RIGHT.Value);
                             frm.ShowDialog();
                             break;
                         }
                     case "DVT":
                         {
-                            frmDVT frm = new frmDVT();
+                            frmDVT frm = new frmDVT(_user, _uRight.User_RIGHT.Value);
                             frm.ShowDialog();
                             break;
                         }
                     case "XUATXU":
                         {
-                            frmXuatXu frm = new frmXuatXu();
+                            frmXuatXu frm = new frmXuatXu(_user, _uRight.User_RIGHT.Value);
                             frm.ShowDialog();
                             break;
                         }
                     case "HANGHOA":
                         {
-                            frmHangHoa frm = new frmHangHoa();
+                            frmHangHoa frm = new frmHangHoa(_user, _uRight.User_RIGHT.Value);
                             frm.ShowDialog();
                             break;
                         }
                     case "NHAPMUA":
                         {
-                            frmNhapMua frm = new frmNhapMua();
+                            frmNhapMua frm = new frmNhapMua(_user, _uRight.User_RIGHT.Value);
                             frm.ShowDialog();
                             break;
                         }

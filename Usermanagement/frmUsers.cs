@@ -41,8 +41,8 @@ namespace Usermanagement
                 _macty = user.MaCTy;
                 _madvi = user.MaDVi;
                 txtHoTen.Text = user.HoVaTen;
-                txtPass.Text = Encryptor.Encrypt(user.Password, "qwrt@123!poiuy", true);
-                txtRepass.Text = Encryptor.Encrypt(user.Password, "qwrt@123!poiuy", true);
+                txtPass.Text = user.Password; //Encryptor.Encrypt(user.Password, "qwert@123!poiuy", true);
+                txtRepass.Text = user.Password; //Encryptor.Encrypt(user.Password, "qwert@123!poiuy", true);
                 chkDisabled.Checked = user.Disabled.Value;
                 txtUsername.ReadOnly = true;
                 loadGroupByUser(_idUS);
@@ -101,7 +101,7 @@ namespace Usermanagement
                 _user = new tb_SYS_USER();
                 _user.Username = txtUsername.Text.Trim();
                 _user.HoVaTen = txtHoTen.Text;
-                _user.Password = Encryptor.Encrypt(txtPass.Text.Trim(), "qwrt@123!poiuy", true);
+                _user.Password = txtPass.Text;//Encryptor.Encrypt(txtPass.Text.Trim(), "qwert@123!poiuy", true);
                 _user.Isgroup = false;
                 _user.Disabled = false;
                 _user.MaCTy = _macty;
@@ -114,7 +114,7 @@ namespace Usermanagement
             {
                 _user = _sysuser.getItem(_idUS);
                 _user.HoVaTen = txtHoTen.Text;
-                _user.Password = Encryptor.Encrypt(txtPass.Text.Trim(), "qwrt@123!poiuy", true);
+                _user.Password = txtPass.Text; //Encryptor.Encrypt(txtPass.Text.Trim(), "qwert@123!poiuy", true);
                 _user.Isgroup = false;
                 _user.Disabled = chkDisabled.Checked;
                 _user.MaCTy = _macty;
