@@ -1,6 +1,6 @@
 ﻿namespace COTS
 {
-    partial class frmNhapMua
+    partial class frmXuatNB
     {
         /// <summary>
         /// Required designer variable.
@@ -29,21 +29,25 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNhapMua));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmXuatNB));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnThem = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnSua = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnXoa = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnIn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.btnLuu = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnBoQua = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.btnThoat = new System.Windows.Forms.ToolStripButton();
+            this.tabChungTu = new DevExpress.XtraTab.XtraTabControl();
+            this.pageDanhSach = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.cboKho = new System.Windows.Forms.ComboBox();
+            this.cboDonVi = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cboCongTy = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -63,17 +67,15 @@
             this.GhiChu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TrangThai = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.tabChungTu = new DevExpress.XtraTab.XtraTabControl();
-            this.pageDanhSach = new DevExpress.XtraTab.XtraTabPage();
             this.pageChiTiet = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             this.txtGhiChu = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.lblXoa = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.cboNCC = new System.Windows.Forms.ComboBox();
+            this.cboDonViNhap = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cboDonVi = new System.Windows.Forms.ComboBox();
+            this.cboDonViXuat = new System.Windows.Forms.ComboBox();
             this.cboTrangThai = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtSoPhieu = new System.Windows.Forms.TextBox();
@@ -89,9 +91,13 @@
             this.ThanhTien = new DevExpress.XtraGrid.Columns.GridColumn();
             this.STT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.contextMenuChiTiet = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.xóaDòngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.xemChiTiếtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnXoaDong = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnXoaCT = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnImport = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tabChungTu)).BeginInit();
+            this.tabChungTu.SuspendLayout();
+            this.pageDanhSach.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
             this.splitContainerControl1.Panel1.SuspendLayout();
@@ -101,9 +107,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDanhSach)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tabChungTu)).BeginInit();
-            this.tabChungTu.SuspendLayout();
-            this.pageDanhSach.SuspendLayout();
             this.pageChiTiet.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel1)).BeginInit();
@@ -127,6 +130,8 @@
             this.btnSua,
             this.toolStripSeparator2,
             this.btnXoa,
+            this.toolStripSeparator6,
+            this.btnIn,
             this.toolStripSeparator4,
             this.btnLuu,
             this.toolStripSeparator3,
@@ -135,8 +140,8 @@
             this.btnThoat});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1098, 59);
-            this.toolStrip1.TabIndex = 5;
+            this.toolStrip1.Size = new System.Drawing.Size(1150, 59);
+            this.toolStrip1.TabIndex = 6;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // btnThem
@@ -181,6 +186,20 @@
             this.btnXoa.Text = "Xóa";
             this.btnXoa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 59);
+            // 
+            // btnIn
+            // 
+            this.btnIn.Image = ((System.Drawing.Image)(resources.GetObject("btnIn.Image")));
+            this.btnIn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(45, 56);
+            this.btnIn.Text = "In";
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
             // 
             // toolStripSeparator4
             // 
@@ -230,6 +249,28 @@
             this.btnThoat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
+            // tabChungTu
+            // 
+            this.tabChungTu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabChungTu.Location = new System.Drawing.Point(0, 59);
+            this.tabChungTu.Name = "tabChungTu";
+            this.tabChungTu.SelectedTabPage = this.pageDanhSach;
+            this.tabChungTu.Size = new System.Drawing.Size(1150, 528);
+            this.tabChungTu.TabIndex = 8;
+            this.tabChungTu.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.pageDanhSach,
+            this.pageChiTiet});
+            this.tabChungTu.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.tabChungTu_SelectedPageChanged);
+            // 
+            // pageDanhSach
+            // 
+            this.pageDanhSach.Appearance.Header.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pageDanhSach.Appearance.Header.Options.UseFont = true;
+            this.pageDanhSach.Controls.Add(this.splitContainerControl1);
+            this.pageDanhSach.Name = "pageDanhSach";
+            this.pageDanhSach.Size = new System.Drawing.Size(1148, 496);
+            this.pageDanhSach.Text = "Danh Sách";
+            // 
             // splitContainerControl1
             // 
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -239,7 +280,7 @@
             // 
             // splitContainerControl1.Panel1
             // 
-            this.splitContainerControl1.Panel1.Controls.Add(this.cboKho);
+            this.splitContainerControl1.Panel1.Controls.Add(this.cboDonVi);
             this.splitContainerControl1.Panel1.Controls.Add(this.label4);
             this.splitContainerControl1.Panel1.Controls.Add(this.cboCongTy);
             this.splitContainerControl1.Panel1.Controls.Add(this.label3);
@@ -253,16 +294,16 @@
             // 
             this.splitContainerControl1.Panel2.Controls.Add(this.gcDanhSach);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(1096, 543);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1148, 496);
             this.splitContainerControl1.TabIndex = 6;
             // 
-            // cboKho
+            // cboDonVi
             // 
-            this.cboKho.FormattingEnabled = true;
-            this.cboKho.Location = new System.Drawing.Point(400, 42);
-            this.cboKho.Name = "cboKho";
-            this.cboKho.Size = new System.Drawing.Size(446, 24);
-            this.cboKho.TabIndex = 7;
+            this.cboDonVi.FormattingEnabled = true;
+            this.cboDonVi.Location = new System.Drawing.Point(400, 42);
+            this.cboDonVi.Name = "cboDonVi";
+            this.cboDonVi.Size = new System.Drawing.Size(446, 24);
+            this.cboDonVi.TabIndex = 7;
             // 
             // label4
             // 
@@ -301,6 +342,8 @@
             this.dtDenNgay.Name = "dtDenNgay";
             this.dtDenNgay.Size = new System.Drawing.Size(200, 28);
             this.dtDenNgay.TabIndex = 3;
+            this.dtDenNgay.ValueChanged += new System.EventHandler(this.dtDenNgay_ValueChanged);
+            this.dtDenNgay.Leave += new System.EventHandler(this.dtDenNgay_Leave);
             // 
             // label2
             // 
@@ -321,6 +364,8 @@
             this.dtTuNgay.Name = "dtTuNgay";
             this.dtTuNgay.Size = new System.Drawing.Size(200, 28);
             this.dtTuNgay.TabIndex = 1;
+            this.dtTuNgay.ValueChanged += new System.EventHandler(this.dtTuNgay_ValueChanged);
+            this.dtTuNgay.Leave += new System.EventHandler(this.dtTuNgay_Leave);
             // 
             // label1
             // 
@@ -338,7 +383,7 @@
             this.gcDanhSach.Location = new System.Drawing.Point(0, 0);
             this.gcDanhSach.MainView = this.gvDanhSach;
             this.gcDanhSach.Name = "gcDanhSach";
-            this.gcDanhSach.Size = new System.Drawing.Size(1096, 431);
+            this.gcDanhSach.Size = new System.Drawing.Size(1148, 384);
             this.gcDanhSach.TabIndex = 0;
             this.gcDanhSach.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvDanhSach,
@@ -360,6 +405,9 @@
             this.gvDanhSach.Name = "gvDanhSach";
             this.gvDanhSach.OptionsView.ShowGroupPanel = false;
             this.gvDanhSach.RowHeight = 25;
+            this.gvDanhSach.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gvDanhSach_CustomDrawRowIndicator);
+            this.gvDanhSach.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.gvDanhSach_CustomDrawCell);
+            this.gvDanhSach.DoubleClick += new System.EventHandler(this.gvDanhSach_DoubleClick);
             // 
             // NguoiXoa
             // 
@@ -473,34 +521,13 @@
             this.gridView1.GridControl = this.gcDanhSach;
             this.gridView1.Name = "gridView1";
             // 
-            // tabChungTu
-            // 
-            this.tabChungTu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabChungTu.Location = new System.Drawing.Point(0, 59);
-            this.tabChungTu.Name = "tabChungTu";
-            this.tabChungTu.SelectedTabPage = this.pageDanhSach;
-            this.tabChungTu.Size = new System.Drawing.Size(1098, 575);
-            this.tabChungTu.TabIndex = 7;
-            this.tabChungTu.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
-            this.pageDanhSach,
-            this.pageChiTiet});
-            // 
-            // pageDanhSach
-            // 
-            this.pageDanhSach.Appearance.Header.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pageDanhSach.Appearance.Header.Options.UseFont = true;
-            this.pageDanhSach.Controls.Add(this.splitContainerControl1);
-            this.pageDanhSach.Name = "pageDanhSach";
-            this.pageDanhSach.Size = new System.Drawing.Size(1096, 543);
-            this.pageDanhSach.Text = "Danh Sách";
-            // 
             // pageChiTiet
             // 
             this.pageChiTiet.Appearance.Header.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pageChiTiet.Appearance.Header.Options.UseFont = true;
             this.pageChiTiet.Controls.Add(this.splitContainerControl2);
             this.pageChiTiet.Name = "pageChiTiet";
-            this.pageChiTiet.Size = new System.Drawing.Size(1096, 543);
+            this.pageChiTiet.Size = new System.Drawing.Size(1148, 496);
             this.pageChiTiet.Text = "Chi Tiết";
             // 
             // splitContainerControl2
@@ -529,7 +556,7 @@
             // 
             this.splitContainerControl2.Panel2.Controls.Add(this.gcChiTiet);
             this.splitContainerControl2.Panel2.Text = "Panel2";
-            this.splitContainerControl2.Size = new System.Drawing.Size(1096, 543);
+            this.splitContainerControl2.Size = new System.Drawing.Size(1148, 496);
             this.splitContainerControl2.SplitterPosition = 179;
             this.splitContainerControl2.TabIndex = 0;
             // 
@@ -564,45 +591,45 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.cboNCC);
+            this.groupBox2.Controls.Add(this.cboDonViNhap);
             this.groupBox2.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(569, 54);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(440, 61);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Nhà cung cấp";
+            this.groupBox2.Text = "Đơn vị nhập";
             // 
-            // cboNCC
+            // cboDonViNhap
             // 
-            this.cboNCC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboNCC.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboNCC.FormattingEnabled = true;
-            this.cboNCC.Location = new System.Drawing.Point(6, 26);
-            this.cboNCC.Name = "cboNCC";
-            this.cboNCC.Size = new System.Drawing.Size(428, 29);
-            this.cboNCC.TabIndex = 9;
+            this.cboDonViNhap.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDonViNhap.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboDonViNhap.FormattingEnabled = true;
+            this.cboDonViNhap.Location = new System.Drawing.Point(6, 26);
+            this.cboDonViNhap.Name = "cboDonViNhap";
+            this.cboDonViNhap.Size = new System.Drawing.Size(428, 29);
+            this.cboDonViNhap.TabIndex = 9;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.cboDonVi);
+            this.groupBox1.Controls.Add(this.cboDonViXuat);
             this.groupBox1.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(66, 54);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(440, 61);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Đơn vị nhập";
+            this.groupBox1.Text = "Đơn vị xuất";
             // 
-            // cboDonVi
+            // cboDonViXuat
             // 
-            this.cboDonVi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboDonVi.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboDonVi.FormattingEnabled = true;
-            this.cboDonVi.Location = new System.Drawing.Point(6, 26);
-            this.cboDonVi.Name = "cboDonVi";
-            this.cboDonVi.Size = new System.Drawing.Size(428, 29);
-            this.cboDonVi.TabIndex = 9;
+            this.cboDonViXuat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDonViXuat.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboDonViXuat.FormattingEnabled = true;
+            this.cboDonViXuat.Location = new System.Drawing.Point(6, 26);
+            this.cboDonViXuat.Name = "cboDonViXuat";
+            this.cboDonViXuat.Size = new System.Drawing.Size(428, 29);
+            this.cboDonViXuat.TabIndex = 9;
             // 
             // cboTrangThai
             // 
@@ -669,7 +696,7 @@
             this.gcChiTiet.Location = new System.Drawing.Point(0, 0);
             this.gcChiTiet.MainView = this.gvChiTiet;
             this.gcChiTiet.Name = "gcChiTiet";
-            this.gcChiTiet.Size = new System.Drawing.Size(1096, 352);
+            this.gcChiTiet.Size = new System.Drawing.Size(1148, 305);
             this.gcChiTiet.TabIndex = 0;
             this.gcChiTiet.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvChiTiet});
@@ -764,35 +791,49 @@
             // 
             this.contextMenuChiTiet.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuChiTiet.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.xóaDòngToolStripMenuItem,
-            this.xemChiTiếtToolStripMenuItem});
+            this.mnXoaDong,
+            this.mnXoaCT,
+            this.mnImport});
             this.contextMenuChiTiet.Name = "contextMenuChiTiet";
-            this.contextMenuChiTiet.Size = new System.Drawing.Size(158, 52);
+            this.contextMenuChiTiet.Size = new System.Drawing.Size(162, 76);
             // 
-            // xóaDòngToolStripMenuItem
+            // mnXoaDong
             // 
-            this.xóaDòngToolStripMenuItem.Name = "xóaDòngToolStripMenuItem";
-            this.xóaDòngToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
-            this.xóaDòngToolStripMenuItem.Text = "Xóa dòng";
+            this.mnXoaDong.Name = "mnXoaDong";
+            this.mnXoaDong.Size = new System.Drawing.Size(161, 24);
+            this.mnXoaDong.Text = "Xóa dòng";
+            this.mnXoaDong.Click += new System.EventHandler(this.mnXoaDong_Click);
             // 
-            // xemChiTiếtToolStripMenuItem
+            // mnXoaCT
             // 
-            this.xemChiTiếtToolStripMenuItem.Name = "xemChiTiếtToolStripMenuItem";
-            this.xemChiTiếtToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
-            this.xemChiTiếtToolStripMenuItem.Text = "Xem chi tiết";
+            this.mnXoaCT.Name = "mnXoaCT";
+            this.mnXoaCT.Size = new System.Drawing.Size(161, 24);
+            this.mnXoaCT.Text = "Xóa chi tiết";
+            this.mnXoaCT.Click += new System.EventHandler(this.mnXoaCT_Click);
             // 
-            // frmNhapMua
+            // mnImport
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1098, 634);
+            this.mnImport.Name = "mnImport";
+            this.mnImport.Size = new System.Drawing.Size(161, 24);
+            this.mnImport.Text = "Import Excel";
+            this.mnImport.Click += new System.EventHandler(this.mnImport_Click);
+            // 
+            // frmXuatNB
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1150, 587);
+            this.ContextMenuStrip = this.contextMenuChiTiet;
             this.Controls.Add(this.tabChungTu);
             this.Controls.Add(this.toolStrip1);
-            this.Name = "frmNhapMua";
-            this.Text = "frmNhapMua";
-            this.Load += new System.EventHandler(this.frmNhapMua_Load);
+            this.Name = "frmXuatNB";
+            this.Text = "Phiếu xuất nội bộ";
+            this.Load += new System.EventHandler(this.frmXuatNB_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tabChungTu)).EndInit();
+            this.tabChungTu.ResumeLayout(false);
+            this.pageDanhSach.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).EndInit();
             this.splitContainerControl1.Panel1.ResumeLayout(false);
             this.splitContainerControl1.Panel1.PerformLayout();
@@ -803,9 +844,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDanhSach)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tabChungTu)).EndInit();
-            this.tabChungTu.ResumeLayout(false);
-            this.pageDanhSach.ResumeLayout(false);
             this.pageChiTiet.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel1)).EndInit();
             this.splitContainerControl2.Panel1.ResumeLayout(false);
@@ -838,8 +876,10 @@
         private System.Windows.Forms.ToolStripButton btnBoQua;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripButton btnThoat;
+        private DevExpress.XtraTab.XtraTabControl tabChungTu;
+        private DevExpress.XtraTab.XtraTabPage pageDanhSach;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
-        private System.Windows.Forms.ComboBox cboKho;
+        private System.Windows.Forms.ComboBox cboDonVi;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cboCongTy;
         private System.Windows.Forms.Label label3;
@@ -859,23 +899,21 @@
         private DevExpress.XtraGrid.Columns.GridColumn GhiChu;
         private DevExpress.XtraGrid.Columns.GridColumn TrangThai;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraTab.XtraTabControl tabChungTu;
-        private DevExpress.XtraTab.XtraTabPage pageDanhSach;
         private DevExpress.XtraTab.XtraTabPage pageChiTiet;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl2;
+        private System.Windows.Forms.TextBox txtGhiChu;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblXoa;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ComboBox cboDonViNhap;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ComboBox cboDonViXuat;
+        private System.Windows.Forms.ComboBox cboTrangThai;
+        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtSoPhieu;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker dtNgay;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox cboTrangThai;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label lblXoa;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ComboBox cboNCC;
-        private System.Windows.Forms.ComboBox cboDonVi;
-        private System.Windows.Forms.TextBox txtGhiChu;
-        private System.Windows.Forms.Label label8;
         private DevExpress.XtraGrid.GridControl gcChiTiet;
         private DevExpress.XtraGrid.Views.Grid.GridView gvChiTiet;
         private DevExpress.XtraGrid.Columns.GridColumn Code;
@@ -884,8 +922,11 @@
         private DevExpress.XtraGrid.Columns.GridColumn SoLuongCT;
         private DevExpress.XtraGrid.Columns.GridColumn ThanhTien;
         private DevExpress.XtraGrid.Columns.GridColumn STT;
+        private System.Windows.Forms.ToolStripButton btnIn;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ContextMenuStrip contextMenuChiTiet;
-        private System.Windows.Forms.ToolStripMenuItem xóaDòngToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem xemChiTiếtToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnXoaDong;
+        private System.Windows.Forms.ToolStripMenuItem mnXoaCT;
+        private System.Windows.Forms.ToolStripMenuItem mnImport;
     }
 }

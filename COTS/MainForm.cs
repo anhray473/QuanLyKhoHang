@@ -147,6 +147,12 @@ namespace COTS
                             frm.ShowDialog();
                             break;
                         }
+                    case "XUATNB":
+                        {
+                            frmXuatNB frm = new frmXuatNB(_user,_uRight.User_RIGHT.Value);
+                            frm.ShowDialog();
+                            break;
+                        }
 
 
                 }

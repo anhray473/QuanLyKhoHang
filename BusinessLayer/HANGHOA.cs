@@ -30,6 +30,38 @@ namespace BusinessLayer
         {
             return db.tb_HANGHOA.Where(ts=> ts.TenHang.Contains(keyword)).ToList();
         }
+        public obj_HANGHOA getItemFull(string barcode)
+        {
+            // Tìm mặt hàng theo barcode
+            var item = db.tb_HANGHOA.FirstOrDefault(x => x.Code == barcode);
+
+            // Nếu không tìm thấy thì trả về null
+            if (item == null)
+            {
+                return null;
+            }
+
+            // Tạo đối tượng obj_HANGHOA để trả về
+            obj_HANGHOA hh = new obj_HANGHOA();
+
+            // Gán thông tin cơ bản từ tb_HANGHOA
+            hh.Code = item.Code;
+            hh.TenHang = item.TenHang;
+            hh.TenTat = item.TenTat;
+            hh.MoTa = item.MoTa;
+            hh.IDNhom = item.IDNhom;
+            var n = db.tb_NHOMHH.FirstOrDefault(x => x.IDNhom == item.IDNhom);
+            hh.TenNhom = n.TenNhom;
+            hh.MaNCC = item.MaNCC;
+            var c = db.tb_NHACUNGCAP.FirstOrDefault(x => x.MaNCC == item.MaNCC);
+            hh.TenNCC = c.TenNCC;
+            hh.MaXX = item.MaXX;
+            var xx = db.tb_XUATXU.FirstOrDefault(x => x.ID == item.MaXX);
+            hh.TenXX = xx.Ten;
+            hh.DonGia = item.DonGia;
+            hh.DVT = item.DVT;
+            return hh;
+        }
         public List<obj_HANGHOA> getListByNhomFull(int idNhom)
         {
             var lst = db.tb_HANGHOA.Where(x => x.IDNhom == idNhom).OrderBy(o => o.NgayTao).ToList();
