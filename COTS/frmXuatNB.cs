@@ -393,7 +393,7 @@ namespace COTS
                 ChungTuCT_Info(resultCtu);
 
                 _listChungTu = null;
-                _listChungTu = _chungtu.getList(1, dtTuNgay.Value, dtDenNgay.Value.AddDays(1), cboDonVi.SelectedValue.ToString());
+                _listChungTu = _chungtu.getList(2, dtTuNgay.Value, dtDenNgay.Value.AddDays(1), cboDonVi.SelectedValue.ToString());
 
                 _bdChungTu.DataSource = _listChungTu;
                 gvDanhSach.ClearSorting();
