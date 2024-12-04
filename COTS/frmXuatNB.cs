@@ -80,7 +80,7 @@ namespace COTS
             loadDonVi();
             loadDonViNhap();
             loadDonViXuat();
-            _listChungTu = _chungtu.getList(1, dtTuNgay.Value, dtDenNgay.Value.AddDays(1), cboDonVi.SelectedValue.ToString());//Xem xét 14:30
+            _listChungTu = _chungtu.getList(2, dtTuNgay.Value, dtDenNgay.Value.AddDays(1), cboDonVi.SelectedValue.ToString());//Xem xét 14:30
             _bdChungTu.DataSource = _listChungTu;
             gcDanhSach.DataSource = _bdChungTu;
 
@@ -393,7 +393,7 @@ namespace COTS
                 ChungTuCT_Info(resultCtu);
 
                 _listChungTu = null;
-                _listChungTu = _chungtu.getList(1, dtTuNgay.Value, dtDenNgay.Value.AddDays(1), cboDonVi.SelectedValue.ToString());
+                _listChungTu = _chungtu.getList(2, dtTuNgay.Value, dtDenNgay.Value.AddDays(1), cboDonVi.SelectedValue.ToString());
 
                 _bdChungTu.DataSource = _listChungTu;
                 gvDanhSach.ClearSorting();
@@ -549,39 +549,40 @@ namespace COTS
                         gvChiTiet.RefreshData();
                     }
                 }
-            }
-            //Thay đổi số lượng
-            if (e.Column.Name == "SoLuong")
-            {
-                if (gvChiTiet.GetRowCellValue(gvChiTiet.FocusedRowHandle, "TenHang") != null)
+                //Thay đổi số lượng
+                if (e.Column.FieldName == "SoLuong")
                 {
-                    double _soluong = double.Parse(e.Value.ToString());
-                    if (_soluong != 0)
+                    if (gvChiTiet.GetRowCellValue(gvChiTiet.FocusedRowHandle, "TenHang") != null)
                     {
-                        tb_HANGHOA hh = _hanghoa.getItem(gvChiTiet.GetRowCellValue(gvChiTiet.FocusedRowHandle, "Code").ToString());
-                        if (gvChiTiet.GetRowCellValue(gvChiTiet.FocusedRowHandle, "DonGia") != null)
+                        double _soluong = double.Parse(e.Value.ToString());
+                        if (_soluong != 0)
                         {
-                            double _trigiaTT = double.Parse(gvChiTiet.GetRowCellValue(gvChiTiet.FocusedRowHandle, "DonGia").ToString());
-                            gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle, "ThanhTien", _trigiaTT * _soluong);
+                            tb_HANGHOA hh = _hanghoa.getItem(gvChiTiet.GetRowCellValue(gvChiTiet.FocusedRowHandle, "Code").ToString());
+                            if (gvChiTiet.GetRowCellValue(gvChiTiet.FocusedRowHandle, "DonGia") != null)
+                            {
+                                double _trigiaTT = double.Parse(gvChiTiet.GetRowCellValue(gvChiTiet.FocusedRowHandle, "DonGia").ToString());
+                                gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle, "ThanhTien", _trigiaTT * _soluong);
+                            }
+                            else
+                            {
+                                gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle, "ThanhTien", 0);
+                            }
+                            gvChiTiet.UpdateTotalSummary();
+
                         }
                         else
                         {
-                            gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle, "ThanhTien", 0);
+                            MessageBox.Show("Số lượng tài sản không thể bằng 0", "Lỗi nhập liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
                         }
-                        gvChiTiet.UpdateTotalSummary();
-
                     }
                     else
                     {
-                        MessageBox.Show("Số lượng tài sản không thể bằng 0", "Lỗi nhập liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
+                    gvChiTiet.RefreshData();
                 }
-                else
-                {
-                    return;
-                }
-                gvChiTiet.RefreshData();
+            
             }
         }
 
