@@ -87,6 +87,7 @@
             this.Code = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TenHang = new DevExpress.XtraGrid.Columns.GridColumn();
             this.DVT = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.DonGia = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SoLuongCT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ThanhTien = new DevExpress.XtraGrid.Columns.GridColumn();
             this.STT = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -707,6 +708,7 @@
             this.Code,
             this.TenHang,
             this.DVT,
+            this.DonGia,
             this.SoLuongCT,
             this.ThanhTien,
             this.STT});
@@ -755,6 +757,16 @@
             this.DVT.VisibleIndex = 2;
             this.DVT.Width = 94;
             // 
+            // DonGia
+            // 
+            this.DonGia.Caption = "ĐƠN GIÁ";
+            this.DonGia.FieldName = "DonGia";
+            this.DonGia.MinWidth = 25;
+            this.DonGia.Name = "DonGia";
+            this.DonGia.Visible = true;
+            this.DonGia.VisibleIndex = 3;
+            this.DonGia.Width = 94;
+            // 
             // SoLuongCT
             // 
             this.SoLuongCT.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
@@ -764,7 +776,7 @@
             this.SoLuongCT.MinWidth = 25;
             this.SoLuongCT.Name = "SoLuongCT";
             this.SoLuongCT.Visible = true;
-            this.SoLuongCT.VisibleIndex = 3;
+            this.SoLuongCT.VisibleIndex = 4;
             this.SoLuongCT.Width = 94;
             // 
             // ThanhTien
@@ -776,7 +788,7 @@
             this.ThanhTien.MinWidth = 25;
             this.ThanhTien.Name = "ThanhTien";
             this.ThanhTien.Visible = true;
-            this.ThanhTien.VisibleIndex = 4;
+            this.ThanhTien.VisibleIndex = 5;
             this.ThanhTien.Width = 94;
             // 
             // STT
@@ -928,5 +940,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnXoaDong;
         private System.Windows.Forms.ToolStripMenuItem mnXoaCT;
         private System.Windows.Forms.ToolStripMenuItem mnImport;
+        private DevExpress.XtraGrid.Columns.GridColumn DonGia;
     }
 }

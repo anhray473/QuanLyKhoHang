@@ -93,7 +93,7 @@ namespace COTS
 
         private void CboCongTy_SelectedIndexChanged1(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            loadDonVi();
         }
 
         private void _bdChungTu_PositionChanged1(object sender, EventArgs e)
@@ -290,7 +290,7 @@ namespace COTS
         void Chungtu_Info(tb_CHUNGTU chungtu)
         {
             double _TONGCONG = 0;
-            tb_DONVI dvi = _donvi.getItem(cboDonVi.SelectedValue.ToString());
+            tb_DONVI dvi = _donvi.getItem(cboDonViXuat.SelectedValue.ToString());
             _seq = _sequence.getItem("XNB@" + DateTime.Today.Year.ToString() + "@" + dvi.KyHieu);
             if (_seq == null)
             {
@@ -314,7 +314,7 @@ namespace COTS
             chungtu.MaDVi2 = cboDonViNhap.SelectedValue.ToString();
             chungtu.TrangThai = int.Parse(cboTrangThai.SelectedValue.ToString());
             chungtu.GhiChu = txtGhiChu.Text;
-            chungtu.SoLuong = int.Parse(gvChiTiet.Columns["SoLuong"].SummaryItem.SummaryValue.ToString());
+            chungtu.SoLuong = int.Parse(gvChiTiet.Columns["SoLuong"].SummaryItem.SummaryValue.ToString()); 
 
             for (int i = 0; i < gvChiTiet.RowCount; i++)
             {
@@ -416,7 +416,7 @@ namespace COTS
                 txtSoPhieu.Text = current.SCT;
                 txtGhiChu.Text = current.GhiChu;
                 cboDonViXuat.SelectedValue = current.MaDVi;
-                cboDonViNhap.SelectedValue = int.Parse(current.MaDVi2);
+                cboDonViNhap.SelectedValue = current.MaDVi2;
                 cboTrangThai.SelectedValue = current.TrangThai;
 
                 if (current.NguoiXoa != null)
@@ -551,7 +551,7 @@ namespace COTS
                 }
             }
             //Thay đổi số lượng
-            if (e.Column.FieldName == "SoLuong")
+            if (e.Column.Name == "SoLuong")
             {
                 if (gvChiTiet.GetRowCellValue(gvChiTiet.FocusedRowHandle, "TenHang") != null)
                 {
