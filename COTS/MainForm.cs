@@ -153,7 +153,12 @@ namespace COTS
                             frm.ShowDialog();
                             break;
                         }
-
+                    case "NHAPNB":
+                        {
+                            frmNhapNoiBo frm = new frmNhapNoiBo(_user, _uRight.User_RIGHT.Value);
+                            frm.ShowDialog();
+                            break;
+                        }
 
                 }
 
