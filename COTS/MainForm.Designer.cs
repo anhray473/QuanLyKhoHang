@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnHeThong = new System.Windows.Forms.ToolStripButton();
+            this.btnInBarcode = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnBaoCao = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -58,7 +58,7 @@
             // 
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnHeThong,
+            this.btnInBarcode,
             this.toolStripSeparator1,
             this.btnBaoCao,
             this.toolStripSeparator2,
@@ -69,16 +69,16 @@
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // btnHeThong
+            // btnInBarcode
             // 
-            this.btnHeThong.Image = ((System.Drawing.Image)(resources.GetObject("btnHeThong.Image")));
-            this.btnHeThong.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnHeThong.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnHeThong.Name = "btnHeThong";
-            this.btnHeThong.Size = new System.Drawing.Size(75, 56);
-            this.btnHeThong.Text = "Hệ thống";
-            this.btnHeThong.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnHeThong.Click += new System.EventHandler(this.btnHeThong_Click);
+            this.btnInBarcode.Image = global::COTS.Properties.Resources.verified;
+            this.btnInBarcode.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnInBarcode.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnInBarcode.Name = "btnInBarcode";
+            this.btnInBarcode.Size = new System.Drawing.Size(84, 56);
+            this.btnInBarcode.Text = "In Barcode";
+            this.btnInBarcode.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnInBarcode.Click += new System.EventHandler(this.btnInBarcode_Click);
             // 
             // toolStripSeparator1
             // 
@@ -218,7 +218,7 @@
         #endregion
 
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton btnHeThong;
+        private System.Windows.Forms.ToolStripButton btnInBarcode;
         private System.Windows.Forms.ToolStripButton btnBaoCao;
         private System.Windows.Forms.ToolStripButton btnThoat;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;

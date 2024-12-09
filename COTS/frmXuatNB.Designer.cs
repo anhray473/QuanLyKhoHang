@@ -95,6 +95,7 @@
             this.mnXoaDong = new System.Windows.Forms.ToolStripMenuItem();
             this.mnXoaCT = new System.Windows.Forms.ToolStripMenuItem();
             this.mnImport = new System.Windows.Forms.ToolStripMenuItem();
+            this.txtTSL = new System.Windows.Forms.TextBox();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabChungTu)).BeginInit();
             this.tabChungTu.SuspendLayout();
@@ -540,6 +541,7 @@
             // 
             // splitContainerControl2.Panel1
             // 
+            this.splitContainerControl2.Panel1.Controls.Add(this.txtTSL);
             this.splitContainerControl2.Panel1.Controls.Add(this.txtGhiChu);
             this.splitContainerControl2.Panel1.Controls.Add(this.label8);
             this.splitContainerControl2.Panel1.Controls.Add(this.lblXoa);
@@ -830,6 +832,13 @@
             this.mnImport.Text = "Import Excel";
             this.mnImport.Click += new System.EventHandler(this.mnImport_Click);
             // 
+            // txtTSL
+            // 
+            this.txtTSL.Location = new System.Drawing.Point(1037, 162);
+            this.txtTSL.Name = "txtTSL";
+            this.txtTSL.Size = new System.Drawing.Size(100, 23);
+            this.txtTSL.TabIndex = 14;
+            // 
             // frmXuatNB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -941,5 +950,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnXoaCT;
         private System.Windows.Forms.ToolStripMenuItem mnImport;
         private DevExpress.XtraGrid.Columns.GridColumn DonGia;
+        private System.Windows.Forms.TextBox txtTSL;
     }
 }
