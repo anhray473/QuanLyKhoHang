@@ -71,7 +71,7 @@
             // 
             // btnHeThong
             // 
-            this.btnHeThong.Image = ((System.Drawing.Image)(resources.GetObject("btnHeThong.Image")));
+            this.btnHeThong.Image = global::COTS.Properties.Resources.verified;
             this.btnHeThong.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnHeThong.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnHeThong.Name = "btnHeThong";

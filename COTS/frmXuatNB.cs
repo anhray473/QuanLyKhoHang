@@ -244,7 +244,7 @@ namespace COTS
                     tb_CHUNGTU cur = (tb_CHUNGTU)_bdChungTu.Current;
                     int index = _bdChungTu.Position;
                     _chungtu.delete(cur.ID, 1);
-                    gvDanhSach.SetRowCellValue(index, "NguoiXoa", 0);//XOng user id thêm vào
+                    gvDanhSach.SetRowCellValue(index, "NguoiXoa",0);//XOng user id thêm vào
                     lblXoa.Visible = true;
                 }
                 else
@@ -562,6 +562,7 @@ namespace COTS
                             {
                                 double _trigiaTT = double.Parse(gvChiTiet.GetRowCellValue(gvChiTiet.FocusedRowHandle, "DonGia").ToString());
                                 gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle, "ThanhTien", _trigiaTT * _soluong);
+                                
                             }
                             else
                             {
@@ -582,8 +583,10 @@ namespace COTS
                     }
                     gvChiTiet.RefreshData();
                 }
+                
             
             }
+            
         }
 
         private void mnXoaDong_Click(object sender, EventArgs e)

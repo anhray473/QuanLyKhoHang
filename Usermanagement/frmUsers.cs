@@ -80,6 +80,8 @@ namespace Usermanagement
                 return;
             }
             saveData();
+            this.Close();
+            MessageBox.Show("Tạo tài khoản thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnDong_Click(object sender, EventArgs e)
