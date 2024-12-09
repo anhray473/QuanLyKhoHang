@@ -61,6 +61,7 @@
     <Compile Include="NHOMHH.cs" />
     <Compile Include="obj_CHUNGTU_CT.cs" />
     <Compile Include="obj_HANGHOA.cs" />
+    <Compile Include="obj_INBARCODE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SYS_FUNC.cs" />
     <Compile Include="SYS_GROUP.cs" />

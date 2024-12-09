@@ -60,10 +60,6 @@ namespace COTS
                 navMain.Groups[navGroup.Name].Expanded = true;
             }
         }
-        private void btnHeThong_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnBaoCao_Click(object sender, EventArgs e)
         {
@@ -163,6 +159,12 @@ namespace COTS
                 }
 
             }
+        }
+
+        private void btnInBarcode_Click(object sender, EventArgs e)
+        {
+            frmInBarcode frm = new frmInBarcode();
+            frm.ShowDialog(this);
         }
     }
 }
