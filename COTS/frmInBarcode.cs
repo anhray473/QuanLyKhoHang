@@ -27,8 +27,25 @@ namespace COTS
 
         private void btnInCode_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            List<obj_INBARCODE> lst1 = new List<obj_INBARCODE>();
+            obj_INBARCODE obj;
+            for(int i=0; i < gvDanhMuc.RowCount; i++)
+            {
+                if (gvDanhMuc.GetRowCellValue(i, "SoTem") != null)
+                {
+                    for(int j=0; j < int.Parse(gvDanhMuc.GetRowCellValue(i, "SoTem").ToString()); j++)
+                    {
+                        obj = new obj_INBARCODE();
+                        obj.Code = gvDanhMuc.GetRowCellValue(i, "Code").ToString();
+                        obj.TenHang = gvDanhMuc.GetRowCellValue(i,"TenHang").ToString();
+                        obj.TenTat = gvDanhMuc.GetRowCellValue(i,"TenTat").ToString() ;
+                        obj.DonGia = double.Parse(gvDanhMuc.GetRowCellValue(i, "DonGia").ToString());
+                        lst1.Add(obj);
+                    }
+                }
+            }
             rptInBarcode rpt = new rptInBarcode();
-            rpt.DataSource = lst;
+            rpt.DataSource = lst1;
             rpt.ShowPreviewDialog();
         }
 

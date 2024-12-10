@@ -10,7 +10,7 @@ namespace BusinessLayer
     {
         public string Code {  get; set; }
         public string TenHang { get; set; }
-        public string Tentat { get; set; }
+        public string TenTat { get; set; }
         public double? DonGia { get; set; }
         public int? SoTem { get; set; }
     }
