@@ -39,6 +39,7 @@ namespace BusinessLayer
                 obj.DVT = h.DVT;
                 obj.SoLuong = item.SoLuong;
                 obj.DonGia = item.DonGia;
+                obj.ChietKhau = item.ChietKhau;
                 obj.ThanhTien = item.ThanhTien;
                 obj.STT = item.STT;
                 obj.Ngay = item.Ngay;

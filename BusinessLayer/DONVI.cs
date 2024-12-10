@@ -30,7 +30,7 @@ namespace BusinessLayer
             return db.tb_DONVI.Where(x => x.MaCTy == maCTy).ToList();
         }
 
-        public List<tb_DONVI> getKhoByCty(string maCTy)
+        public List<tb_DONVI> getAll(string maCTy)
         {
             return db.tb_DONVI.Where(x => x.MaCTy == maCTy && x.Kho == true).ToList();
         }

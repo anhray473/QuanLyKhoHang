@@ -192,19 +192,19 @@ namespace COTS
         }
         void loadKhoDanhSach()
         {
-            cboKho.DataSource = _donvi.getKhoByCty(cboCongTy.SelectedValue.ToString());
+            cboKho.DataSource = _donvi.getAll(cboCongTy.SelectedValue.ToString());
             cboKho.DisplayMember = "TenDVi";
             cboKho.ValueMember = "MaDVi";
         }
         void loadDonVi()
         {
-            cboDonVi.DataSource = _donvi.getKhoByCty(cboCongTy.SelectedValue.ToString());
+            cboDonVi.DataSource = _donvi.getAll(cboCongTy.SelectedValue.ToString());
             cboDonVi.DisplayMember = "TenDVi";
             cboDonVi.ValueMember = "MaDVi";
         }
         void loadKho()
         {
-            cboKho.DataSource = _donvi.getKhoByCty(cboCongTy.SelectedValue.ToString());
+            cboKho.DataSource = _donvi.getAll(cboCongTy.SelectedValue.ToString());
             cboKho.DisplayMember = "TenDVi";
             cboKho.ValueMember = "MaDVi";
         }
