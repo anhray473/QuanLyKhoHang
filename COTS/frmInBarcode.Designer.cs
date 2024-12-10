@@ -40,13 +40,13 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.cboNhom = new System.Windows.Forms.ComboBox();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.gcDanhMuc = new DevExpress.XtraGrid.GridControl();
             this.gvDanhMuc = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.Code = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Tenhang = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Tentat = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TenTat = new DevExpress.XtraGrid.Columns.GridColumn();
             this.DonGia = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SoTem = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -171,16 +171,6 @@
             this.panelControl1.Size = new System.Drawing.Size(1257, 100);
             this.panelControl1.TabIndex = 4;
             // 
-            // labelControl1
-            // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(150, 32);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(84, 21);
-            this.labelControl1.TabIndex = 0;
-            this.labelControl1.Text = "Nhóm hàng";
-            // 
             // cboNhom
             // 
             this.cboNhom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -190,6 +180,16 @@
             this.cboNhom.Name = "cboNhom";
             this.cboNhom.Size = new System.Drawing.Size(372, 29);
             this.cboNhom.TabIndex = 1;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.Location = new System.Drawing.Point(150, 32);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(84, 21);
+            this.labelControl1.TabIndex = 0;
+            this.labelControl1.Text = "Nhóm hàng";
             // 
             // gcDanhMuc
             // 
@@ -208,7 +208,7 @@
             this.gvDanhMuc.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.Code,
             this.Tenhang,
-            this.Tentat,
+            this.TenTat,
             this.DonGia,
             this.SoTem});
             this.gvDanhMuc.GridControl = this.gcDanhMuc;
@@ -238,16 +238,16 @@
             this.Tenhang.VisibleIndex = 1;
             this.Tenhang.Width = 400;
             // 
-            // Tentat
+            // TenTat
             // 
-            this.Tentat.Caption = "TÊN TẮT";
-            this.Tentat.FieldName = "TenTat";
-            this.Tentat.MinWidth = 25;
-            this.Tentat.Name = "Tentat";
-            this.Tentat.OptionsColumn.AllowEdit = false;
-            this.Tentat.Visible = true;
-            this.Tentat.VisibleIndex = 2;
-            this.Tentat.Width = 94;
+            this.TenTat.Caption = "TÊN TẮT";
+            this.TenTat.FieldName = "TenTat";
+            this.TenTat.MinWidth = 25;
+            this.TenTat.Name = "TenTat";
+            this.TenTat.OptionsColumn.AllowEdit = false;
+            this.TenTat.Visible = true;
+            this.TenTat.VisibleIndex = 2;
+            this.TenTat.Width = 94;
             // 
             // DonGia
             // 
@@ -314,7 +314,7 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gvDanhMuc;
         private DevExpress.XtraGrid.Columns.GridColumn Code;
         private DevExpress.XtraGrid.Columns.GridColumn Tenhang;
-        private DevExpress.XtraGrid.Columns.GridColumn Tentat;
+        private DevExpress.XtraGrid.Columns.GridColumn TenTat;
         private DevExpress.XtraGrid.Columns.GridColumn DonGia;
         private DevExpress.XtraGrid.Columns.GridColumn SoTem;
         private System.Windows.Forms.ComboBox cboNhom;

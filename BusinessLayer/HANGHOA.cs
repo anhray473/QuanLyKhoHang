@@ -158,7 +158,7 @@ namespace BusinessLayer
                 obj = new obj_INBARCODE();
                 obj.Code = item.Code;
                 obj.TenHang = item.TenHang;
-                obj.Tentat = item.TenTat;
+                obj.TenTat = item.TenTat;
                 obj.DonGia = item.DonGia;
                 obj.SoTem = null;
                 lsInBarcode.Add(obj);
