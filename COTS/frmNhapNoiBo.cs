@@ -114,7 +114,7 @@ namespace COTS
         }
         void loadDonVi()
         {
-            cboDonVi.DataSource = _donvi.getKhoByCty(cboCongTy.SelectedValue.ToString());
+            cboDonVi.DataSource = _donvi.getAll(cboCongTy.SelectedValue.ToString());
             cboDonVi.DisplayMember = "TenDVi";
             cboDonVi.ValueMember = "MaDVi";
         }

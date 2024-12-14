@@ -68,7 +68,7 @@ namespace COTS
 
             _bdChungTu.PositionChanged += _bdChungTu_PositionChanged1;
             loadCongTy();
-            cboCongTy.SelectedValue = MYFUNCTIONS._macty;
+            cboCongTy.SelectedValue = MYFUNCTIONS._macty; //sửa
             cboCongTy.SelectedIndexChanged += CboCongTy_SelectedIndexChanged1;
 
             _trangthai = _TRANGTHAI.getList();
@@ -79,7 +79,7 @@ namespace COTS
             //loadKho();
             loadDonVi();
             loadDonViNhap();
-            loadDonViXuat();
+            loadDonViXuat(); //sửa 2
             _listChungTu = _chungtu.getList(2, dtTuNgay.Value, dtDenNgay.Value.AddDays(1), cboDonVi.SelectedValue.ToString());//Xem xét 14:30
             _bdChungTu.DataSource = _listChungTu;
             gcDanhSach.DataSource = _bdChungTu;
@@ -122,9 +122,12 @@ namespace COTS
             loadDonVi();
         }
 
-        private void _bdChungTu_PositionChanged(object sender, EventArgs e)
+        private void _bdChungTu_PositionChanged(object sender, EventArgs e) // sửa
         {
-            throw new NotImplementedException();
+            if (!_them)
+            {
+                xuatThongTin();
+            }
         }
         void loadCongTy()
         {
@@ -132,9 +135,10 @@ namespace COTS
             cboCongTy.DisplayMember = "TenCTy";
             cboCongTy.ValueMember = "MaCTy";
         }
+        //loadKho, loadKhoDanhSach
         void loadDonVi()
         {
-            cboDonVi.DataSource = _donvi.getKhoByCty(cboCongTy.SelectedValue.ToString());
+            cboDonVi.DataSource = _donvi.getAll(cboCongTy.SelectedValue.ToString()); //sửa g
             cboDonVi.DisplayMember = "TenDVi";
             cboDonVi.ValueMember = "MaDVi";
         }
@@ -146,7 +150,7 @@ namespace COTS
         }
         void loadDonViNhap()
         {
-            cboDonViNhap.DataSource = _donvi.getDonViByCty(cboCongTy.SelectedValue.ToString(), false);
+            cboDonViNhap.DataSource = _donvi.getDonViByCty(cboCongTy.SelectedValue.ToString(), false); //sửa MYFUNCTIONS._macty
             cboDonViNhap.DisplayMember = "TenDVi";
             cboDonViNhap.ValueMember = "MaDVi";
         }
@@ -157,7 +161,7 @@ namespace COTS
             btnXoa.Visible = t;
             btnThoat.Visible = t;
             btnLuu.Visible = !t;
-            btnBoQua.Visible = !t;
+            btnBoQua.Visible = !t; //!kt
         }
         void _enabled(bool t)
         {
@@ -314,6 +318,20 @@ namespace COTS
             chungtu.MaDVi2 = cboDonViNhap.SelectedValue.ToString();
             chungtu.TrangThai = int.Parse(cboTrangThai.SelectedValue.ToString());
             chungtu.GhiChu = txtGhiChu.Text;
+            //if (gvChiTiet.RowCount == 0)
+            //{
+            //    MessageBox.Show("Không có dữ liệu chi tiết để lưu.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
+
+            //if (gvChiTiet.Columns["SoLuong"].SummaryItem.SummaryValue == null ||
+            //    !int.TryParse(gvChiTiet.Columns["SoLuong"].SummaryItem.SummaryValue.ToString(), out int soLuong))
+            //{
+            //    MessageBox.Show("Tổng số lượng không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
+
+            //chungtu.SoLuong = soLuong;
             chungtu.SoLuong = int.Parse(gvChiTiet.Columns["SoLuong"].SummaryItem.SummaryValue.ToString()); 
 
             for (int i = 0; i < gvChiTiet.RowCount; i++)
