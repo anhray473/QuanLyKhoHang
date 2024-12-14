@@ -1,4 +1,7 @@
 ﻿using BusinessLayer;
+using CrystalDecisions.ReportAppServer.ReportDefModel;
+using CrystalDecisions.Shared;
+using CrystalDecisions.Windows.Forms;
 using DataLayer;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.TextEditController.Win32;
@@ -50,7 +53,14 @@ namespace COTS
 
         private void btnIn_Click(object sender, EventArgs e)
         {
-
+            if (gvChiTiet.RowCount == 0)
+            {
+                MessageBox.Show("Chi tiết đơn hàng không được rỗng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            luuthongtin();
+            lstChungTuCT = new List<obj_CHUNGTU_CT>();
+            gcChiTiet.DataSource = lstChungTuCT;
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -67,12 +77,14 @@ namespace COTS
 
         private void btnCK_Click(object sender, EventArgs e)
         {
-
+            frmChietKhau frm = new frmChietKhau(gvChiTiet);
+            frm.ShowDialog();
         }
 
         private void btnTraHang_Click(object sender, EventArgs e)
         {
-
+            frmTraHang frm = new frmTraHang(lstChungTuCT,gcChiTiet);
+            frm.ShowDialog();
         }
 
         private void txtCode_KeyDown(object sender, KeyEventArgs e)
@@ -207,6 +219,7 @@ namespace COTS
                 tb_CHUNGTU ctu = new tb_CHUNGTU();
                 Chungtu_Info(ctu);
                 var resultCtu = _chungtu.add(ctu);
+                pkhoa = resultCtu.ID;
                 _sequence.update(_seq);
 
                 ChungTuCT_Info(resultCtu);
@@ -218,7 +231,31 @@ namespace COTS
                 
              
         }
-       
+        private void XuatReport(string _reportName, string _tieude)
+        {
+            //if(pkhoa !=null)
+            //{
+            //    Form frm = new Form();
+            //    CrystalReportViewer Crv = new CrystalReportViewer();
+            //    Crv.ShowGroupTreeButton = false;
+            //    Crv.ShowParameterPanelButton = false;
+            //    Crv.ToolPanelView = ToolPanelViewType.None;
+            //    TableLogOnInfo Thongtin;
+            //    ReportDocument doc = new ReportDocument();
+            //    doc.Load(System.Windows.Forms.Application.StartupPath+"\\Reports\\"+_reportName+@".rpt");
+            //    Thongtin = doc.Database.Tables[0].LogOnInfo;
+            //    Thongtin.ConnectionInfo.ServerName = MYFUNCTIONS._srv;
+            //    Thongtin.ConnectionInfo.DatabaseName = MYFUNCTIONS._db;
+            //    Thongtin.ConnectionInfo.UserID = MYFUNCTIONS._us;
+            //    Thongtin.ConnectionInfo.Password = MYFUNCTIONS._pw;
+            //    doc.Database.Tables[0].ApplyLogOnInfo(Thongtin);
+            //    try
+            //    {
+            //        doc.
+            //    }
+            
+            //18}
+        }
 
             
         

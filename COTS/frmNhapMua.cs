@@ -78,6 +78,7 @@ namespace COTS
             cboTrangThai.ValueMember = "_value";
 
             loadKho();
+            loadDonVi();
             loadNCC();
             loadKhoDanhSach();
             _listChungTu =_chungtu.getList(1, dtTuNgay.Value, dtDenNgay.Value.AddDays(1), cboKho.SelectedValue.ToString());//Xem xét 14:30
@@ -352,7 +353,7 @@ namespace COTS
         {
             double _TONGCONG = 0;
             tb_DONVI dvi = _donvi.getItem(cboDonVi.SelectedValue.ToString());
-            _seq = _sequence.getItem("NHM@" + DateTime.Today.Year.ToString()+ "@"+dvi.KyHieu);
+            _seq = _sequence.getItem("NHM@" + DateTime.Today.Year.ToString() + "@" + dvi.KyHieu);
             if (_seq == null)
             {
                 _seq = new tb_SYS_SEQUENCE();
@@ -365,8 +366,8 @@ namespace COTS
             {
                 chungtu.ID = Guid.NewGuid();
                 chungtu.Ngay = dtNgay.Value;
-                chungtu.SCT = _seq.SEQVUALE.Value.ToString("000000")+@"/"+DateTime.Today.Year.ToString().Substring(2,2)+@"/NHM/"+dvi.KyHieu;
-                chungtu.NguoiTao = 1; //IDUSER
+                chungtu.SCT = _seq.SEQVUALE.Value.ToString("000000") + @"/" + DateTime.Today.Year.ToString().Substring(2, 2) + @"/NHM/" + dvi.KyHieu;
+                chungtu.NguoiTao = _user.IDUser;
                 chungtu.NgayTao = DateTime.Now;
             }
             chungtu.LCT = 1;
@@ -375,11 +376,25 @@ namespace COTS
             chungtu.MaDVi2 = cboNCC.SelectedValue.ToString();
             chungtu.TrangThai = int.Parse(cboTrangThai.SelectedValue.ToString());
             chungtu.GhiChu = txtGhiChu.Text;
+            //if (gvChiTiet.RowCount == 0)
+            //{
+            //    MessageBox.Show("Không có dữ liệu chi tiết để lưu.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
+
+            //if (gvChiTiet.Columns["SoLuong"].SummaryItem.SummaryValue == null ||
+            //    !int.TryParse(gvChiTiet.Columns["SoLuong"].SummaryItem.SummaryValue.ToString(), out int soLuong))
+            //{
+            //    MessageBox.Show("Tổng số lượng không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
+
+            //chungtu.SoLuong = soLuong;
             chungtu.SoLuong = int.Parse(gvChiTiet.Columns["SoLuong"].SummaryItem.SummaryValue.ToString());
-            
-            for(int i = 0; i< gvChiTiet.RowCount; i++)
+
+            for (int i = 0; i < gvChiTiet.RowCount; i++)
             {
-                if(gvChiTiet.GetRowCellValue(i, "TenHang") == null)
+                if (gvChiTiet.GetRowCellValue(i, "TenHang") == null)
                 {
                     gvChiTiet.DeleteRow(i);
                     goto NEXT;
@@ -391,7 +406,7 @@ namespace COTS
             }
         NEXT:
             chungtu.TongTien = _TONGCONG;
-            chungtu.NguoiSua = 1; //UserID
+            chungtu.NguoiSua = _user.IDUser;
             chungtu.NgaySua = DateTime.Now;
         }
         void ChungTuCT_Info(tb_CHUNGTU chungtu)
@@ -559,27 +574,26 @@ namespace COTS
                         }
                         else
                         {
-                            MessageBox.Show("Mã tài sản không chính xác. Kiểm tra lại","Lỗi",MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            return ;
+                            MessageBox.Show("Mã tài sản không chính xác. Kiểm tra lại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            return;
                         }
                         gvChiTiet.RefreshData();
                     }
-                            
-
                 }
                 //Thay đổi số lượng
                 if (e.Column.FieldName == "SoLuong")
                 {
-                    if(gvChiTiet.GetRowCellValue(gvChiTiet.FocusedRowHandle,"TenHang")!=null)
+                    if (gvChiTiet.GetRowCellValue(gvChiTiet.FocusedRowHandle, "TenHang") != null)
                     {
                         double _soluong = double.Parse(e.Value.ToString());
                         if (_soluong != 0)
                         {
                             tb_HANGHOA hh = _hanghoa.getItem(gvChiTiet.GetRowCellValue(gvChiTiet.FocusedRowHandle, "Code").ToString());
-                            if (gvChiTiet.GetRowCellValue(gvChiTiet.FocusedRowHandle,"DonGia")!=null)
+                            if (gvChiTiet.GetRowCellValue(gvChiTiet.FocusedRowHandle, "DonGia") != null)
                             {
                                 double _trigiaTT = double.Parse(gvChiTiet.GetRowCellValue(gvChiTiet.FocusedRowHandle, "DonGia").ToString());
-                                gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle,  "ThanhTien",_trigiaTT* _soluong);
+                                gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle, "ThanhTien", _trigiaTT * _soluong);
+
                             }
                             else
                             {
@@ -590,7 +604,7 @@ namespace COTS
                         }
                         else
                         {
-                            MessageBox.Show("Số lượng tài sản không thể bằng 0","Lỗi nhập liệu", MessageBoxButtons.OK , MessageBoxIcon.Error);
+                            MessageBox.Show("Số lượng tài sản không thể bằng 0", "Lỗi nhập liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                     }
@@ -600,11 +614,12 @@ namespace COTS
                     }
                     gvChiTiet.RefreshData();
                 }
+
+
             }
-            
         }
 
-        private void gvChiTiet_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+            private void gvChiTiet_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
         {
             if(!gvChiTiet.IsGroupRow(e.RowHandle))
             {

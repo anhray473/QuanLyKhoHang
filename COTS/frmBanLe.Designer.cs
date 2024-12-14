@@ -35,7 +35,7 @@
             this.DVT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SoLuong = new DevExpress.XtraGrid.Columns.GridColumn();
             this.DonGia = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.CK = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ChietKhau = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ThanhTien = new DevExpress.XtraGrid.Columns.GridColumn();
             this.txtCode = new System.Windows.Forms.TextBox();
             this.btnIn = new System.Windows.Forms.Button();
@@ -66,7 +66,7 @@
             this.DVT,
             this.SoLuong,
             this.DonGia,
-            this.CK,
+            this.ChietKhau,
             this.ThanhTien});
             this.gvChiTiet.GridControl = this.gcChiTiet;
             this.gvChiTiet.Name = "gvChiTiet";
@@ -129,15 +129,15 @@
             this.DonGia.VisibleIndex = 4;
             this.DonGia.Width = 94;
             // 
-            // CK
+            // ChietKhau
             // 
-            this.CK.Caption = "CHIẾT KHẤU";
-            this.CK.FieldName = "CK";
-            this.CK.MinWidth = 25;
-            this.CK.Name = "CK";
-            this.CK.Visible = true;
-            this.CK.VisibleIndex = 5;
-            this.CK.Width = 94;
+            this.ChietKhau.Caption = "CHIẾT KHẤU";
+            this.ChietKhau.FieldName = "ChietKhau";
+            this.ChietKhau.MinWidth = 25;
+            this.ChietKhau.Name = "ChietKhau";
+            this.ChietKhau.Visible = true;
+            this.ChietKhau.VisibleIndex = 5;
+            this.ChietKhau.Width = 94;
             // 
             // ThanhTien
             // 
@@ -245,15 +245,12 @@
         }
 
         #endregion
-
-        private DevExpress.XtraGrid.GridControl gcChiTiet;
-        private DevExpress.XtraGrid.Views.Grid.GridView gvChiTiet;
         private DevExpress.XtraGrid.Columns.GridColumn Code;
         private DevExpress.XtraGrid.Columns.GridColumn TenHang;
         private DevExpress.XtraGrid.Columns.GridColumn DVT;
         private DevExpress.XtraGrid.Columns.GridColumn SoLuong;
         private DevExpress.XtraGrid.Columns.GridColumn DonGia;
-        private DevExpress.XtraGrid.Columns.GridColumn CK;
+        private DevExpress.XtraGrid.Columns.GridColumn ChietKhau;
         private DevExpress.XtraGrid.Columns.GridColumn ThanhTien;
         private System.Windows.Forms.TextBox txtCode;
         private System.Windows.Forms.Button btnIn;
@@ -261,5 +258,7 @@
         private System.Windows.Forms.Button btnCK;
         private System.Windows.Forms.Button btnTraHang;
         private System.Windows.Forms.Label label1;
+        public DevExpress.XtraGrid.GridControl gcChiTiet;
+        public DevExpress.XtraGrid.Views.Grid.GridView gvChiTiet;
     }
 }

@@ -156,6 +156,12 @@
     <Compile Include="frmBanLe.Designer.cs">
       <DependentUpon>frmBanLe.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmChietKhau.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChietKhau.Designer.cs">
+      <DependentUpon>frmChietKhau.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmChoXuLy.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -197,6 +203,12 @@
     </Compile>
     <Compile Include="frmSetParam.Designer.cs">
       <DependentUpon>frmSetParam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTraHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTraHang.Designer.cs">
+      <DependentUpon>frmTraHang.cs</DependentUpon>
     </Compile>
     <Compile Include="frmXuatNB.cs">
       <SubType>Form</SubType>
@@ -284,6 +296,9 @@
     <EmbeddedResource Include="frmBanLe.resx">
       <DependentUpon>frmBanLe.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmChietKhau.resx">
+      <DependentUpon>frmChietKhau.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmChoXuLy.resx">
       <DependentUpon>frmChoXuLy.cs</DependentUpon>
     </EmbeddedResource>
@@ -304,6 +319,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSetParam.resx">
       <DependentUpon>frmSetParam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTraHang.resx">
+      <DependentUpon>frmTraHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmXuatNB.resx">
       <DependentUpon>frmXuatNB.cs</DependentUpon>

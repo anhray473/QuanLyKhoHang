@@ -733,9 +733,13 @@
             this.SoLuongCT.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.SoLuongCT.AppearanceHeader.Options.UseFont = true;
             this.SoLuongCT.Caption = "SỐ LƯỢNG";
+            this.SoLuongCT.DisplayFormat.FormatString = "{0:N0}";
+            this.SoLuongCT.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.SoLuongCT.FieldName = "SoLuong";
             this.SoLuongCT.MinWidth = 25;
             this.SoLuongCT.Name = "SoLuongCT";
+            this.SoLuongCT.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SoLuong", "{0:N0}")});
             this.SoLuongCT.Visible = true;
             this.SoLuongCT.VisibleIndex = 3;
             this.SoLuongCT.Width = 94;
@@ -745,9 +749,13 @@
             this.ThanhTien.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.ThanhTien.AppearanceHeader.Options.UseFont = true;
             this.ThanhTien.Caption = "THÀNH TIỀN";
+            this.ThanhTien.DisplayFormat.FormatString = "{0:N0}";
+            this.ThanhTien.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.ThanhTien.FieldName = "ThanhTien";
             this.ThanhTien.MinWidth = 25;
             this.ThanhTien.Name = "ThanhTien";
+            this.ThanhTien.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ThanhTien", "{0:N0}")});
             this.ThanhTien.Visible = true;
             this.ThanhTien.VisibleIndex = 4;
             this.ThanhTien.Width = 94;
@@ -772,13 +780,13 @@
             // xóaDòngToolStripMenuItem
             // 
             this.xóaDòngToolStripMenuItem.Name = "xóaDòngToolStripMenuItem";
-            this.xóaDòngToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.xóaDòngToolStripMenuItem.Size = new System.Drawing.Size(157, 24);
             this.xóaDòngToolStripMenuItem.Text = "Xóa dòng";
             // 
             // xemChiTiếtToolStripMenuItem
             // 
             this.xemChiTiếtToolStripMenuItem.Name = "xemChiTiếtToolStripMenuItem";
-            this.xemChiTiếtToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.xemChiTiếtToolStripMenuItem.Size = new System.Drawing.Size(157, 24);
             this.xemChiTiếtToolStripMenuItem.Text = "Xem chi tiết";
             // 
             // frmNhapMua
