@@ -98,10 +98,13 @@ namespace BusinessLayer
             var chungTuCTList = db.tb_CHUNGTU_CT.Where(x => x.ID == chungTuId).ToList();
 
             if (chungTuCTList == null || !chungTuCTList.Any())
-                throw new Exception("Không tìm thấy bản ghi nào liên quan đến chứng từ này.");
+            {
+                return;
+            }  
+            else
 
-            // Xóa tất cả các bản ghi tìm được
-            db.tb_CHUNGTU_CT.RemoveRange(chungTuCTList);
+                // Xóa tất cả các bản ghi tìm được
+                db.tb_CHUNGTU_CT.RemoveRange(chungTuCTList);
 
             try
             {

@@ -69,6 +69,7 @@
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.pageChiTiet = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.txtTSL = new System.Windows.Forms.TextBox();
             this.txtGhiChu = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.lblXoa = new System.Windows.Forms.Label();
@@ -95,7 +96,6 @@
             this.mnXoaDong = new System.Windows.Forms.ToolStripMenuItem();
             this.mnXoaCT = new System.Windows.Forms.ToolStripMenuItem();
             this.mnImport = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtTSL = new System.Windows.Forms.TextBox();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabChungTu)).BeginInit();
             this.tabChungTu.SuspendLayout();
@@ -563,6 +563,13 @@
             this.splitContainerControl2.SplitterPosition = 179;
             this.splitContainerControl2.TabIndex = 0;
             // 
+            // txtTSL
+            // 
+            this.txtTSL.Location = new System.Drawing.Point(1037, 162);
+            this.txtTSL.Name = "txtTSL";
+            this.txtTSL.Size = new System.Drawing.Size(100, 23);
+            this.txtTSL.TabIndex = 14;
+            // 
             // txtGhiChu
             // 
             this.txtGhiChu.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -762,6 +769,8 @@
             // DonGia
             // 
             this.DonGia.Caption = "ĐƠN GIÁ";
+            this.DonGia.DisplayFormat.FormatString = "{N0}";
+            this.DonGia.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.DonGia.FieldName = "DonGia";
             this.DonGia.MinWidth = 25;
             this.DonGia.Name = "DonGia";
@@ -774,9 +783,13 @@
             this.SoLuongCT.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.SoLuongCT.AppearanceHeader.Options.UseFont = true;
             this.SoLuongCT.Caption = "SỐ LƯỢNG";
+            this.SoLuongCT.DisplayFormat.FormatString = "{N0}";
+            this.SoLuongCT.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.SoLuongCT.FieldName = "SoLuong";
             this.SoLuongCT.MinWidth = 25;
             this.SoLuongCT.Name = "SoLuongCT";
+            this.SoLuongCT.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SoLuong", "{N0}")});
             this.SoLuongCT.Visible = true;
             this.SoLuongCT.VisibleIndex = 4;
             this.SoLuongCT.Width = 94;
@@ -786,9 +799,13 @@
             this.ThanhTien.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.ThanhTien.AppearanceHeader.Options.UseFont = true;
             this.ThanhTien.Caption = "THÀNH TIỀN";
+            this.ThanhTien.DisplayFormat.FormatString = "{N0}";
+            this.ThanhTien.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.ThanhTien.FieldName = "ThanhTien";
             this.ThanhTien.MinWidth = 25;
             this.ThanhTien.Name = "ThanhTien";
+            this.ThanhTien.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ThanhTien", "{N0}")});
             this.ThanhTien.Visible = true;
             this.ThanhTien.VisibleIndex = 5;
             this.ThanhTien.Width = 94;
@@ -831,13 +848,6 @@
             this.mnImport.Size = new System.Drawing.Size(161, 24);
             this.mnImport.Text = "Import Excel";
             this.mnImport.Click += new System.EventHandler(this.mnImport_Click);
-            // 
-            // txtTSL
-            // 
-            this.txtTSL.Location = new System.Drawing.Point(1037, 162);
-            this.txtTSL.Name = "txtTSL";
-            this.txtTSL.Size = new System.Drawing.Size(100, 23);
-            this.txtTSL.TabIndex = 14;
             // 
             // frmXuatNB
             // 
