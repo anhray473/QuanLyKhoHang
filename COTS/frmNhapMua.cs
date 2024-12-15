@@ -495,7 +495,7 @@ namespace COTS
                 txtSoPhieu.Text = current.SCT;
                 txtGhiChu.Text = current.GhiChu;
                 cboDonVi.SelectedValue = current.MaDVi;
-                cboNCC.SelectedValue = int.Parse(current.MaDVi2);
+                cboNCC.SelectedValue = current.MaDVi2;
                 cboTrangThai.SelectedValue = current.TrangThai;
 
                 if (current.NguoiXoa != null)

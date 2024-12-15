@@ -809,21 +809,21 @@
             // mnXoaDong
             // 
             this.mnXoaDong.Name = "mnXoaDong";
-            this.mnXoaDong.Size = new System.Drawing.Size(210, 24);
+            this.mnXoaDong.Size = new System.Drawing.Size(161, 24);
             this.mnXoaDong.Text = "Xóa dòng";
             this.mnXoaDong.Click += new System.EventHandler(this.mnXoaDong_Click);
             // 
             // mnXoaCT
             // 
             this.mnXoaCT.Name = "mnXoaCT";
-            this.mnXoaCT.Size = new System.Drawing.Size(210, 24);
+            this.mnXoaCT.Size = new System.Drawing.Size(161, 24);
             this.mnXoaCT.Text = "Xóa chi tiết";
             this.mnXoaCT.Click += new System.EventHandler(this.mnXoaCT_Click);
             // 
             // mnImport
             // 
             this.mnImport.Name = "mnImport";
-            this.mnImport.Size = new System.Drawing.Size(210, 24);
+            this.mnImport.Size = new System.Drawing.Size(161, 24);
             this.mnImport.Text = "Import Excel";
             this.mnImport.Click += new System.EventHandler(this.mnImport_Click);
             // 
@@ -832,6 +832,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1098, 634);
+            this.ContextMenuStrip = this.contextMenuChiTiet;
             this.Controls.Add(this.tabChungTu);
             this.Controls.Add(this.toolStrip1);
             this.Name = "frmNhapMua";

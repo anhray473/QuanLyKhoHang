@@ -36,7 +36,6 @@ namespace COTS
         {
             _ncc = new NHACUNGCAP();
             loadData();
-            txtMa.Enabled =false;
             showHideControl(true);
             _enabled(false);
         }
@@ -56,6 +55,7 @@ namespace COTS
         }
         void _enabled(bool t)
         {
+            txtMa.Enabled = t;
             txtTen.Enabled = t;
             txtSDT.Enabled = t;
             txtFax.Enabled = t;
@@ -82,7 +82,6 @@ namespace COTS
                 return;
             }
             _them = true;
-            txtMa.Enabled = false;
             showHideControl(false);
             _enabled(true);
             _reset();
@@ -120,6 +119,7 @@ namespace COTS
             if (_them)
             {
                 tb_NHACUNGCAP ncc = new tb_NHACUNGCAP();
+                ncc.MaNCC = txtMa.Text;
                 ncc.TenNCC = txtTen.Text;
                 ncc.SDT = txtSDT.Text;
                 ncc.Fax = txtFax.Text;
