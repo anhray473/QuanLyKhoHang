@@ -14,6 +14,8 @@ namespace DataLayer
     [Serializable]
     public partial class Entities
     {
+        
+
         private Entities(DbConnection connectionString, bool contextOwnsConnection = true)
             : base(connectionString, contextOwnsConnection) { }
         public static Entities CreateEntities (bool contextOwnsConnection = true)

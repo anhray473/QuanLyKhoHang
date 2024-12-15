@@ -155,6 +155,18 @@ namespace COTS
                             frm.ShowDialog();
                             break;
                         }
+                    case "XUATSI":
+                        {
+                            frmXuatSi frm = new frmXuatSi(_user, _uRight.User_RIGHT.Value);
+                            frm.ShowDialog();
+                            break;
+                        }
+                    case "BANLE":
+                        {
+                            frmBanLe frm = new frmBanLe(_user, _uRight.User_RIGHT.Value);
+                            frm.ShowDialog();
+                            break;
+                        }
 
                 }
 

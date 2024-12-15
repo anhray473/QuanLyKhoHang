@@ -38,6 +38,7 @@
           <Property Name="CODE" Type="varchar" MaxLength="13" />
           <Property Name="SoLuong" Type="int" />
           <Property Name="DonGia" Type="float" />
+          <Property Name="ChietKhau" Type="int" />
           <Property Name="ThanhTien" Type="float" />
           <Property Name="Ngay" Type="datetime" />
           <Property Name="STT" Type="int" />
@@ -92,6 +93,17 @@
           <Property Name="NgayTao" Type="datetime" />
           <Property Name="NguoiTao" Type="int" />
           <Property Name="Disabled" Type="bit" />
+        </EntityType>
+        <EntityType Name="tb_KHACHHANG">
+          <Key>
+            <PropertyRef Name="IDKH" />
+          </Key>
+          <Property Name="IDKH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HOTEN" Type="nvarchar" MaxLength="50" />
+          <Property Name="DIENTHOAI" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="50" />
+          <Property Name="DIACHI" Type="nvarchar" MaxLength="50" />
+          <Property Name="MST" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tb_NHACUNGCAP">
           <Key>
@@ -293,6 +305,7 @@ warning 6002: The table/view 'QLKH.dbo.V_USER_NOTIN_GROUP' does not have a prima
           <EntitySet Name="tb_DONVI" EntityType="Self.tb_DONVI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_DVT" EntityType="Self.tb_DVT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_HANGHOA" EntityType="Self.tb_HANGHOA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_KHACHHANG" EntityType="Self.tb_KHACHHANG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_NHACUNGCAP" EntityType="Self.tb_NHACUNGCAP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_NHOMHH" EntityType="Self.tb_NHOMHH" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_SYS_FUNC" EntityType="Self.tb_SYS_FUNC" Schema="dbo" store:Type="Tables" />
@@ -368,7 +381,6 @@ warning 6002: The table/view 'QLKH.dbo.V_USER_NOTIN_GROUP' does not have a prima
       <Schema Namespace="KHOHANG" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tb_CHUNGTU" EntityType="KHOHANG.tb_CHUNGTU" />
-          <EntitySet Name="tb_CHUNGTU_CT" EntityType="KHOHANG.tb_CHUNGTU_CT" />
           <EntitySet Name="tb_CONGTY" EntityType="KHOHANG.tb_CONGTY" />
           <EntitySet Name="tb_DONVI" EntityType="KHOHANG.tb_DONVI" />
           <EntitySet Name="tb_DVT" EntityType="KHOHANG.tb_DVT" />
@@ -389,6 +401,8 @@ warning 6002: The table/view 'QLKH.dbo.V_USER_NOTIN_GROUP' does not have a prima
           <EntitySet Name="V_FUNC_SYS_RIGHT" EntityType="KHOHANG.V_FUNC_SYS_RIGHT" />
           <EntitySet Name="V_SYS_RIGHT_REP" EntityType="KHOHANG.V_SYS_RIGHT_REP" />
           <EntitySet Name="tb_SYS_RIGHT_REP" EntityType="KHOHANG.tb_SYS_RIGHT_REP" />
+          <EntitySet Name="tb_CHUNGTU_CT" EntityType="KHOHANG.tb_CHUNGTU_CT" />
+          <EntitySet Name="tb_KHACHHANG" EntityType="KHOHANG.tb_KHACHHANG" />
         </EntityContainer>
         <EntityType Name="tb_CHUNGTU">
           <Key>
@@ -413,19 +427,6 @@ warning 6002: The table/view 'QLKH.dbo.V_USER_NOTIN_GROUP' does not have a prima
           <Property Name="NgayXoa" Type="DateTime" Precision="3" />
           <Property Name="NguoiXoa" Type="Int32" />
           <Property Name="LCT" Type="Int32" />
-        </EntityType>
-        <EntityType Name="tb_CHUNGTU_CT">
-          <Key>
-            <PropertyRef Name="IDCT" />
-          </Key>
-          <Property Name="IDCT" Type="Guid" Nullable="false" />
-          <Property Name="ID" Type="Guid" />
-          <Property Name="CODE" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
-          <Property Name="SoLuong" Type="Int32" />
-          <Property Name="DonGia" Type="Double" />
-          <Property Name="ThanhTien" Type="Double" />
-          <Property Name="Ngay" Type="DateTime" Precision="3" />
-          <Property Name="STT" Type="Int32" />
         </EntityType>
         <EntityType Name="tb_CONGTY">
           <Key>
@@ -661,6 +662,31 @@ warning 6002: The table/view 'QLKH.dbo.V_USER_NOTIN_GROUP' does not have a prima
           <Property Name="IDUser" Type="Int32" Nullable="false" />
           <Property Name="User_RIGHT" Type="Boolean" />
         </EntityType>
+        <EntityType Name="tb_CHUNGTU_CT">
+          <Key>
+            <PropertyRef Name="IDCT" />
+          </Key>
+          <Property Name="IDCT" Type="Guid" Nullable="false" />
+          <Property Name="ID" Type="Guid" />
+          <Property Name="CODE" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="SoLuong" Type="Int32" />
+          <Property Name="DonGia" Type="Double" />
+          <Property Name="ChietKhau" Type="Int32" />
+          <Property Name="ThanhTien" Type="Double" />
+          <Property Name="Ngay" Type="DateTime" Precision="3" />
+          <Property Name="STT" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tb_KHACHHANG">
+          <Key>
+            <PropertyRef Name="IDKH" />
+          </Key>
+          <Property Name="IDKH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HOTEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DIENTHOAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DIACHI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MST" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -689,20 +715,6 @@ warning 6002: The table/view 'QLKH.dbo.V_USER_NOTIN_GROUP' does not have a prima
                 <ScalarProperty Name="Ngay" ColumnName="Ngay" />
                 <ScalarProperty Name="SCT" ColumnName="SCT" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tb_CHUNGTU_CT">
-            <EntityTypeMapping TypeName="KHOHANG.tb_CHUNGTU_CT">
-              <MappingFragment StoreEntitySet="tb_CHUNGTU_CT">
-                <ScalarProperty Name="STT" ColumnName="STT" />
-                <ScalarProperty Name="Ngay" ColumnName="Ngay" />
-                <ScalarProperty Name="ThanhTien" ColumnName="ThanhTien" />
-                <ScalarProperty Name="DonGia" ColumnName="DonGia" />
-                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
-                <ScalarProperty Name="CODE" ColumnName="CODE" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="IDCT" ColumnName="IDCT" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -949,6 +961,33 @@ warning 6002: The table/view 'QLKH.dbo.V_USER_NOTIN_GROUP' does not have a prima
                 <ScalarProperty Name="User_RIGHT" ColumnName="User_RIGHT" />
                 <ScalarProperty Name="IDUser" ColumnName="IDUser" />
                 <ScalarProperty Name="RepCode" ColumnName="RepCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_CHUNGTU_CT">
+            <EntityTypeMapping TypeName="KHOHANG.tb_CHUNGTU_CT">
+              <MappingFragment StoreEntitySet="tb_CHUNGTU_CT">
+                <ScalarProperty Name="STT" ColumnName="STT" />
+                <ScalarProperty Name="Ngay" ColumnName="Ngay" />
+                <ScalarProperty Name="ThanhTien" ColumnName="ThanhTien" />
+                <ScalarProperty Name="ChietKhau" ColumnName="ChietKhau" />
+                <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDCT" ColumnName="IDCT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_KHACHHANG">
+            <EntityTypeMapping TypeName="KHOHANG.tb_KHACHHANG">
+              <MappingFragment StoreEntitySet="tb_KHACHHANG">
+                <ScalarProperty Name="MST" ColumnName="MST" />
+                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="DIENTHOAI" ColumnName="DIENTHOAI" />
+                <ScalarProperty Name="HOTEN" ColumnName="HOTEN" />
+                <ScalarProperty Name="IDKH" ColumnName="IDKH" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

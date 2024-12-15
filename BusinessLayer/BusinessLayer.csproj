@@ -56,6 +56,7 @@
     <Compile Include="DVT.cs" />
     <Compile Include="errExport.cs" />
     <Compile Include="HANGHOA.cs" />
+    <Compile Include="KHACHHANG.cs" />
     <Compile Include="MYFUNCTIONS.cs" />
     <Compile Include="NHACUNGCAP.cs" />
     <Compile Include="NHOMHH.cs" />
