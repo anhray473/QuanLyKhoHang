@@ -69,6 +69,7 @@
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.pageChiTiet = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.txtTSL = new System.Windows.Forms.TextBox();
             this.txtGhiChu = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.lblXoa = new System.Windows.Forms.Label();
@@ -562,6 +563,13 @@
             this.splitContainerControl2.Size = new System.Drawing.Size(1148, 496);
             this.splitContainerControl2.SplitterPosition = 179;
             this.splitContainerControl2.TabIndex = 0;
+            // 
+            // txtTSL
+            // 
+            this.txtTSL.Location = new System.Drawing.Point(1037, 162);
+            this.txtTSL.Name = "txtTSL";
+            this.txtTSL.Size = new System.Drawing.Size(100, 23);
+            this.txtTSL.TabIndex = 14;
             // 
             // txtGhiChu
             // 

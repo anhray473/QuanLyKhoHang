@@ -88,7 +88,7 @@ namespace COTS
             xuatThongTin();
             cboDonVi.SelectedIndexChanged += CboDonVi_SelectedIndexChanged1;
             showHideControl(true);
-            contextMenuChiTiet.Enabled = false;
+            contextMenuChiTiet.Enabled = false;           
         }
 
         private void CboCongTy_SelectedIndexChanged1(object sender, EventArgs e)
@@ -314,7 +314,7 @@ namespace COTS
             chungtu.MaDVi2 = cboDonViNhap.SelectedValue.ToString();
             chungtu.TrangThai = int.Parse(cboTrangThai.SelectedValue.ToString());
             chungtu.GhiChu = txtGhiChu.Text;
-            chungtu.SoLuong = int.Parse(gvChiTiet.Columns["SoLuong"].SummaryItem.SummaryValue.ToString()); 
+            chungtu.SoLuong = int.Parse(gvChiTiet.Columns["SoLuong"].SummaryItem.SummaryValue.ToString());
 
             for (int i = 0; i < gvChiTiet.RowCount; i++)
             {
