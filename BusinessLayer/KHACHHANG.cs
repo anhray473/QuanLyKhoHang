@@ -14,9 +14,9 @@ namespace BusinessLayer
         {
             db = Entities.CreateEntities();
         }
-       public List<tb_KHACHHANG> getList()
-        {
-            return db.tb_KHACHHANG.ToList();
-        }
+       //public List<tb_KHACHHANG> getList()
+       // {
+       //     return db.tb_KHACHHANG.ToList();
+       // }
     }
 }

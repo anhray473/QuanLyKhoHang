@@ -62,6 +62,7 @@
             this.DonGia});
             this.gvDanhSach.GridControl = this.gcDanhSach;
             this.gvDanhSach.Name = "gvDanhSach";
+            this.gvDanhSach.OptionsSelection.MultiSelect = true;
             // 
             // Code
             // 

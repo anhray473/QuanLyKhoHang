@@ -88,8 +88,10 @@ namespace COTS
             if (user.Password.Equals(pass))
             {
                 MainForm frm =  new MainForm(user);
+                this.Hide();
                 frm.ShowDialog();
-                this.Hide();    
+                this.Show();
+                 
             }
             else
             {

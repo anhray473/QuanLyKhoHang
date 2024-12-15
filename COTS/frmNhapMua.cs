@@ -4,16 +4,19 @@ using DevExpress.Utils.DirectXPaint;
 using DevExpress.Utils.Extensions;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraSplashScreen;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace COTS
 {
@@ -327,7 +330,7 @@ namespace COTS
             tabChungTu.TabPages[0].PageEnabled = true;
             showHideControl(true);
             _enabled(false);
-
+            tabChungTu.SelectedTabPage = pageDanhSach;
 
         }
 
@@ -681,6 +684,394 @@ namespace COTS
             }
             else
                 e.Handled = false;
+        }
+
+        private void gvDanhSach_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
+        {
+            if (!gvDanhSach.IsGroupRow(e.RowHandle))
+            {
+                if (e.Info.IsRowIndicator)
+                {
+                    if (e.RowHandle < 0)
+                    {
+                        e.Info.ImageIndex = 0;
+                        e.Info.DisplayText = string.Empty;
+                    }
+                    else
+                    {
+                        e.Info.ImageIndex = -1;
+                        e.Info.DisplayText = (e.RowHandle + 1).ToString();
+                    }
+                    SizeF _Size = e.Graphics.MeasureString(e.Info.DisplayText, e.Appearance.Font);
+                    Int32 _Width = Convert.ToInt32(_Size.Width) + 20;
+                    BeginInvoke(new MethodInvoker(delegate { cal(_Width, gvDanhSach); }));
+                }
+            }
+            else
+            {
+                e.Info.ImageIndex = -1;
+                e.Info.DisplayText = string.Format("[{0}]", (e.RowHandle * -1));
+                SizeF _Size = e.Graphics.MeasureString(e.Info.DisplayText, e.Appearance.Font);
+                Int32 _Width = Convert.ToInt32(_Size.Width) + 20;
+                BeginInvoke(new MethodInvoker(delegate { cal(Width, gvDanhSach); }));
+            }
+        }
+
+        private void gvDanhSach_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
+        {
+            if (e.Column.FieldName == "TrangThai")
+            {
+                if (e.CellValue.ToString() == "1")
+                    e.DisplayText = "Chưa hoàn tất";
+                else
+                    e.DisplayText = "Đã hoàn tất";
+            }
+            if (e.Column.Name == "NguoiXoa" && e.CellValue != null)
+            {
+                Image img = Properties.Resources.cancel16x16;
+                e.Graphics.DrawImage(img, e.Bounds.X, e.Bounds.Y);
+                e.Handled = true;
+            }
+        }
+
+        private void dtTuNgay_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtTuNgay.Value > dtDenNgay.Value)
+            {
+                MessageBox.Show("Ngày không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        private void dtTuNgay_Leave(object sender, EventArgs e)
+        {
+            if (dtTuNgay.Value > dtDenNgay.Value)
+            {
+                MessageBox.Show("Ngày không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                _listChungTu = _chungtu.getList(2, dtTuNgay.Value, dtDenNgay.Value.AddDays(1), cboDonVi.SelectedValue.ToString());
+                _bdChungTu.DataSource = _listChungTu;
+            }
+        }
+
+        private void dtDenNgay_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtTuNgay.Value > dtDenNgay.Value)
+            {
+                MessageBox.Show("Ngày không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        private void dtDenNgay_Leave(object sender, EventArgs e)
+        {
+            if (dtTuNgay.Value > dtDenNgay.Value)
+            {
+                MessageBox.Show("Ngày không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                _listChungTu = _chungtu.getList(2, dtTuNgay.Value, dtDenNgay.Value.AddDays(1), cboDonVi.SelectedValue.ToString());
+                _bdChungTu.DataSource = _listChungTu;
+            }
+        }
+
+        private void mnXoaDong_Click(object sender, EventArgs e)
+        {
+            int index = 0;
+            if (gvChiTiet.GetRowCellValue(gvChiTiet.FocusedRowHandle, "Code") != null)
+            {
+                if (_them)
+                    gvChiTiet.DeleteSelectedRows();
+                else
+                {
+                    index = gvChiTiet.FocusedRowHandle;
+                    _listBarcode.Add(gvChiTiet.GetRowCellValue(gvChiTiet.FocusedRowHandle, "Code").ToString());
+                    gvChiTiet.DeleteSelectedRows();
+
+                }
+                if (gvChiTiet.RowCount == 0)
+                {
+                    gvChiTiet.AddNewRow();
+                    gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle, "STT", 1);
+                }
+                else
+                {
+                    for (int i = 0; i < gvChiTiet.RowCount; i++)
+                    {
+                        gvChiTiet.FocusedRowHandle = i;
+                        gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle, "STT", i + 1);
+                    }
+                }
+                gvChiTiet.FocusedRowHandle = index;
+            }
+            else
+            {
+                MessageBox.Show("Chưa chọn mẫu tin", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        private void mnXoaCT_Click(object sender, EventArgs e)
+        {
+            _listBarcode.Clear();
+            for (int i = gvChiTiet.RowCount - 1; i >= 0; i--)
+            {
+                _listBarcode.Add(gvChiTiet.GetRowCellValue(i, "Code").ToString());
+                gvChiTiet.DeleteRow(i);
+            }
+            gvChiTiet.AddNewRow();
+            gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle, "STT", 1);
+        }
+
+        private void mnImport_Click(object sender, EventArgs e)
+        {
+            importExcel();
+        }
+        private void releaseObject(object obj)
+        {
+            try
+            {
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+                obj = null;
+            }
+            catch (Exception ex)
+            {
+                obj = null;
+                MessageBox.Show("Exception Occured while releasing object" + ex.ToString());
+            }
+            finally
+            {
+                GC.Collect();
+            }
+        }
+        void importExcel()
+        {
+            string filename = "";
+            List<errExport> err = new List<errExport>();
+            OpenFileDialog op = new OpenFileDialog();
+            op.Filter = "Excel 2000-2003 (.xls)|*.xls|Excel 2007 or higher (.xlsx)|*.xlsx";
+            if (op.ShowDialog() == DialogResult.OK)
+            {
+                SplashScreenManager.ShowForm(this, typeof(frmChoXuLy), true, true, false);
+                _IsImport = true;
+                List<string> s = new List<string>();
+                List<string> _exist = new List<string>();
+                if (gvChiTiet.RowCount > 1)
+                {
+                    if (gvChiTiet.GetRowCellValue(gvChiTiet.RowCount - 1, "TenHang") != null)
+                    {
+                        for (int i = 0; i < gvChiTiet.RowCount; i++)
+                        {
+                            _exist.Add(gvChiTiet.GetRowCellValue(i, "Code").ToString());
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < gvChiTiet.RowCount - 1; i++)
+                            _exist.Add(gvChiTiet.GetRowCellValue(i, "Code").ToString());
+                    }
+                }
+                filename = op.FileName;
+                //đọc file excel
+                //tạo đối tượng excel
+                Excel.Application app = new Excel.Application();
+                //Kết nối với tập tin excel
+                Excel.Workbook wb = app.Workbooks.Open(filename);
+                List<obj_CHUNGTU_CT> lstCTCT = new List<obj_CHUNGTU_CT>();
+                try
+                {
+                    //Kết nối với sheet cần đọc
+                    Excel._Worksheet sheet = wb.Sheets["Sheet1"];
+                    //Giới hạn đọc từ dòng cột nào đến dòng cột nào
+                    Excel.Range range = sheet.UsedRange;
+                    double tongdong = range.Rows.Count;
+                    for (float i = 2; i <= range.Rows.Count; i++)
+                    {
+                        tb_HANGHOA hh = _hanghoa.getItem(range.Cells[i, 1].Value.ToString());
+                        if (hh == null)
+                        {
+                            errExport _err = new errExport();
+                            _err._barcode = range.Cells[i, 1].Value.ToString();
+                            _err._soluong = int.Parse(range.Cells[i, 2].Value.ToString());
+                            _err._errcode = "Barcode không tồn tại";
+                            err.Add(_err);
+                            continue;
+                        }
+                        else
+                        {
+                            if (_exist.Find(x => x.Equals(hh.Code)) != null)
+                            {
+                                errExport _err = new errExport();
+                                _err._barcode = range.Cells[i, 1].Value.ToString();
+                                _err._soluong = int.Parse(range.Cells[i, 2].Value.ToString());
+                                _err._errcode = "Trùng Barcode";
+                                err.Add(_err);
+                                continue;
+                            }
+                            else
+                            {
+                                s.Add(range.Cells[i, 1].Value.ToString() + "," + range.Cells[i, 2].Value.ToString());
+                                _exist.Add(range.Cells[i, 1].Value.ToString());
+                            }
+                        }
+                    }
+                    foreach (string _validItem in s)
+                    {
+                        string[] item = _validItem.Split(',');
+                        string _barcode = item[0].ToString();
+                        double _soluong = double.Parse(item[1].ToString());
+                        obj_HANGHOA _h = _hanghoa.getItemFull(_barcode);
+                        if (gvChiTiet.RowCount > 1)
+                        {
+                            int mautin = gvChiTiet.RowCount;
+                            gvChiTiet.SelectRow(mautin - 1);
+                            if (gvChiTiet.GetRowCellValue(gvChiTiet.FocusedRowHandle, "TenHang") == null)
+                            {
+                                gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle, "STT", mautin);
+                                gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle, "Code", _h.Code);
+                                gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle, "DVT", _h.DVT);
+                                gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle, "TenHang", _h.TenHang);
+                                gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle, "SoLuong", _soluong);
+                                gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle, "DonGia", _h.DonGia);
+                                gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle, "ThanhTien", _h.DonGia * _soluong);
+                            }
+                            else
+                            {
+                                gvChiTiet.AddNewRow();
+                                gvChiTiet.SelectRow(mautin);
+                                mautin++;
+                                gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle, "STT", mautin);
+                                gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle, "Code", _h.Code);
+                                gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle, "DVT", _h.DVT);
+                                gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle, "TenHang", _h.TenHang);
+                                gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle, "SoLuong", _soluong);
+                                gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle, "DonGia", _h.DonGia);
+                                gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle, "ThanhTien", _h.DonGia * _soluong);
+
+                            }
+                        }
+                        else
+                        {
+                            if (gvChiTiet.RowCount == 0)
+                                gvChiTiet.AddNewRow();
+                            int mautin = gvChiTiet.RowCount;
+                            gvChiTiet.SelectRow(mautin - 1);
+                            if (gvChiTiet.GetRowCellValue(gvChiTiet.FocusedRowHandle, "TenHang") == null)
+                            {
+                                gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle, "STT", mautin);
+                                gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle, "Code", _h.Code);
+                                gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle, "DVT", _h.DVT);
+                                gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle, "TenHang", _h.TenHang);
+                                gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle, "SoLuong", _soluong);
+                                gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle, "DonGia", _h.DonGia);
+                                gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle, "ThanhTien", _h.DonGia * _soluong);
+                            }
+                            else
+                            {
+                                gvChiTiet.AddNewRow();
+                                gvChiTiet.SelectRow(mautin);
+                                mautin++;
+                                gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle, "STT", mautin);
+                                gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle, "Code", _h.Code);
+                                gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle, "DVT", _h.DVT);
+                                gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle, "TenHang", _h.TenHang);
+                                gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle, "SoLuong", _soluong);
+                                gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle, "DonGia", _h.DonGia);
+                                gvChiTiet.SetRowCellValue(gvChiTiet.FocusedRowHandle, "ThanhTien", _h.DonGia * _soluong);
+                            }
+                        }
+                    }
+                    gvChiTiet.AddNewRow();
+                    gvChiTiet.SelectRow(gvChiTiet.RowCount - 1);
+                    gvChiTiet.DeleteSelectedRows();
+                    _IsImport = false;
+
+                }
+                catch (Exception ex)
+                {
+                    app.Workbooks.Close();
+                    SplashScreenManager.CloseForm(false);
+                    MessageBox.Show("Import không thành công kiểm tra lại đường dẫn và định dạng tệp" + ex.Message, "Thông báo");
+
+                }
+                finally
+                {
+                    wb.Close(true);
+                    app.Quit();
+                    releaseObject(app);
+                }
+            }
+            //xuất mã lỗi ra excel
+            if (err.Count != 0)
+            {
+                Excel.Application app = new Excel.Application();
+                Excel.Workbook wb = app.Workbooks.Add(Type.Missing);
+                Excel._Worksheet sheet = null;
+                try
+                {
+                    sheet = wb.ActiveSheet;
+                    //Đặt tên sheet
+                    sheet.Name = "Lỗi";
+                    //Gôm 3 cột thành 1 cột
+                    sheet.Range[sheet.Cells[1, 1], sheet.Cells[1, 3]].Merge();
+                    //canh lề text
+                    sheet.Cells[1, 1].HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    //bold
+                    sheet.Range[sheet.Cells[1, 1], sheet.Cells[1, 3]].BorderAround(Type.Missing, Excel.XlBorderWeight.xlThick, Excel.XlColorIndex.xlColorIndexAutomatic);
+                    sheet.Cells[1, 1].Value = "LỖI IMPORT";
+                    sheet.Cells[1, 1].Font.Size = 20;
+                    sheet.Cells[2, 1].Value = "BARCODE";
+                    sheet.Cells[2, 2].Value = "SỐ LƯỢNG";
+                    sheet.Cells[2, 3].Value = "LỖI";
+                    //xUẤT DỮ liệu ra file và tương tác
+                    for (int i = 1; i <= err.Count; i++)
+                    {
+                        sheet.Cells[i + 2, 1].Value = err.ElementAt(i - 1)._barcode;
+                        sheet.Cells[i + 2, 2].Value = err.ElementAt(i - 1)._soluong;
+                        sheet.Cells[i + 2, 3].Value = err.ElementAt(i - 1)._errcode;
+                    }
+                    //Lưu vào file xuất
+                    string t = System.IO.Path.GetDirectoryName(filename) + @"\" + System.IO.Path.GetFileNameWithoutExtension(filename) + "_log.xlsx";
+                    if (File.Exists(t))
+                        File.Delete(t);
+                    wb.SaveAs(t);
+
+
+                }
+                catch (Exception ex)
+                {
+                    SplashScreenManager.CloseForm(false);
+                    MessageBox.Show(ex.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    wb.Close(true);
+                    app.Quit();
+                    releaseObject(wb);
+                    releaseObject(app);
+                    SplashScreenManager.CloseForm(false);
+                }
+                MessageBox.Show("Có lỗi phát sinh trong quá trình import.Xem chi tiết trong file log.", "Lỗi import", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            else
+            {
+                SplashScreenManager.CloseForm(false);
+                MessageBox.Show("Import dữ liệu thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void gvDanhSach_DoubleClick(object sender, EventArgs e)
+        {
+            if (gvDanhSach.RowCount > 0)
+            {
+                tabChungTu.SelectedTabPage = pageChiTiet;
+            }
         }
     }
 }

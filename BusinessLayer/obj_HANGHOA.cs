@@ -16,7 +16,7 @@ namespace BusinessLayer
         public string MoTa { get; set; }
         public Nullable<int> MaXX { get; set; }
         public string TenXX {  get; set; }
-        public Nullable<int> MaNCC { get; set; }
+        public string MaNCC { get; set; }
         public string TenNCC { get; set; }
         public Nullable<int> IDNhom { get; set; }
         public string TenNhom { get; set; }

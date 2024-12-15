@@ -28,7 +28,7 @@ namespace COTS
     }
         NHACUNGCAP _ncc;
         bool _them;
-        int _mancc;
+        string _mancc;
         int _right;
         tb_SYS_USER _user;
 
@@ -163,7 +163,7 @@ namespace COTS
         {
             if (gvDanhSach.RowCount > 0)
             {
-                _mancc = int.Parse(gvDanhSach.GetFocusedRowCellValue("MaNCC").ToString());
+                _mancc = gvDanhSach.GetFocusedRowCellValue("MaNCC").ToString();
                 txtMa.Text = gvDanhSach.GetFocusedRowCellValue("MaNCC").ToString();
                 txtTen.Text = gvDanhSach.GetFocusedRowCellValue("TenNCC").ToString();
                 txtSDT.Text = gvDanhSach.GetFocusedRowCellValue("SDT").ToString();

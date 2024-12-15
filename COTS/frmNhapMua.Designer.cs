@@ -55,7 +55,7 @@
             this.gvDanhSach = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.NguoiXoa = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SCT = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.NGÀY = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ngayTao = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SCT2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Ngay2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SoLuong = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -85,12 +85,14 @@
             this.Code = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TenHang = new DevExpress.XtraGrid.Columns.GridColumn();
             this.DVT = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.DonGia = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SoLuongCT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ThanhTien = new DevExpress.XtraGrid.Columns.GridColumn();
             this.STT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.contextMenuChiTiet = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.xóaDòngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.xemChiTiếtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnXoaDong = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnXoaCT = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnImport = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
@@ -301,6 +303,8 @@
             this.dtDenNgay.Name = "dtDenNgay";
             this.dtDenNgay.Size = new System.Drawing.Size(200, 28);
             this.dtDenNgay.TabIndex = 3;
+            this.dtDenNgay.ValueChanged += new System.EventHandler(this.dtDenNgay_ValueChanged);
+            this.dtDenNgay.Leave += new System.EventHandler(this.dtDenNgay_Leave);
             // 
             // label2
             // 
@@ -321,6 +325,8 @@
             this.dtTuNgay.Name = "dtTuNgay";
             this.dtTuNgay.Size = new System.Drawing.Size(200, 28);
             this.dtTuNgay.TabIndex = 1;
+            this.dtTuNgay.ValueChanged += new System.EventHandler(this.dtTuNgay_ValueChanged);
+            this.dtTuNgay.Leave += new System.EventHandler(this.dtTuNgay_Leave);
             // 
             // label1
             // 
@@ -349,7 +355,7 @@
             this.gvDanhSach.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.NguoiXoa,
             this.SCT,
-            this.NGÀY,
+            this.ngayTao,
             this.SCT2,
             this.Ngay2,
             this.SoLuong,
@@ -360,6 +366,9 @@
             this.gvDanhSach.Name = "gvDanhSach";
             this.gvDanhSach.OptionsView.ShowGroupPanel = false;
             this.gvDanhSach.RowHeight = 25;
+            this.gvDanhSach.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gvDanhSach_CustomDrawRowIndicator);
+            this.gvDanhSach.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.gvDanhSach_CustomDrawCell);
+            this.gvDanhSach.DoubleClick += new System.EventHandler(this.gvDanhSach_DoubleClick);
             // 
             // NguoiXoa
             // 
@@ -385,17 +394,17 @@
             this.SCT.VisibleIndex = 1;
             this.SCT.Width = 94;
             // 
-            // NGÀY
+            // ngayTao
             // 
-            this.NGÀY.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.NGÀY.AppearanceHeader.Options.UseFont = true;
-            this.NGÀY.Caption = "NGÀY";
-            this.NGÀY.FieldName = "NGÀY";
-            this.NGÀY.MinWidth = 25;
-            this.NGÀY.Name = "NGÀY";
-            this.NGÀY.Visible = true;
-            this.NGÀY.VisibleIndex = 2;
-            this.NGÀY.Width = 94;
+            this.ngayTao.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.ngayTao.AppearanceHeader.Options.UseFont = true;
+            this.ngayTao.Caption = "NGÀY";
+            this.ngayTao.FieldName = "NgayTao";
+            this.ngayTao.MinWidth = 25;
+            this.ngayTao.Name = "ngayTao";
+            this.ngayTao.Visible = true;
+            this.ngayTao.VisibleIndex = 2;
+            this.ngayTao.Width = 94;
             // 
             // SCT2
             // 
@@ -404,8 +413,6 @@
             this.SCT2.FieldName = "SCT2";
             this.SCT2.MinWidth = 25;
             this.SCT2.Name = "SCT2";
-            this.SCT2.Visible = true;
-            this.SCT2.VisibleIndex = 3;
             this.SCT2.Width = 94;
             // 
             // Ngay2
@@ -416,8 +423,6 @@
             this.Ngay2.FieldName = "Ngay2";
             this.Ngay2.MinWidth = 25;
             this.Ngay2.Name = "Ngay2";
-            this.Ngay2.Visible = true;
-            this.Ngay2.VisibleIndex = 4;
             this.Ngay2.Width = 94;
             // 
             // SoLuong
@@ -425,11 +430,15 @@
             this.SoLuong.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.SoLuong.AppearanceHeader.Options.UseFont = true;
             this.SoLuong.Caption = "SỐ LƯỢNG";
+            this.SoLuong.DisplayFormat.FormatString = "{0:N0}";
+            this.SoLuong.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.SoLuong.FieldName = "SoLuong";
             this.SoLuong.MinWidth = 25;
             this.SoLuong.Name = "SoLuong";
+            this.SoLuong.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SoLuong", "SUM={0:N0}")});
             this.SoLuong.Visible = true;
-            this.SoLuong.VisibleIndex = 5;
+            this.SoLuong.VisibleIndex = 3;
             this.SoLuong.Width = 94;
             // 
             // TongTien
@@ -437,11 +446,15 @@
             this.TongTien.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.TongTien.AppearanceHeader.Options.UseFont = true;
             this.TongTien.Caption = "TỔNG TIỀN";
+            this.TongTien.DisplayFormat.FormatString = "{0:N0}";
+            this.TongTien.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.TongTien.FieldName = "TongTien";
             this.TongTien.MinWidth = 25;
             this.TongTien.Name = "TongTien";
+            this.TongTien.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TongTien", "SUM={0:N0}")});
             this.TongTien.Visible = true;
-            this.TongTien.VisibleIndex = 6;
+            this.TongTien.VisibleIndex = 4;
             this.TongTien.Width = 94;
             // 
             // GhiChu
@@ -453,7 +466,7 @@
             this.GhiChu.MinWidth = 25;
             this.GhiChu.Name = "GhiChu";
             this.GhiChu.Visible = true;
-            this.GhiChu.VisibleIndex = 7;
+            this.GhiChu.VisibleIndex = 5;
             this.GhiChu.Width = 94;
             // 
             // TrangThai
@@ -465,7 +478,7 @@
             this.TrangThai.MinWidth = 25;
             this.TrangThai.Name = "TrangThai";
             this.TrangThai.Visible = true;
-            this.TrangThai.VisibleIndex = 8;
+            this.TrangThai.VisibleIndex = 6;
             this.TrangThai.Width = 94;
             // 
             // gridView1
@@ -680,6 +693,7 @@
             this.Code,
             this.TenHang,
             this.DVT,
+            this.DonGia,
             this.SoLuongCT,
             this.ThanhTien,
             this.STT});
@@ -728,6 +742,20 @@
             this.DVT.VisibleIndex = 2;
             this.DVT.Width = 94;
             // 
+            // DonGia
+            // 
+            this.DonGia.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.DonGia.AppearanceHeader.Options.UseFont = true;
+            this.DonGia.Caption = "ĐƠN GIÁ";
+            this.DonGia.DisplayFormat.FormatString = "{0:N0}";
+            this.DonGia.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.DonGia.FieldName = "DonGia";
+            this.DonGia.MinWidth = 25;
+            this.DonGia.Name = "DonGia";
+            this.DonGia.Visible = true;
+            this.DonGia.VisibleIndex = 3;
+            this.DonGia.Width = 94;
+            // 
             // SoLuongCT
             // 
             this.SoLuongCT.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
@@ -741,7 +769,7 @@
             this.SoLuongCT.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SoLuong", "{0:N0}")});
             this.SoLuongCT.Visible = true;
-            this.SoLuongCT.VisibleIndex = 3;
+            this.SoLuongCT.VisibleIndex = 4;
             this.SoLuongCT.Width = 94;
             // 
             // ThanhTien
@@ -757,7 +785,7 @@
             this.ThanhTien.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ThanhTien", "{0:N0}")});
             this.ThanhTien.Visible = true;
-            this.ThanhTien.VisibleIndex = 4;
+            this.ThanhTien.VisibleIndex = 5;
             this.ThanhTien.Width = 94;
             // 
             // STT
@@ -772,22 +800,32 @@
             // 
             this.contextMenuChiTiet.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuChiTiet.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.xóaDòngToolStripMenuItem,
-            this.xemChiTiếtToolStripMenuItem});
+            this.mnXoaDong,
+            this.mnXoaCT,
+            this.mnImport});
             this.contextMenuChiTiet.Name = "contextMenuChiTiet";
-            this.contextMenuChiTiet.Size = new System.Drawing.Size(158, 52);
+            this.contextMenuChiTiet.Size = new System.Drawing.Size(162, 76);
             // 
-            // xóaDòngToolStripMenuItem
+            // mnXoaDong
             // 
-            this.xóaDòngToolStripMenuItem.Name = "xóaDòngToolStripMenuItem";
-            this.xóaDòngToolStripMenuItem.Size = new System.Drawing.Size(157, 24);
-            this.xóaDòngToolStripMenuItem.Text = "Xóa dòng";
+            this.mnXoaDong.Name = "mnXoaDong";
+            this.mnXoaDong.Size = new System.Drawing.Size(210, 24);
+            this.mnXoaDong.Text = "Xóa dòng";
+            this.mnXoaDong.Click += new System.EventHandler(this.mnXoaDong_Click);
             // 
-            // xemChiTiếtToolStripMenuItem
+            // mnXoaCT
             // 
-            this.xemChiTiếtToolStripMenuItem.Name = "xemChiTiếtToolStripMenuItem";
-            this.xemChiTiếtToolStripMenuItem.Size = new System.Drawing.Size(157, 24);
-            this.xemChiTiếtToolStripMenuItem.Text = "Xem chi tiết";
+            this.mnXoaCT.Name = "mnXoaCT";
+            this.mnXoaCT.Size = new System.Drawing.Size(210, 24);
+            this.mnXoaCT.Text = "Xóa chi tiết";
+            this.mnXoaCT.Click += new System.EventHandler(this.mnXoaCT_Click);
+            // 
+            // mnImport
+            // 
+            this.mnImport.Name = "mnImport";
+            this.mnImport.Size = new System.Drawing.Size(210, 24);
+            this.mnImport.Text = "Import Excel";
+            this.mnImport.Click += new System.EventHandler(this.mnImport_Click);
             // 
             // frmNhapMua
             // 
@@ -859,7 +897,7 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gvDanhSach;
         private DevExpress.XtraGrid.Columns.GridColumn NguoiXoa;
         private DevExpress.XtraGrid.Columns.GridColumn SCT;
-        private DevExpress.XtraGrid.Columns.GridColumn NGÀY;
+        private DevExpress.XtraGrid.Columns.GridColumn ngayTao;
         private DevExpress.XtraGrid.Columns.GridColumn SCT2;
         private DevExpress.XtraGrid.Columns.GridColumn Ngay2;
         private DevExpress.XtraGrid.Columns.GridColumn SoLuong;
@@ -892,8 +930,10 @@
         private DevExpress.XtraGrid.Columns.GridColumn SoLuongCT;
         private DevExpress.XtraGrid.Columns.GridColumn ThanhTien;
         private DevExpress.XtraGrid.Columns.GridColumn STT;
+        private DevExpress.XtraGrid.Columns.GridColumn DonGia;
         private System.Windows.Forms.ContextMenuStrip contextMenuChiTiet;
-        private System.Windows.Forms.ToolStripMenuItem xóaDòngToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem xemChiTiếtToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnXoaDong;
+        private System.Windows.Forms.ToolStripMenuItem mnXoaCT;
+        private System.Windows.Forms.ToolStripMenuItem mnImport;
     }
 }

@@ -88,28 +88,17 @@
           <Property Name="DonGia" Type="float" />
           <Property Name="MoTa" Type="nvarchar" MaxLength="255" />
           <Property Name="MaXX" Type="int" />
-          <Property Name="MaNCC" Type="int" />
+          <Property Name="MaNCC" Type="varchar" MaxLength="10" />
           <Property Name="IDNhom" Type="int" />
           <Property Name="NgayTao" Type="datetime" />
           <Property Name="NguoiTao" Type="int" />
           <Property Name="Disabled" Type="bit" />
         </EntityType>
-        <EntityType Name="tb_KHACHHANG">
-          <Key>
-            <PropertyRef Name="IDKH" />
-          </Key>
-          <Property Name="IDKH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="HOTEN" Type="nvarchar" MaxLength="50" />
-          <Property Name="DIENTHOAI" Type="nvarchar" MaxLength="50" />
-          <Property Name="EMAIL" Type="nvarchar" MaxLength="50" />
-          <Property Name="DIACHI" Type="nvarchar" MaxLength="50" />
-          <Property Name="MST" Type="nvarchar" MaxLength="50" />
-        </EntityType>
         <EntityType Name="tb_NHACUNGCAP">
           <Key>
             <PropertyRef Name="MaNCC" />
           </Key>
-          <Property Name="MaNCC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaNCC" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="TenNCC" Type="nvarchar" MaxLength="100" />
           <Property Name="SDT" Type="varchar" MaxLength="15" />
           <Property Name="Fax" Type="varchar" MaxLength="20" />
@@ -305,7 +294,6 @@ warning 6002: The table/view 'QLKH.dbo.V_USER_NOTIN_GROUP' does not have a prima
           <EntitySet Name="tb_DONVI" EntityType="Self.tb_DONVI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_DVT" EntityType="Self.tb_DVT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_HANGHOA" EntityType="Self.tb_HANGHOA" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tb_KHACHHANG" EntityType="Self.tb_KHACHHANG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_NHACUNGCAP" EntityType="Self.tb_NHACUNGCAP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_NHOMHH" EntityType="Self.tb_NHOMHH" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_SYS_FUNC" EntityType="Self.tb_SYS_FUNC" Schema="dbo" store:Type="Tables" />
@@ -384,8 +372,6 @@ warning 6002: The table/view 'QLKH.dbo.V_USER_NOTIN_GROUP' does not have a prima
           <EntitySet Name="tb_CONGTY" EntityType="KHOHANG.tb_CONGTY" />
           <EntitySet Name="tb_DONVI" EntityType="KHOHANG.tb_DONVI" />
           <EntitySet Name="tb_DVT" EntityType="KHOHANG.tb_DVT" />
-          <EntitySet Name="tb_HANGHOA" EntityType="KHOHANG.tb_HANGHOA" />
-          <EntitySet Name="tb_NHACUNGCAP" EntityType="KHOHANG.tb_NHACUNGCAP" />
           <EntitySet Name="tb_NHOMHH" EntityType="KHOHANG.tb_NHOMHH" />
           <EntitySet Name="tb_SYS_FUNC" EntityType="KHOHANG.tb_SYS_FUNC" />
           <EntitySet Name="tb_SYS_GROUP" EntityType="KHOHANG.tb_SYS_GROUP" />
@@ -402,7 +388,8 @@ warning 6002: The table/view 'QLKH.dbo.V_USER_NOTIN_GROUP' does not have a prima
           <EntitySet Name="V_SYS_RIGHT_REP" EntityType="KHOHANG.V_SYS_RIGHT_REP" />
           <EntitySet Name="tb_SYS_RIGHT_REP" EntityType="KHOHANG.tb_SYS_RIGHT_REP" />
           <EntitySet Name="tb_CHUNGTU_CT" EntityType="KHOHANG.tb_CHUNGTU_CT" />
-          <EntitySet Name="tb_KHACHHANG" EntityType="KHOHANG.tb_KHACHHANG" />
+          <EntitySet Name="tb_HANGHOA" EntityType="KHOHANG.tb_HANGHOA" />
+          <EntitySet Name="tb_NHACUNGCAP" EntityType="KHOHANG.tb_NHACUNGCAP" />
         </EntityContainer>
         <EntityType Name="tb_CHUNGTU">
           <Key>
@@ -461,35 +448,6 @@ warning 6002: The table/view 'QLKH.dbo.V_USER_NOTIN_GROUP' does not have a prima
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="tb_HANGHOA">
-          <Key>
-            <PropertyRef Name="Code" />
-          </Key>
-          <Property Name="Code" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="false" />
-          <Property Name="TenHang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="TenTat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DVT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DonGia" Type="Double" />
-          <Property Name="MoTa" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="MaXX" Type="Int32" />
-          <Property Name="MaNCC" Type="Int32" />
-          <Property Name="IDNhom" Type="Int32" />
-          <Property Name="NgayTao" Type="DateTime" Precision="3" />
-          <Property Name="NguoiTao" Type="Int32" />
-          <Property Name="Disabled" Type="Boolean" />
-        </EntityType>
-        <EntityType Name="tb_NHACUNGCAP">
-          <Key>
-            <PropertyRef Name="MaNCC" />
-          </Key>
-          <Property Name="MaNCC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TenNCC" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="SDT" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="Fax" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Disabled" Type="Boolean" />
         </EntityType>
         <EntityType Name="tb_NHOMHH">
           <Key>
@@ -676,16 +634,34 @@ warning 6002: The table/view 'QLKH.dbo.V_USER_NOTIN_GROUP' does not have a prima
           <Property Name="Ngay" Type="DateTime" Precision="3" />
           <Property Name="STT" Type="Int32" />
         </EntityType>
-        <EntityType Name="tb_KHACHHANG">
+        <EntityType Name="tb_HANGHOA">
           <Key>
-            <PropertyRef Name="IDKH" />
+            <PropertyRef Name="Code" />
           </Key>
-          <Property Name="IDKH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="HOTEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DIENTHOAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DIACHI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MST" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="TenHang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TenTat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DVT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DonGia" Type="Double" />
+          <Property Name="MoTa" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MaXX" Type="Int32" />
+          <Property Name="MaNCC" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="IDNhom" Type="Int32" />
+          <Property Name="NgayTao" Type="DateTime" Precision="3" />
+          <Property Name="NguoiTao" Type="Int32" />
+          <Property Name="Disabled" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tb_NHACUNGCAP">
+          <Key>
+            <PropertyRef Name="MaNCC" />
+          </Key>
+          <Property Name="MaNCC" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TenNCC" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Disabled" Type="Boolean" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -752,37 +728,6 @@ warning 6002: The table/view 'QLKH.dbo.V_USER_NOTIN_GROUP' does not have a prima
               <MappingFragment StoreEntitySet="tb_DVT">
                 <ScalarProperty Name="Ten" ColumnName="Ten" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tb_HANGHOA">
-            <EntityTypeMapping TypeName="KHOHANG.tb_HANGHOA">
-              <MappingFragment StoreEntitySet="tb_HANGHOA">
-                <ScalarProperty Name="Disabled" ColumnName="Disabled" />
-                <ScalarProperty Name="NguoiTao" ColumnName="NguoiTao" />
-                <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
-                <ScalarProperty Name="IDNhom" ColumnName="IDNhom" />
-                <ScalarProperty Name="MaNCC" ColumnName="MaNCC" />
-                <ScalarProperty Name="MaXX" ColumnName="MaXX" />
-                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
-                <ScalarProperty Name="DonGia" ColumnName="DonGia" />
-                <ScalarProperty Name="DVT" ColumnName="DVT" />
-                <ScalarProperty Name="TenTat" ColumnName="TenTat" />
-                <ScalarProperty Name="TenHang" ColumnName="TenHang" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tb_NHACUNGCAP">
-            <EntityTypeMapping TypeName="KHOHANG.tb_NHACUNGCAP">
-              <MappingFragment StoreEntitySet="tb_NHACUNGCAP">
-                <ScalarProperty Name="Disabled" ColumnName="Disabled" />
-                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Fax" ColumnName="Fax" />
-                <ScalarProperty Name="SDT" ColumnName="SDT" />
-                <ScalarProperty Name="TenNCC" ColumnName="TenNCC" />
-                <ScalarProperty Name="MaNCC" ColumnName="MaNCC" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -979,15 +924,34 @@ warning 6002: The table/view 'QLKH.dbo.V_USER_NOTIN_GROUP' does not have a prima
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tb_KHACHHANG">
-            <EntityTypeMapping TypeName="KHOHANG.tb_KHACHHANG">
-              <MappingFragment StoreEntitySet="tb_KHACHHANG">
-                <ScalarProperty Name="MST" ColumnName="MST" />
-                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
-                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
-                <ScalarProperty Name="DIENTHOAI" ColumnName="DIENTHOAI" />
-                <ScalarProperty Name="HOTEN" ColumnName="HOTEN" />
-                <ScalarProperty Name="IDKH" ColumnName="IDKH" />
+          <EntitySetMapping Name="tb_HANGHOA">
+            <EntityTypeMapping TypeName="KHOHANG.tb_HANGHOA">
+              <MappingFragment StoreEntitySet="tb_HANGHOA">
+                <ScalarProperty Name="Disabled" ColumnName="Disabled" />
+                <ScalarProperty Name="NguoiTao" ColumnName="NguoiTao" />
+                <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+                <ScalarProperty Name="IDNhom" ColumnName="IDNhom" />
+                <ScalarProperty Name="MaNCC" ColumnName="MaNCC" />
+                <ScalarProperty Name="MaXX" ColumnName="MaXX" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+                <ScalarProperty Name="DVT" ColumnName="DVT" />
+                <ScalarProperty Name="TenTat" ColumnName="TenTat" />
+                <ScalarProperty Name="TenHang" ColumnName="TenHang" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_NHACUNGCAP">
+            <EntityTypeMapping TypeName="KHOHANG.tb_NHACUNGCAP">
+              <MappingFragment StoreEntitySet="tb_NHACUNGCAP">
+                <ScalarProperty Name="Disabled" ColumnName="Disabled" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="TenNCC" ColumnName="TenNCC" />
+                <ScalarProperty Name="MaNCC" ColumnName="MaNCC" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

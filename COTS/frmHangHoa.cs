@@ -183,7 +183,7 @@ namespace COTS
                 hh.TenTat = txtTenTat.Text;
                 hh.IDNhom = int.Parse(cboNhom.SelectedValue.ToString());
                 hh.MoTa = txtMoTa.Text;
-                hh.MaNCC = int.Parse(cboNCC.SelectedValue.ToString());
+                hh.MaNCC = cboNCC.SelectedValue.ToString();
                 hh.MaXX = int.Parse(cboXuatXu.SelectedValue.ToString());
                 hh.DVT = cboDVT.Text;//int.Parse(cboDVT.SelectedValue.ToString());
                 hh.Disabled = chkDisabled.Checked;
@@ -201,7 +201,7 @@ namespace COTS
                 hh.TenTat = txtTenTat.Text;
                 hh.IDNhom = int.Parse(cboNhom.SelectedValue.ToString());
                 hh.MoTa = txtMoTa.Text;
-                hh.MaNCC = int.Parse(cboNCC.SelectedValue.ToString());
+                hh.MaNCC = cboNCC.SelectedValue.ToString();
                 hh.MaXX = int.Parse(cboXuatXu.SelectedValue.ToString());
                 hh.DVT = cboDVT.Text;//int.Parse(cboDVT.SelectedValue.ToString());
                 hh.Disabled = chkDisabled.Checked;

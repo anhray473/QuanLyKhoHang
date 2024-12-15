@@ -110,7 +110,7 @@ namespace COTS
         }
         void loadKhachHang()
         {
-            lkKhachHang.Properties.DataSource = _khachhang.getList();
+           // lkKhachHang.Properties.DataSource = _khachhang.getList();
             lkKhachHang.Properties.DisplayMember = "HOTEN";
             lkKhachHang.Properties.ValueMember = "IDKH";
         }

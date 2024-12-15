@@ -798,7 +798,7 @@
             this.ThanhTien.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.ThanhTien.AppearanceHeader.Options.UseFont = true;
             this.ThanhTien.Caption = "THÀNH TIỀN";
-            this.ThanhTien.DisplayFormat.FormatString = "{N0}";
+            this.ThanhTien.DisplayFormat.FormatString = "{0:N0}";
             this.ThanhTien.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.ThanhTien.FieldName = "ThanhTien";
             this.ThanhTien.MinWidth = 25;

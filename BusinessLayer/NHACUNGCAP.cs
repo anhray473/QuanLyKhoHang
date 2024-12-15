@@ -14,7 +14,7 @@ namespace BusinessLayer
         {
             db =Entities.CreateEntities();
         }
-        public tb_NHACUNGCAP getItem(int maNCC)
+        public tb_NHACUNGCAP getItem(string maNCC)
         {
             return db.tb_NHACUNGCAP.FirstOrDefault(x => x.MaNCC == maNCC);
         }
@@ -53,7 +53,7 @@ namespace BusinessLayer
                 throw new Exception("Có lỗi xảy ra trong quá trình xử lý dữ liệu" + ex.Message);
             }
         }
-        public void delete(int mancc)
+        public void delete(string mancc)
         {
             tb_NHACUNGCAP _ncc = db.tb_NHACUNGCAP.FirstOrDefault(x => x.MaNCC == mancc);
             _ncc.Disabled = true;
