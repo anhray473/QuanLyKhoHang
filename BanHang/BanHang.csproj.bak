@@ -32,14 +32,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.BonusSkins.v24.2" />
-    <Reference Include="DevExpress.Data.Desktop.v24.2" />
-    <Reference Include="DevExpress.Data.v24.2" />
-    <Reference Include="DevExpress.Utils.v24.2" />
-    <Reference Include="DevExpress.Sparkline.v24.2.Core" />
-    <Reference Include="DevExpress.XtraEditors.v24.2" />
-    <Reference Include="DevExpress.Printing.v24.2.Core" />
-    <Reference Include="DevExpress.Drawing.v24.2" />
+    <Reference Include="DevExpress.BonusSkins.v24.1" />
+    <Reference Include="DevExpress.Data.Desktop.v24.1" />
+    <Reference Include="DevExpress.Data.v24.1" />
+    <Reference Include="DevExpress.Utils.v24.1" />
+    <Reference Include="DevExpress.Sparkline.v24.1.Core" />
+    <Reference Include="DevExpress.XtraEditors.v24.1" />
+    <Reference Include="DevExpress.Printing.v24.1.Core" />
+    <Reference Include="DevExpress.Drawing.v24.1" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
