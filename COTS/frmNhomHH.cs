@@ -40,7 +40,7 @@ namespace COTS
         }
         void loadData()
         {
-            gcDanhSach.DataSource = _nhh.getAll();
+            gcDanhSach.DataSource = _nhh.getNhomHHNoDis();
             gvDanhSach.OptionsBehavior.Editable = false;
         }
         void showHideControl(bool t)

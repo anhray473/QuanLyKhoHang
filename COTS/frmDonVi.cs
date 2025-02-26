@@ -80,7 +80,7 @@ namespace COTS
         }
         void loadCongTy()
         {
-            cboCty.DataSource =_congty.getAll();
+            cboCty.DataSource =_congty.getCtyNoDis();
             cboCty.DisplayMember = "TenCTy";
             cboCty.ValueMember = "MaCTy";
         }
