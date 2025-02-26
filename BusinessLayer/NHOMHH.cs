@@ -26,6 +26,10 @@ namespace BusinessLayer
         {
             return db.tb_NHOMHH.ToList();
         }
+        public List<tb_NHOMHH> getNhomHHNoDis()
+        {
+            return db.tb_NHOMHH.Where(x => x.Disabled == false).ToList();
+        }
         public void add(tb_NHOMHH nhom)
         {
             try

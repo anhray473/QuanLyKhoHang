@@ -25,6 +25,11 @@ namespace BusinessLayer
         {
             return db.tb_CONGTY.ToList();
         }
+        public List<tb_CONGTY> getCtyNoDis()
+        {
+            return db.tb_CONGTY.Where(x => x.Disabled == false).ToList();
+        }
+
         public void add(tb_CONGTY cty)
         {
             try
