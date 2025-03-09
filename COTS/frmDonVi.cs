@@ -48,34 +48,22 @@ namespace COTS
 
             cboCty.TextChanged += CboCty_TextChanged;
 
-            cboCty.AutoCompleteMode = AutoCompleteMode.None;
+            cboCty.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             cboCty.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
 
         private void CboCty_TextChanged(object sender, EventArgs e)
         {
-            string searchText = cboCty.Text.Trim().ToLower();
+            System.Windows.Forms.ComboBox comboBox = (System.Windows.Forms.ComboBox)sender;
 
-            // Lọc dữ liệu theo từ khóa bất kỳ
-            if (gvDanhSach.DataSource is List<string> dataList)
+            // Loại bỏ khoảng trắng đầu và cuối
+            string trimmedText = comboBox.Text.Trim();
+
+            // Tránh đệ quy lặp vô hạn
+            if (comboBox.Text != trimmedText)
             {
-                var filteredItems = dataList
-                                    .Where(item => item.ToLower().Contains(searchText.ToLower()))
-                                    .ToList();
-
-                gvDanhSach.DataSource = filteredItems;
-            }
-
-            // Cập nhật danh sách hiển thị
-            cboCty.Items.Clear();
-            cboCty.Items.AddRange(filteredItems.ToArray());
-
-            // Mở dropdown tự động nếu có kết quả
-            if (filteredItems.Count > 0)
-            {
-                cboCty.DroppedDown = true;
-                cboCty.SelectionStart = searchText.Length;  // Giữ con trỏ ở cuối văn bản
-                cboCty.SelectionLength = 0;                 // Tránh bôi đen chữ
+                comboBox.Text = trimmedText;
+                comboBox.SelectionStart = comboBox.Text.Length; // Giữ con trỏ ở cuối
             }
         }
 
