@@ -235,7 +235,8 @@
             this.Controls.Add(this.txtCode);
             this.Controls.Add(this.gcChiTiet);
             this.Name = "frmBanLe";
-            this.Text = "frmBanLe";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Bán lẻ";
             this.Load += new System.EventHandler(this.frmBanLe_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gcChiTiet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvChiTiet)).EndInit();

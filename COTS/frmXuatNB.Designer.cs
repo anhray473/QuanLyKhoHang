@@ -857,6 +857,7 @@
             this.Controls.Add(this.tabChungTu);
             this.Controls.Add(this.toolStrip1);
             this.Name = "frmXuatNB";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Phiếu xuất nội bộ";
             this.Load += new System.EventHandler(this.frmXuatNB_Load);
             this.toolStrip1.ResumeLayout(false);

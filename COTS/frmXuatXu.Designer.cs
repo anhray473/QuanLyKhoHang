@@ -262,7 +262,8 @@
             this.Controls.Add(this.gcDanhSach);
             this.Controls.Add(this.toolStrip1);
             this.Name = "frmXuatXu";
-            this.Text = "frmXuatXu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Xuất xứ";
             this.Load += new System.EventHandler(this.frmXuatXu_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

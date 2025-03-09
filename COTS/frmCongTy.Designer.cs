@@ -439,6 +439,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmCongTy";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Danh mục công ty";
             this.Load += new System.EventHandler(this.frmCongTy_Load);
             this.toolStrip1.ResumeLayout(false);

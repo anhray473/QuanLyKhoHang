@@ -24,6 +24,11 @@ namespace BusinessLayer
             return db.tb_XUATXU.ToList();
         }
 
+        public List<tb_XUATXU> getXXNoDis()
+        {
+            return db.tb_XUATXU.Where(x=> x.Disabled==false).ToList();
+        }
+
         public List<tb_XUATXU> getAll(int id)
         {
             return db.tb_XUATXU.Where(x => x.ID == id).ToList();

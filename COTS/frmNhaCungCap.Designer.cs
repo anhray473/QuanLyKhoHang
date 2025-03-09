@@ -437,6 +437,7 @@
             this.Controls.Add(this.gcDanhSach);
             this.Controls.Add(this.toolStrip1);
             this.Name = "frmNhaCungCap";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Danh mục nhà cung cấp";
             this.Load += new System.EventHandler(this.frmNhaCungCap_Load);
             this.toolStrip1.ResumeLayout(false);

@@ -79,7 +79,7 @@ namespace COTS
         }
         void loadXuatXu()
         {
-            cboXuatXu.DataSource = _xuatxu.getAll();
+            cboXuatXu.DataSource = _xuatxu.getXXNoDis();
             cboXuatXu.DisplayMember = "Ten";
             cboXuatXu.ValueMember = "ID";
         }

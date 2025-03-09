@@ -71,6 +71,7 @@
             this.Controls.Add(this.txtChietKhau);
             this.Controls.Add(this.label1);
             this.Name = "frmChietKhau";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chiết khấu";
             this.ResumeLayout(false);
             this.PerformLayout();

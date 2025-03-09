@@ -72,10 +72,14 @@ namespace COTS
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.pageChiTiet = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.lkKhachHang = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cboDonViXuat = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.txtGhiChu = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.lblXoa = new System.Windows.Forms.Label();
-            this.cboDonViXuat = new System.Windows.Forms.ComboBox();
             this.cboTrangThai = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtSoPhieu = new System.Windows.Forms.TextBox();
@@ -95,10 +99,6 @@ namespace COTS
             this.mnXoaDong = new System.Windows.Forms.ToolStripMenuItem();
             this.mnXoaCT = new System.Windows.Forms.ToolStripMenuItem();
             this.mnImport = new System.Windows.Forms.ToolStripMenuItem();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.lkKhachHang = new DevExpress.XtraEditors.SearchLookUpEdit();
-            this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabChungTu)).BeginInit();
             this.tabChungTu.SuspendLayout();
@@ -119,11 +119,11 @@ namespace COTS
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel2)).BeginInit();
             this.splitContainerControl2.Panel2.SuspendLayout();
             this.splitContainerControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lkKhachHang.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcChiTiet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvChiTiet)).BeginInit();
             this.contextMenuChiTiet.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lkKhachHang.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -559,6 +559,55 @@ namespace COTS
             this.splitContainerControl2.SplitterPosition = 179;
             this.splitContainerControl2.TabIndex = 0;
             // 
+            // lkKhachHang
+            // 
+            this.lkKhachHang.Location = new System.Drawing.Point(694, 80);
+            this.lkKhachHang.Name = "lkKhachHang";
+            this.lkKhachHang.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lkKhachHang.Properties.Appearance.Options.UseFont = true;
+            this.lkKhachHang.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lkKhachHang.Properties.PopupView = this.searchLookUpEdit1View;
+            this.lkKhachHang.Size = new System.Drawing.Size(315, 28);
+            this.lkKhachHang.TabIndex = 16;
+            // 
+            // searchLookUpEdit1View
+            // 
+            this.searchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.searchLookUpEdit1View.Name = "searchLookUpEdit1View";
+            this.searchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.searchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(71, 80);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(57, 21);
+            this.label10.TabIndex = 15;
+            this.label10.Text = "Đơn vị";
+            // 
+            // cboDonViXuat
+            // 
+            this.cboDonViXuat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDonViXuat.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboDonViXuat.FormattingEnabled = true;
+            this.cboDonViXuat.Location = new System.Drawing.Point(134, 77);
+            this.cboDonViXuat.Name = "cboDonViXuat";
+            this.cboDonViXuat.Size = new System.Drawing.Size(428, 29);
+            this.cboDonViXuat.TabIndex = 9;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(631, 80);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(57, 21);
+            this.label9.TabIndex = 14;
+            this.label9.Text = "Đơn vị";
+            // 
             // txtGhiChu
             // 
             this.txtGhiChu.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -587,16 +636,6 @@ namespace COTS
             this.lblXoa.Size = new System.Drawing.Size(22, 23);
             this.lblXoa.TabIndex = 11;
             this.lblXoa.Text = "*";
-            // 
-            // cboDonViXuat
-            // 
-            this.cboDonViXuat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboDonViXuat.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboDonViXuat.FormattingEnabled = true;
-            this.cboDonViXuat.Location = new System.Drawing.Point(134, 77);
-            this.cboDonViXuat.Name = "cboDonViXuat";
-            this.cboDonViXuat.Size = new System.Drawing.Size(428, 29);
-            this.cboDonViXuat.TabIndex = 9;
             // 
             // cboTrangThai
             // 
@@ -793,45 +832,6 @@ namespace COTS
             this.mnImport.Text = "Import Excel";
             this.mnImport.Click += new System.EventHandler(this.mnImport_Click);
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(631, 80);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(57, 21);
-            this.label9.TabIndex = 14;
-            this.label9.Text = "Đơn vị";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(71, 80);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(57, 21);
-            this.label10.TabIndex = 15;
-            this.label10.Text = "Đơn vị";
-            // 
-            // lkKhachHang
-            // 
-            this.lkKhachHang.Location = new System.Drawing.Point(694, 80);
-            this.lkKhachHang.Name = "lkKhachHang";
-            this.lkKhachHang.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lkKhachHang.Properties.Appearance.Options.UseFont = true;
-            this.lkKhachHang.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lkKhachHang.Properties.PopupView = this.searchLookUpEdit1View;
-            this.lkKhachHang.Size = new System.Drawing.Size(315, 28);
-            this.lkKhachHang.TabIndex = 16;
-            // 
-            // searchLookUpEdit1View
-            // 
-            this.searchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.searchLookUpEdit1View.Name = "searchLookUpEdit1View";
-            this.searchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.searchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
-            // 
             // frmXuatSi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -840,7 +840,8 @@ namespace COTS
             this.Controls.Add(this.tabChungTu);
             this.Controls.Add(this.toolStrip1);
             this.Name = "frmXuatSi";
-            this.Text = "Phiếu xuất xỉ";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Phiếu xuất sỉ";
             this.Load += new System.EventHandler(this.frmXuatSi_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
@@ -865,11 +866,11 @@ namespace COTS
             this.splitContainerControl2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).EndInit();
             this.splitContainerControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.lkKhachHang.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcChiTiet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvChiTiet)).EndInit();
             this.contextMenuChiTiet.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.lkKhachHang.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

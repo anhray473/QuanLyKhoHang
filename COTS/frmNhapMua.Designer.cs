@@ -836,7 +836,8 @@
             this.Controls.Add(this.tabChungTu);
             this.Controls.Add(this.toolStrip1);
             this.Name = "frmNhapMua";
-            this.Text = "frmNhapMua";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Nhập mua từ nhà cung cấp";
             this.Load += new System.EventHandler(this.frmNhapMua_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

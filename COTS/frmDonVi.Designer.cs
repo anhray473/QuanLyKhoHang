@@ -515,6 +515,7 @@
             this.Controls.Add(this.gcDanhSach);
             this.Controls.Add(this.toolStrip1);
             this.Name = "frmDonVi";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Danh mục đơn vị";
             this.Load += new System.EventHandler(this.frmDonVi_Load);
             this.toolStrip1.ResumeLayout(false);
