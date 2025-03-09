@@ -195,6 +195,8 @@ namespace Usermanagement
         private void btnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.Close();
+            frmLogin frmL = new frmLogin();
+            frmL.ShowDialog();
         }
 
         private void gvUser_DoubleClick(object sender, EventArgs e)

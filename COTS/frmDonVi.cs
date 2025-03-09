@@ -9,8 +9,10 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using static DevExpress.XtraEditors.Mask.MaskSettings;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace COTS
 {
@@ -44,8 +46,39 @@ namespace COTS
             cboCty.SelectedIndexChanged += cboCty_SelectedIndexChanged;
             loadDviByCty();
 
+            cboCty.TextChanged += CboCty_TextChanged;
 
+            cboCty.AutoCompleteMode = AutoCompleteMode.None;
+            cboCty.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
+
+        private void CboCty_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = cboCty.Text.Trim().ToLower();
+
+            // Lọc dữ liệu theo từ khóa bất kỳ
+            if (gvDanhSach.DataSource is List<string> dataList)
+            {
+                var filteredItems = dataList
+                                    .Where(item => item.ToLower().Contains(searchText.ToLower()))
+                                    .ToList();
+
+                gvDanhSach.DataSource = filteredItems;
+            }
+
+            // Cập nhật danh sách hiển thị
+            cboCty.Items.Clear();
+            cboCty.Items.AddRange(filteredItems.ToArray());
+
+            // Mở dropdown tự động nếu có kết quả
+            if (filteredItems.Count > 0)
+            {
+                cboCty.DroppedDown = true;
+                cboCty.SelectionStart = searchText.Length;  // Giữ con trỏ ở cuối văn bản
+                cboCty.SelectionLength = 0;                 // Tránh bôi đen chữ
+            }
+        }
+
         void showHideControl(bool t)
         {
             btnThem.Visible = t;
